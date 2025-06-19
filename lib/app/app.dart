@@ -23,6 +23,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => XenditBloc()..add(GetXenditEvent()),
         ),
+        BlocProvider(
+          create: (context) => ReceiptBloc()..add(GetReceiptEvent()),
+        ),
 
       ],
       child: MaterialApp(
