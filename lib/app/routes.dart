@@ -9,6 +9,11 @@ Route<dynamic> routes(settings){
       return MaterialPageRoute(builder: (context) => const MainPage());
     case ProfilePage.routeName:
       return MaterialPageRoute(builder: (context) => const ProfilePage());
+    case XenditPage.routeName:
+      return MaterialPageRoute(builder: (context) => const XenditPage());
+    case ReceiptPage.routeName:
+      return MaterialPageRoute(builder: (context) => const ReceiptPage());
+
     default:
       return MaterialPageRoute(builder: (context) {
         return Scaffold(

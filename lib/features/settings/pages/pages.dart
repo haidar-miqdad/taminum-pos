@@ -1,3 +1,5 @@
 export 'splash/splash_page.dart';
 export 'index/page.dart';
 export 'profile/page.dart';
+export 'xendit/page.dart';
+export 'receipt/page.dart';

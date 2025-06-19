@@ -15,7 +15,13 @@ class _AccountSection extends StatelessWidget {
           SubtitleText('Akun'),
           ItemMenuSettings('Informasi Usaha', icon: AppIcons.receipt, onTap: (){},),
           Divider(color: MainColors.white[400], thickness: 1,),
-          ItemMenuSettings('API Key Xendit', icon: AppIcons.creditCard, onTap: (){},),
+          ItemMenuSettings(
+            'API Key Xendit',
+            icon: AppIcons.creditCard,
+            onTap: (){
+              Navigator.pushNamed(context, XenditPage.routeName);
+            }
+          ),
         ],
       ),
     );

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_taminum_mobile/app/routes.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_taminum_mobile/features/settings/blocs/profile_bloc/profile_bloc.dart';
 
 import '../features/features.dart';
 import '../features/home/blocs/blocs.dart';
+import '../features/settings/blocs/blocs.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -19,6 +19,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ProfileBloc()..add(GetProfileEvent()),
+        ),
+        BlocProvider(
+          create: (context) => XenditBloc()..add(GetXenditEvent()),
         ),
 
       ],

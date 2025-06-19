@@ -1,0 +1,69 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_taminum_mobile/core/core.dart';
+import 'package:flutter_taminum_mobile/features/settings/blocs/blocs.dart';
+
+class XenditPage extends StatefulWidget {
+  const XenditPage({super.key});
+
+  static const routeName = 'settings/xendit';
+
+  @override
+  State<XenditPage> createState() => _XenditPageState();
+}
+
+class _XenditPageState extends State<XenditPage> {
+
+  @override
+  void initState() {
+    context.read<XenditBloc>().add(GetXenditEvent());
+    super.initState();
+  }
+
+  final TextEditingController controller = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<XenditBloc, XenditState>(
+      listener: (context, state) {
+        if(state.status == Status.success){
+          Navigator.pop(context);
+        }
+        if(state.status == Status.apply){
+          controller.text = state.key;
+        }
+        if(state.status == Status.failure){
+          ScaffoldMessenger.of(context).showSnackBar( SnackBar(content: Text(state.error ?? 'something went wrong!!'),));
+        }
+      },
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(title: Text('API Key Xendit'),),
+          body: Padding(
+            padding: const EdgeInsets.all(Spacing.defaultSize),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                RegularTextInput(
+                  label: 'API Key',
+                  hinText: 'Masukkan API Key Xendit',
+                  required: true,
+                  controller: controller,
+                ),
+                Spacer(),
+                SafeArea(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      context.read<XenditBloc>().add(SubmitXenditEvent(controller.text));
+                    },
+                    child: Text('Simpan'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
