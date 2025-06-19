@@ -23,7 +23,6 @@ class SubmitProfileEvent extends ProfileEvent{
     required this.phoneNumber,
   });
 
-
   @override
   List<Object> get props => [name, email, phoneNumber];
 }

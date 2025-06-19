@@ -19,7 +19,7 @@ class ItemMenuSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: Spacing.defaultSize),
-      child: InkWell(
+      child: GestureDetector(
         onTap: onTap,
         child: Row(
           children: [
