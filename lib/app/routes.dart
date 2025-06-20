@@ -15,6 +15,8 @@ Route<dynamic> routes(settings){
       return MaterialPageRoute(builder: (context) => const ReceiptPage());
     case ShowReceiptPage.routeName:
       return MaterialPageRoute(builder: (context) => const ShowReceiptPage());
+    case PrinterPage.routeName:
+      return MaterialPageRoute(builder: (context) => const PrinterPage());
 
     default:
       return MaterialPageRoute(builder: (context) {

@@ -26,6 +26,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ReceiptBloc()..add(GetReceiptEvent()),
         ),
+        BlocProvider(
+          create: (context) => PrinterBloc(),
+        ),
 
       ],
       child: MaterialApp(

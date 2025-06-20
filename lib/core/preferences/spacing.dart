@@ -36,4 +36,5 @@ class Spacing {
   static const sp42 = 42.0;
   static const sp44 = 44.0;
   static const sp46 = 46.0;
+  static const sp200 = 200.0;
 }

@@ -6,6 +6,7 @@ part 'sections/header_section.dart';
 part 'sections/type_section.dart';
 part 'sections/order_section.dart';
 part 'sections/detail_section.dart';
+part 'sections/footer_section.dart';
 
 class ShowReceiptPage extends StatelessWidget {
   const ShowReceiptPage({super.key});
@@ -25,25 +26,13 @@ class ShowReceiptPage extends StatelessWidget {
           _OrderSection(),
           Divider(color: MainColors.white, thickness: 8,),
           _DetailSection(),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: Spacing.defaultSize),
-            child: RichText(
-
-                textAlign: TextAlign.center,
-                text: TextSpan(
-              text: 'Terimakasih sudah berkunjung.',
-              style: TextStyle(color: MainColors.black[600], fontSize: Spacing.defaultSize, height: 1.7,),
-
-              children: [
-                TextSpan(text: '\nPowered by Haidar Miqdad'),
-              ]
-            )),
-          )
+          _FooterSection()
           
         ],
       ),
     );
   }
 }
+
+
 

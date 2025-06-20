@@ -39,6 +39,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   json_annotation: ^4.9.0
   image_picker: ^1.1.2
+  open_settings: ^2.0.2
+  print_bluetooth_thermal: ^1.1.6
+  permission_handler: ^12.0.0+1
 
 dev_dependencies:
   flutter_test:
