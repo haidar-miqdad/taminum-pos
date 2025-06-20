@@ -3,3 +3,4 @@ export 'index/page.dart';
 export 'profile/page.dart';
 export 'xendit/page.dart';
 export 'receipt/page.dart';
+export 'show_receipt/page.dart';

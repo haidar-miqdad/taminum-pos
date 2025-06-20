@@ -13,6 +13,8 @@ Route<dynamic> routes(settings){
       return MaterialPageRoute(builder: (context) => const XenditPage());
     case ReceiptPage.routeName:
       return MaterialPageRoute(builder: (context) => const ReceiptPage());
+    case ShowReceiptPage.routeName:
+      return MaterialPageRoute(builder: (context) => const ShowReceiptPage());
 
     default:
       return MaterialPageRoute(builder: (context) {

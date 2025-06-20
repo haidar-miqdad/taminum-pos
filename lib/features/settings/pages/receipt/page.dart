@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 
+import '../../../features.dart';
 import '../../blocs/blocs.dart';
 
 class ReceiptPage extends StatefulWidget {
@@ -71,7 +72,9 @@ class _ReceiptPageState extends State<ReceiptPage> {
             children: [
               Divider(color: MainColors.white[400], thickness: 1),
               Spacing.sp30.height,
-              OutlinedButton(onPressed: () {}, child: Text('Lihat Tampilan Struk')),
+              OutlinedButton(onPressed: () {
+                Navigator.pushNamed(context, ShowReceiptPage.routeName);
+              }, child: Text('Lihat Tampilan Struk')),
               Spacing.defaultSize.height,
               SafeArea(child: ElevatedButton(onPressed: () {
                 context.read<ReceiptBloc>().add(SubmitReceiptEvent(message: messageController.text, desc: descController.text));
