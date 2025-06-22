@@ -28,6 +28,19 @@ class FormProductState extends Equatable {
     return FormProductState();
   }
 
+  num get margin {
+    return ((priceRegular ?? 0) - (priceItem ?? 0)) / (priceRegular ?? 0) * 100;
+  }
+
+  num get profit {
+    return (priceRegular ?? 0) - (priceItem ?? 0);
+  }
+
+  bool get isValid {
+    return name != null && name!.isNotEmpty &&
+        desc != null && desc!.isNotEmpty ;
+  }
+
   FormProductState copyWith({
     Status? status,
     String? error,

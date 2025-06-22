@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_taminum_mobile/app/routes.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_taminum_mobile/features/product/blocs/blocs.dart';
 
 import '../features/features.dart';
 import '../features/home/blocs/blocs.dart';
@@ -28,6 +29,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => PrinterBloc(),
+        ),
+        BlocProvider(
+          create: (context) => FormProductBloc(),
         ),
 
       ],
