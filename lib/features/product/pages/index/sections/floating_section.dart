@@ -8,7 +8,9 @@ class _FloatingSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: (){},child: Row(
+    return ElevatedButton(onPressed: (){
+      Navigator.pushNamed(context, ProductInputPage.routeName);
+    },child: Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Icon(Icons.add_rounded),

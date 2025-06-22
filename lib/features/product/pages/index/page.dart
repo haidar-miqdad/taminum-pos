@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 
+import '../../../features.dart';
+
 part 'sections/item_section.dart';
 part 'sections/floating_section.dart';
 
