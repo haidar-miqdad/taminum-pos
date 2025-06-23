@@ -2,14 +2,14 @@
 part of '../page.dart';
 
 class _FloatingSection extends StatelessWidget {
-  const _FloatingSection({
-    super.key,
-  });
+  const _FloatingSection({required this.onTap, super.key});
+
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(onPressed: (){
-      Navigator.pushNamed(context, ProductInputPage.routeName);
+      onTap();
     },child: Row(
       mainAxisSize: MainAxisSize.min,
       children: [

@@ -33,6 +33,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => FormProductBloc(),
         ),
+        BlocProvider(
+          create: (context) => ProductBloc(),
+        ),
 
       ],
       child: MaterialApp(
