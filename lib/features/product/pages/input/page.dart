@@ -60,7 +60,7 @@ class _ProductInputPageState extends State<ProductInputPage> {
                 state.isValid
                     ? () {}
                     : null,
-                    child: Text('Simpan')),
+                    child: Text(state.isValid == false ? 'input produk detail!' : 'Simpan')),
               ),
             );
           },

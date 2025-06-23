@@ -6,27 +6,27 @@ part 'product_model.g.dart';
 @JsonSerializable()
 class ProductModel extends Equatable{
 
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'id', includeToJson: false)
   final int id;
-  @JsonKey(name: 'title')
+  @JsonKey(name: 'title', defaultValue: '')
   final String title;
-  @JsonKey(name: 'description')
+  @JsonKey(name: 'description', defaultValue: '')
   final String description;
-  @JsonKey(name: 'imageUrl')
+  @JsonKey(name: 'imageUrl', defaultValue: '')
   final String imageUrl;
-  @JsonKey(name: 'regularPrice')
+  @JsonKey(name: 'regularPrice', defaultValue: 0)
   final double regularPrice;
-  @JsonKey(name: 'unit')
+  @JsonKey(name: 'unit', defaultValue: '')
   final String unit;
-  @JsonKey(name: 'itemPrice')
+  @JsonKey(name: 'itemPrice', defaultValue: 0)
   final double itemPrice;
-  @JsonKey(name: 'stock')
+  @JsonKey(name: 'stock', defaultValue: 0)
   final int stock;
-  @JsonKey(name: 'sku')
+  @JsonKey(name: 'sku', defaultValue: '')
   final String sku;
   // created at
-  @JsonKey(name: 'createdAt')
-  final DateTime createdAt;
+  @JsonKey(name: 'createdAt', defaultValue: '')
+  final String createdAt;
 
   const ProductModel({
   required this.title,
@@ -37,7 +37,7 @@ class ProductModel extends Equatable{
     required this.itemPrice,
     required this.stock,
     required this.sku,
-    required this.id,
+    this.id = 0,
     required this.createdAt
   });
 
