@@ -18,7 +18,7 @@ Route<dynamic> routes(settings){
     case PrinterPage.routeName:
       return MaterialPageRoute(builder: (context) => const PrinterPage());
       case ProductInputPage.routeName:
-      return MaterialPageRoute(builder: (context) => const ProductInputPage());
+      return MaterialPageRoute(builder: (context) => ProductInputPage(product: settings.arguments as ProductModel?,));
 
 
     default:

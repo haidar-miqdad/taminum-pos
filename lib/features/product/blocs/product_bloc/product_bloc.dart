@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 import 'package:flutter_taminum_mobile/features/features.dart';
-import 'package:flutter_taminum_mobile/features/product/services/product_service.dart';
 
 part 'product_event.dart';
 part 'product_state.dart';
@@ -14,7 +13,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         emit(state.copyWith(status: Status.loading));
 
         final service = await ProductService.getAll(event.search);
-        emit(state.copyWith(status: Status.apply, product: service));
+        emit(state.copyWith(status: Status.success, product: service));
       }catch(e){
         emit(state.copyWith(status: Status.failure, error: e.toString()));
       }

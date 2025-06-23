@@ -15,11 +15,11 @@ class ProductModel extends Equatable{
   @JsonKey(name: 'imageUrl', defaultValue: '')
   final String imageUrl;
   @JsonKey(name: 'regularPrice', defaultValue: 0)
-  final double regularPrice;
+  final int regularPrice;
   @JsonKey(name: 'unit', defaultValue: '')
   final String unit;
   @JsonKey(name: 'itemPrice', defaultValue: 0)
-  final double itemPrice;
+  final int itemPrice;
   @JsonKey(name: 'stock', defaultValue: 0)
   final int stock;
   @JsonKey(name: 'sku', defaultValue: '')

@@ -2,9 +2,7 @@
 part of '../page.dart';
 
 class _StockSection extends StatefulWidget {
-  const _StockSection({
-    super.key, this.product,
-  });
+  const _StockSection(this.product,);
 
   final ProductModel? product;
 
@@ -21,11 +19,13 @@ class _StockSectionState extends State<_StockSection> {
 
   @override
   void initState() {
+    skuController.text = widget.product?.sku ?? '';
+    stockController.text = widget.product?.stock.toString() ?? '';
+
     context.read<FormProductBloc>().add(ChangeFormProductEvent(stock: int.tryParse(stockController.text)));
     context.read<FormProductBloc>().add(ChangeFormProductEvent(sku: skuController.text));
 
-    skuController.text = widget.product?.sku ?? '';
-    skuController.text = widget.product?.stock.toString() ?? '';
+
     super.initState();
   }
 

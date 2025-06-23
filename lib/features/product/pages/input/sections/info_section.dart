@@ -1,9 +1,7 @@
 part of '../page.dart';
 
 class _InfoSection extends StatefulWidget {
-  const _InfoSection({
-    super.key, this.product,
-  });
+  const _InfoSection( this.product,);
 
   final ProductModel? product;
 
@@ -18,6 +16,10 @@ class _InfoSectionState extends State<_InfoSection> {
 
   @override
   void initState() {
+
+    nameController.text = widget.product?.title ?? '';
+    descController.text = widget.product?.description ?? '';
+
     nameController.addListener(() {
       context.read<FormProductBloc>().add(ChangeFormProductEvent(name: nameController.text));
     });
@@ -25,8 +27,6 @@ class _InfoSectionState extends State<_InfoSection> {
       context.read<FormProductBloc>().add(ChangeFormProductEvent(desc: descController.text));
     });
 
-    nameController.text = widget.product?.title ?? '';
-    descController.text = widget.product?.description ?? '';
     super.initState();
   }
 

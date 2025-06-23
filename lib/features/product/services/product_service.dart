@@ -51,7 +51,6 @@ class ProductService{
   }
 
   static Future<bool> delete(int id) async{
-
     try{
       final db = await SQLiteDatabase.database;
       await db.delete('products', where: 'id = ?' ,whereArgs: [id]);

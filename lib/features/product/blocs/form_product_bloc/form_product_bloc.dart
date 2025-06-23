@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
+import 'package:flutter_taminum_mobile/features/features.dart';
 
 part 'form_product_event.dart';
 
@@ -21,8 +22,11 @@ class FormProductBloc extends Bloc<FormProductEvent, FormProductState> {
     });
 
     on<InitialFormProductEvent>((event, emit) async {
-      emit(FormProductState(status: Status.initial));
+      emit(FormProductState.initial());
       emit(state.copyWith(image: event.image));
     });
+
+
+
   }
 }

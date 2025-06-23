@@ -1,9 +1,7 @@
 part of '../page.dart';
 
 class _PriceSection extends StatefulWidget {
-  const _PriceSection({
-    super.key, this.product,
-  });
+  const _PriceSection(this.product);
 
   final ProductModel? product;
 
@@ -19,15 +17,39 @@ class _PriceSectionState extends State<_PriceSection> {
 
   @override
   void initState() {
-    context.read<FormProductBloc>().add(ChangeFormProductEvent(priceRegular: int.tryParse(priceRegularController.text)));
-    context.read<FormProductBloc>().add(ChangeFormProductEvent(unit: unitController.text));
-    context.read<FormProductBloc>().add(ChangeFormProductEvent(priceItem: int.tryParse(priceItemController.text)));
 
     priceRegularController.text = widget.product?.regularPrice.toString() ?? '';
     priceItemController.text = widget.product?.itemPrice.toString() ?? '';
-    priceItemController.text = widget.product?.unit ?? '';
+    unitController.text = widget.product?.unit ?? '';
+
+    priceRegularController.addListener(() {
+      context.read<FormProductBloc>().add(
+        ChangeFormProductEvent(priceRegular: int.tryParse(priceRegularController.text)),
+      );
+    });
+
+    priceItemController.addListener(() {
+      context.read<FormProductBloc>().add(
+        ChangeFormProductEvent(priceItem: int.tryParse(priceItemController.text)),
+      );
+    });
+
+    unitController.addListener(() {
+      context.read<FormProductBloc>().add(
+        ChangeFormProductEvent(unit: unitController.text),
+      );
+    });
+
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    priceRegularController.dispose();
+    unitController.dispose();
+    priceItemController.dispose();
+    super.dispose();
   }
 
 

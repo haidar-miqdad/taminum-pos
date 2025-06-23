@@ -10,12 +10,12 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
   title: json['title'] as String? ?? '',
   description: json['description'] as String? ?? '',
   imageUrl: json['imageUrl'] as String? ?? '',
-  regularPrice: (json['regularPrice'] as num?)?.toDouble() ?? 0,
+  regularPrice: (json['regularPrice'] as num?)?.toInt() ?? 0,
   unit: json['unit'] as String? ?? '',
-  itemPrice: (json['itemPrice'] as num?)?.toDouble() ?? 0,
+  itemPrice: (json['itemPrice'] as num?)?.toInt() ?? 0,
   stock: (json['stock'] as num?)?.toInt() ?? 0,
   sku: json['sku'] as String? ?? '',
-  id: (json['id'] as num).toInt(),
+  id: (json['id'] as num?)?.toInt() ?? 0,
   createdAt: json['createdAt'] as String? ?? '',
 );
 

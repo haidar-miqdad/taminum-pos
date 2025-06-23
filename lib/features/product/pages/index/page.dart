@@ -18,24 +18,27 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
 
-  TextEditingController controller = TextEditingController();
+  TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
-    controller.addListener(() {
+    searchController.addListener(() {
+      // dijalankan ketika search controller diubah
       getData();
     });
+
+    // dijlankan ketika page diload/dijalankan
     getData();
     super.initState();
   }
 
   void getData() {
-    context.read<ProductBloc>().add(GetProductEvent(controller.text));
+    context.read<ProductBloc>().add(GetProductEvent(searchController.text));
   }
 
   @override
   void dispose() {
-    controller.dispose();
+    searchController.dispose();
     super.dispose();
   }
 
@@ -56,7 +59,7 @@ class _ProductPageState extends State<ProductPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(Spacing.defaultSize),
-                child: SearchInput(hintText: 'Search by product name or SKU'),
+                child: SearchInput(hintText: 'Search by product name or SKU', controller: searchController,),
               ),
               Padding(
                 padding: const EdgeInsets.all(Spacing.defaultSize),
@@ -65,7 +68,7 @@ class _ProductPageState extends State<ProductPage> {
               Spacing.defaultSize.height,
               Expanded(
                 child: state.status == Status.success && state.products.isEmpty
-                    ? ListView.separated(
+                    ? EmptyTemplate() :ListView.separated(
                   shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index) {
                     final item = state.products[index];
@@ -88,9 +91,8 @@ class _ProductPageState extends State<ProductPage> {
                   separatorBuilder: (BuildContext context, int index) {
                     return Spacing.sp42.height;
                   },
-                  itemCount: 7,
-                )
-                : EmptyTemplate(),
+                  itemCount: state.products.length,
+                ),
               ),
             ],
           );

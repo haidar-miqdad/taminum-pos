@@ -38,7 +38,26 @@ class FormProductState extends Equatable {
 
   bool get isValid {
     return name != null && name!.isNotEmpty &&
-        desc != null && desc!.isNotEmpty ;
+        desc != null && desc!.isNotEmpty &&
+         priceRegular != null && (priceRegular ?? 0) > 0 &&
+    unit != null && unit!.isNotEmpty;
+  }
+
+  // Getter ini adalah jembatan antara data di BLoC (state form) dan
+  // data model yang dibutuhkan untuk simpan ke backend/database.
+  ProductModel product({int? id, String? createdAt}){
+    return ProductModel(
+      id: id ?? 0,
+      title: name ?? '',
+      description: desc ?? '',
+      imageUrl: image ?? '',
+      regularPrice: priceRegular ?? 0,
+      unit: unit ?? '',
+      itemPrice: priceItem ?? 0,
+      stock: stock ?? 0,
+      sku: sku ?? '',
+      createdAt: createdAt ?? DateTime.now().toIso8601String(),
+    );
   }
 
   FormProductState copyWith({
