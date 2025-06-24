@@ -36,7 +36,7 @@ class _ItemSection extends StatelessWidget {
                 children: [
                   RegularText.semibold(product.title, style: TextStyle(fontSize: 16)),
                   Spacing.sp4.height,
-                  RegularText.semibold(product.regularPrice.toIDR(), style: TextStyle(fontSize: 16)),
+                  RegularText.semibold(product.itemPrice.toIDR(), style: TextStyle(fontSize: 16)),
                 ],
               ),
             ],
