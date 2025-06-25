@@ -65,9 +65,9 @@ class _ProductInputPageState extends State<ProductInputPage> {
               child: ListView(
                 children: [
                   _InfoSection(widget.product),
-                  Divider24(),
+                  AppDivider(space: Spacing.sp24,),
                   _PriceSection(widget.product),
-                  Divider24(thickness: Spacing.sp8),
+                  AppDivider(space: Spacing.sp24, thickness: Spacing.sp8,),
                   _StockSection(widget.product),
                 ],
               ),

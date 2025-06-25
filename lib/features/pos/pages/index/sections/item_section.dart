@@ -43,7 +43,10 @@ class _ItemSection extends StatelessWidget {
               ],
             ),
           ),
-          CartProductButton()
+          CartProductButton(
+            title: 'tambah',
+            count: 0,
+          )
         ],
       ),
     );

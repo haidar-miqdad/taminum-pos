@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import '../../../core/core.dart';
 
 class CartProductButton extends StatelessWidget {
-  const CartProductButton({super.key, this.count = 0});
+  const CartProductButton({super.key, this.count = -1, required this.title});
 
   final int count;
-
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class CartProductButton extends StatelessWidget {
               context,
               onTap: (){},
               text: RegularText.semibold(
-                  'Tambah',
+                  title,
                   style: TextStyle(
                       color: context.theme.primaryColor)
               )
@@ -47,10 +47,10 @@ class CartProductButton extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Spacing.sp8),
-
+          color: isIncrement ? context.theme.primaryColor : Colors.white,
           border: Border.all(color: context.theme.primaryColor),
         ),
-        child: text ?? Icon(isIncrement ? Icons.add : Icons.remove, color: context.theme.primaryColor,),
+        child: text ?? Icon(isIncrement ? Icons.add : Icons.remove, color: isIncrement ? Colors.white : context.theme.primaryColor,),
       ),
     );
   }

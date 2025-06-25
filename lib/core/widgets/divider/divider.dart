@@ -1,1 +1,1 @@
-export 'divider24.dart';
+export 'app_divider.dart';
