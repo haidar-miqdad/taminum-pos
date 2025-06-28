@@ -1,4 +1,3 @@
-
 part of '../page.dart';
 
 class _DetailSection extends StatelessWidget {
@@ -8,18 +7,22 @@ class _DetailSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SubtitleText('Detail Transaksi'),
-        AppDivider(),
-        _buildItem(title: 'Jumlah Pesanan', value: '2'),
-        _buildItem(title: 'Subtotal', value: 'Rp 10.000',),
-        _buildItem(title: 'Pajak', value: 'Rp 0'),
-        _buildItem(title: 'Diskon', value: 'Rp 0'),
-        AppDivider(),
-        _buildItem(title: 'Estimasi Tagihan', value: 'Rp 10.000', isBold: true),
-      ],
+    return BlocBuilder<CartBloc, CartState>(
+      builder: (context, state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SubtitleText('Detail Transaksi'),
+            AppDivider(),
+            _buildItem(title: 'Jumlah Pesanan', value: state.cart.length.toString()),
+            _buildItem(title: 'Subtotal', value: state.getEstimate.toIDR(),),
+            _buildItem(title: 'Pajak', value: 'Rp 0'),
+            _buildItem(title: 'Diskon', value: 'Rp 0'),
+            AppDivider(),
+            _buildItem(title: 'Estimasi Tagihan', value: state.getEstimate.toIDR(), isBold: true),
+          ],
+        );
+      },
     );
   }
 
@@ -27,17 +30,17 @@ class _DetailSection extends StatelessWidget {
     required String title,
     required String value,
     bool isBold = false,
-}) {
+  }) {
     return Padding(
-        padding: const EdgeInsets.all(Spacing.sp8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            RegularText(title, style: TextStyle(fontWeight: isBold ? FontWeight.bold : null),),
-            RegularText.semibold(value),
-          ],
-        ),
-      );
+      padding: const EdgeInsets.all(Spacing.sp8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          RegularText(title, style: TextStyle(fontWeight: isBold ? FontWeight.bold : null),),
+          RegularText.semibold(value),
+        ],
+      ),
+    );
   }
 }
 

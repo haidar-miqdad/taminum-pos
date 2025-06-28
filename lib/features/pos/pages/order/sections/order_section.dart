@@ -1,4 +1,3 @@
-
 part of '../page.dart';
 
 class _OrderSection extends StatelessWidget {
@@ -19,43 +18,50 @@ class _OrderSection extends StatelessWidget {
           ],
         ),
         AppDivider(),
-        ListView.separated(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          itemBuilder: (BuildContext context, int index) {
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        BlocBuilder<CartBloc, CartState>(
+          builder: (context, state) {
+            return ListView.separated(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (BuildContext context, int index) {
+                final items = state.cart[index];
+                return Row(
                   children: [
-                    RegularText.semibold('Avocado'),
-                    Spacing.sp8.height,
-                    RichText(
-                      text: TextSpan(
-                        text: 54000.toIDR(),
-                        style: context.theme.textTheme.titleMedium,
+                    Expanded( // ⬅️ ini membuat Column tidak overflow
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          TextSpan(
-                            text: ' /pcs',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.normal),
+                          RegularText.semibold(items.products.title),
+                          Spacing.sp8.height,
+                          RichText(
+                            text: TextSpan(
+                              text: items.products.itemPrice.toIDR(),
+                              style: context.theme.textTheme.titleMedium,
+                              children: [
+                                TextSpan(
+                                  text: ' /pcs',
+                                  style: const TextStyle(fontWeight: FontWeight.normal),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Spacing.sp12.height,
+                          CartProductButton(
+                            count: items.qty,
+                            onNoted: () {},
+                            products: items.products,
                           ),
                         ],
                       ),
                     ),
-                    Spacing.sp12.height,
-                    CartProductButton(
-                    ),
                   ],
-                ),
-                CartProductButton(
-                ),
-              ],
+                );
+
+              },
+              separatorBuilder: (BuildContext context, int index) => Spacing.defaultSize.height,
+              itemCount: state.cart.length,
             );
           },
-          separatorBuilder: (BuildContext context, int index) => Spacing.defaultSize.height,
-          itemCount: 2,
         )
       ],
     );

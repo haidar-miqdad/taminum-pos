@@ -33,10 +33,8 @@ class CartProductButton extends StatelessWidget {
               _buildButton(
                 context,
                 onTap: () {
+                  context.read<CartBloc>().add(DecrementCartEvent(product: products!));
 
-                  if(products != null){
-                    context.read<CartBloc>().add(DecrementCartEvent(product: products!));
-                  }
                 },
               ),
               Spacing.sp12.width,
@@ -46,9 +44,9 @@ class CartProductButton extends StatelessWidget {
                 context,
                 isIncrement: true,
                 onTap: () {
-                  if(products != null){
-                    context.read<CartBloc>().add(IncrementCartEvent(product: products!));
-                  }
+                  context.read<CartBloc>().add(IncrementCartEvent(product: products!));
+
+
                 },
               ),
             ] else ...[
@@ -59,9 +57,9 @@ class CartProductButton extends StatelessWidget {
                   style: TextStyle(color: context.theme.primaryColor),
                 ),
                 onTap: () {
-                  if(products != null){
-                    context.read<CartBloc>().add(IncrementCartEvent(product: products!));
-                  }
+                  context.read<CartBloc>().add(IncrementCartEvent(product: products!));
+
+
                 },
               ),
             ],
