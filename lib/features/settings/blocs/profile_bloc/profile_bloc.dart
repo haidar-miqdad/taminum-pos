@@ -1,13 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_taminum_mobile/core/helpers/image_helper.dart';
 import 'package:flutter_taminum_mobile/features/features.dart';
-import 'package:image_picker/image_picker.dart';
-
 import '../../../../core/core.dart';
 
 part 'profile_event.dart';
-
 part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {

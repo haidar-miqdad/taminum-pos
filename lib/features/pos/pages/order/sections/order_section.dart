@@ -46,13 +46,10 @@ class _OrderSection extends StatelessWidget {
                     ),
                     Spacing.sp12.height,
                     CartProductButton(
-                      title: '+ catatan',
                     ),
                   ],
                 ),
                 CartProductButton(
-                  title: '+ catatan',
-                  count: 1,
                 ),
               ],
             );

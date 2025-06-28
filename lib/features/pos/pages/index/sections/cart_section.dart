@@ -1,18 +1,20 @@
 
 part of '../page.dart';
 
-class _FloatingSection extends StatelessWidget {
-  const _FloatingSection({
-    super.key, required this.onTap,
-
+class _CartSection extends StatelessWidget {
+  const _CartSection({
+    super.key, required this.qtyItems, required this.price,
   });
 
-  final Function() onTap;
+  final int qtyItems;
+  final num price;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+      Navigator.pushNamed(context, POSOrderPage.routeName);
+    },
       child: Container(
         margin: const EdgeInsets.all(Spacing.defaultSize),
         padding: const EdgeInsets.all(Spacing.sp12),
@@ -30,11 +32,11 @@ class _FloatingSection extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   RegularText.semibold(
-                    '2 Item',
+                    '$qtyItems items',
                     style: TextStyle(color: context.theme.scaffoldBackgroundColor),
                   ),
                   RegularText.semibold(
-                    'Total: 10.000',
+                    price.toIDR(),
                     style: TextStyle(fontSize: Spacing.sp12, color: context.theme.scaffoldBackgroundColor),
                   ),
                 ],
