@@ -14,7 +14,7 @@ class _OtherSection extends StatelessWidget {
         children: [
           SubtitleText('Info Lainnya'),
           Spacing.defaultSize.height,
-          ItemMenuSettings('Printer', icon: AppIcons.verified,),
+          ItemMenuSettings('Verify', icon: AppIcons.verified,),
           Divider(color: MainColors.white[400], thickness: 1,),
           ItemMenuSettings('Beri Rating', icon: AppIcons.star, subTitle: 'v 1.0.0',),
         ],

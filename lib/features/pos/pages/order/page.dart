@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_taminum_mobile/core/data/enums/enum_discount_type.dart';
 
 import '../../../../core/core.dart';
 import '../../../features.dart';
@@ -7,6 +9,7 @@ import '../../../features.dart';
 part 'sections/order_section.dart';
 part 'sections/detail_section.dart';
 part 'sections/action_section.dart';
+part 'sections/discount_section.dart';
 
 class POSOrderPage extends StatelessWidget {
   const POSOrderPage({super.key});

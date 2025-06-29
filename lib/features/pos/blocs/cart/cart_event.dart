@@ -10,6 +10,17 @@ class CartEvent extends Equatable {
 
 class InitialCartEvent extends CartEvent {}
 
+class ApplyDiscountCartEvent extends CartEvent {
+  final num? disc;
+  final DiscountType? type;
+
+  const ApplyDiscountCartEvent({required this.disc, required this.type});
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [disc, type];
+}
+
 class IncrementCartEvent extends CartEvent {
 
   final ProductModel product;

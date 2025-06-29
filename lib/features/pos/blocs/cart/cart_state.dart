@@ -2,15 +2,17 @@ part of 'cart_bloc.dart';
 
 class CartState extends Equatable {
   final List<CartModel> cart;
+  final DiscountType? type;
+  final num disc;
 
-  const CartState({this.cart = const []});
+  const CartState({this.cart = const [], this.disc = 0, this.type});
 
   factory CartState.initial() {
     return const CartState();
   }
 
-  CartState copyWith({List<CartModel>? cart}) {
-    return CartState(cart: cart ?? this.cart);
+  CartState copyWith({List<CartModel>? cart, DiscountType? type, num? disc}) {
+    return CartState(cart: cart ?? this.cart, type: type ?? this.type, disc: disc ?? this.disc);
   }
 
   CartModel? findItem(int id) {
@@ -29,17 +31,24 @@ class CartState extends Equatable {
     return qty;
   }
 
-  int get getEstimate{
+  int get getEstimate {
     int price = 0;
 
-    for (var element in cart){
+    for (var element in cart) {
       price += element.qty * element.products.itemPrice;
     }
     return price;
+  }
 
+  num get discount{
+    if(type == DiscountType.percentage){
+      return getEstimate * disc / 100;
+    }else{
+      return getEstimate - disc;
+    }
   }
 
   @override
   // TODO: implement props
-  List<Object?> get props => [cart];
+  List<Object?> get props => [cart, type, disc];
 }

@@ -1,0 +1,2 @@
+
+enum DiscountType{nominal, percentage}

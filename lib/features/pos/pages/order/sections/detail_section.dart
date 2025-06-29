@@ -17,9 +17,9 @@ class _DetailSection extends StatelessWidget {
             _buildItem(title: 'Jumlah Pesanan', value: state.cart.length.toString()),
             _buildItem(title: 'Subtotal', value: state.getEstimate.toIDR(),),
             _buildItem(title: 'Pajak', value: 'Rp 0'),
-            _buildItem(title: 'Diskon', value: 'Rp 0'),
+            _buildItem(title: 'Diskon', value: state.disc.toIDR()),
             AppDivider(),
-            _buildItem(title: 'Estimasi Tagihan', value: state.getEstimate.toIDR(), isBold: true),
+            _buildItem(title: 'Estimasi Tagihan', value: state.discount.toIDR(), isBold: true),
           ],
         );
       },
