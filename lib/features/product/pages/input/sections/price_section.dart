@@ -36,8 +36,6 @@ class _PriceSectionState extends State<_PriceSection> {
   }
 
 
-
-
   @override
   void dispose() {
     priceRegularController.dispose();
@@ -56,13 +54,13 @@ class _PriceSectionState extends State<_PriceSection> {
         Row(
           children: [
             Expanded(
-              child: RegularTextInput(
+              child:  RegularTextInput(
                 hinText: 'Rp 0',
-                label: 'Biaya Per Item',
+                label: 'Harga Regular',
                 required: true,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 keyboardType: TextInputType.number,
-                controller: priceItemController,
+                controller: priceRegularController,
               ),
             ),
             Spacing.defaultSize.width,
@@ -73,14 +71,16 @@ class _PriceSectionState extends State<_PriceSection> {
         ),
         Spacing.sp24.height,
 
+
         RegularTextInput(
           hinText: 'Rp 0',
-          label: 'Harga Regular',
+          label: 'Biaya Per Item',
           required: true,
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           keyboardType: TextInputType.number,
-          controller: priceRegularController,
+          controller: priceItemController,
         ),
+
 
         Spacing.sp24.height,
         BlocBuilder<FormProductBloc, FormProductState>(
@@ -116,17 +116,7 @@ class _PriceSectionState extends State<_PriceSection> {
                     ],
                   ),
                 ),
-                Spacing.defaultSize.width,
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      RegularText.medium('Modal', style: const TextStyle(fontSize: Spacing.sp12)),
-                      Spacing.sp8.height,
-                      RegularText(state.totalCost.toIDR(), style: TextStyle(fontSize: Spacing.sp12)),
-                    ],
-                  ),
-                ),
+
               ],
             );
           },

@@ -28,21 +28,12 @@ class FormProductState extends Equatable {
     return FormProductState();
   }
 
-  num get totalCost {
-    final item = priceItem ?? 0;
-    final unit = int.tryParse(this.unit ?? '') ?? 1;
-    return item * unit;
+  num get margin {
+    return ((priceRegular ?? 0) - (priceItem ?? 0)) / (priceRegular ?? 0) * 100;
   }
 
   num get profit {
-    final revenue = priceRegular ?? 0;
-    return revenue - totalCost;
-  }
-
-  num get margin {
-    final revenue = priceRegular ?? 0;
-    if (revenue == 0) return 0;
-    return (profit / revenue) * 100;
+    return (priceRegular ?? 0) - (priceItem ?? 0);
   }
 
 
