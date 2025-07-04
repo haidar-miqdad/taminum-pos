@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 
 import '../../../features.dart';
-import '../../blocs/blocs.dart';
 
 part 'sections/profile_section.dart';
 
