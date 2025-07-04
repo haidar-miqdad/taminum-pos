@@ -55,7 +55,7 @@ class FormProductState extends Equatable {
 
   // Getter ini adalah jembatan antara data di BLoC (state form) dan
   // data model yang dibutuhkan untuk simpan ke backend/database.
-  ProductModel product({int? id, String? createdAt}){
+  ProductModel product({int? id, DateTime? createdAt}){
     return ProductModel(
       id: id ?? 0,
       title: name ?? '',
@@ -66,7 +66,7 @@ class FormProductState extends Equatable {
       itemPrice: priceItem ?? 0,
       stock: stock ?? 0,
       sku: sku ?? '',
-      createdAt: createdAt ?? DateTime.now().toIso8601String(),
+      createdAt: createdAt ?? DateTime.now(),
     );
   }
 

@@ -1,56 +1,60 @@
 part of '../page.dart';
 
-class _BodySection extends StatelessWidget {
-  const _BodySection({
+
+class _ItemSection extends StatefulWidget {
+
+
+  final String categoryTransaction;
+  final String value;
+  final String date;
+
+  const _ItemSection({
     super.key,
+    required this.categoryTransaction,
+    required this.value,
+    required this.date,
   });
 
+
+  @override
+  State<_ItemSection> createState() => _ItemSectionState();
+}
+
+class _ItemSectionState extends State<_ItemSection> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: EdgeInsets.symmetric(horizontal: Spacing.defaultSize),
-      children: [
-        _buildGestureDetector(context, categoryTransaction: 'Tunai • TRX-100-10102030405', value: 'Rp 125.000', date: '24 Jan 2021 • 11:02'),
-        _buildGestureDetector(context, categoryTransaction: 'Tunai • TRX-100-10102030405', value: 'Rp 125.000', date: '24 Jan 2021 • 11:02'),
-        _buildGestureDetector(context, categoryTransaction: 'Tunai • TRX-100-10102030405', value: 'Rp 125.000', date: '24 Jan 2021 • 11:02'),
-        _buildGestureDetector(context, categoryTransaction: 'Tunai • TRX-100-10102030405', value: 'Rp 125.000', date: '24 Jan 2021 • 11:02'),
-      ],
-    );
-  }
-
-  GestureDetector _buildGestureDetector(BuildContext context, {required String categoryTransaction, required String value, required String date}) {
     return GestureDetector(
-        onTap: () {},
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: Spacing.sp12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: Spacing.sp12, vertical: Spacing.sp4),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: context.theme.primaryColor,
-                        ),
-                        borderRadius: BorderRadius.circular(Spacing.sp8)
-                    ),
-                    child: RegularText.semibold('Done', style: TextStyle(color: context.theme.primaryColor),),
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: Spacing.sp12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: Spacing.sp12, vertical: Spacing.sp4),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: context.theme.primaryColor,
+                      ),
+                      borderRadius: BorderRadius.circular(Spacing.sp8)
                   ),
-                  RegularText.semibold(date, style: TextStyle(color: MainColors.black[200], fontSize: Spacing.sp12),)
-                ],
-              ),
-              Spacing.defaultSize.height,
-              RegularText.semibold(categoryTransaction, style: TextStyle(fontSize: Spacing.defaultSize),),
-              Spacing.sp8.height,
-              RegularText.semibold(value, style: TextStyle(color: context.theme.primaryColor),),
-              Divider(thickness: 0.1, color: MainColors.black[200],),
-            ],
+                  child: RegularText.semibold('Done', style: TextStyle(color: context.theme.primaryColor),),
+                ),
+                RegularText.semibold(widget.date, style: TextStyle(color: MainColors.black[200], fontSize: Spacing.sp12),)
+              ],
+            ),
+            Spacing.defaultSize.height,
+            RegularText.semibold(widget.categoryTransaction, style: TextStyle(fontSize: Spacing.defaultSize),),
+            Spacing.sp8.height,
+            RegularText.semibold(widget.value, style: TextStyle(color: context.theme.primaryColor),),
+            Divider(thickness: 0.1, color: MainColors.black[200],),
+          ],
 
-          ),
         ),
-      );
+      ),
+    );
   }
 }

@@ -3,8 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 import 'package:flutter_taminum_mobile/features/features.dart';
-import 'package:flutter_taminum_mobile/features/product/blocs/blocs.dart';
-import 'package:flutter_taminum_mobile/features/product/blocs/form_product_bloc/form_product_bloc.dart';
 
 part 'sections/info_section.dart';
 

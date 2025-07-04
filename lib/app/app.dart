@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_taminum_mobile/app/routes.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_taminum_mobile/features/transaction/blocs/transaction/transaction_bloc.dart';
 
 import '../features/features.dart';
 
@@ -35,6 +36,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => CartBloc(),
+        ),
+
+        BlocProvider(
+          create: (context) => TransactionBloc(),
         ),
 
       ],

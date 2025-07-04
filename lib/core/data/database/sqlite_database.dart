@@ -35,6 +35,7 @@ class SQLiteDatabase {
       type TEXT,
       qrString TEXT,
       qrId REAL,
+      amount REAL,
       discount REAL,
       payAmount REAL,
       paymentType TEXT,

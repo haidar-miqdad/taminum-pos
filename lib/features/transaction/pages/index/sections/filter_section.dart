@@ -9,36 +9,39 @@ class _FilterSection extends StatefulWidget {
 
 class _FilterSectionState extends State<_FilterSection> {
 
-  String selected = 'Done';
+  TypeEnum? selected;
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      _buildContainer(context, label: 'Done'),
-      Spacing.sp12.width,
-      _buildContainer(context, label: 'Draft'),
-    ]);
+    return Row(
+        children:[_buildContainer(context)] + TypeEnum.values
+            .map((e) => _buildContainer(context, label: e),)
+            .toList(),
+    );
   }
 
-  Widget _buildContainer(BuildContext context, {required String label}) {
+  Widget _buildContainer(BuildContext context, { TypeEnum? label}) {
     final isActive = selected == label;
-    return InkWell(
-      onTap: () {
-        setState(() {
-          selected = label;
-        });
-      },
-      borderRadius: BorderRadius.circular(8),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: Spacing.defaultSize, vertical: Spacing.sp8),
-        decoration: BoxDecoration(
-            color: isActive ? context.theme.primaryColor : null,
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: context.theme.primaryColor,
-            )
+    return Padding(
+      padding: const EdgeInsets.only(right: Spacing.defaultSize),
+      child: InkWell(
+        onTap: () {
+          setState(() {
+            selected = label;
+          });
+        },
+        borderRadius: BorderRadius.circular(8),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: Spacing.defaultSize, vertical: Spacing.sp8),
+          decoration: BoxDecoration(
+              color: isActive ? context.theme.primaryColor : null,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: context.theme.primaryColor,
+              )
+          ),
+          child: RegularText.semibold(label?.valueName ?? 'All', style: TextStyle(color: isActive ? MainColors.white : MainColors.black[200]),),
         ),
-        child: RegularText.semibold(label, style: TextStyle(color: isActive ? MainColors.white : MainColors.black[200]),),
       ),
     );
   }

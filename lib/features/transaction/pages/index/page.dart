@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 
+import '../../../features.dart';
+
 part 'sections/filter_section.dart';
+
 part 'sections/body_section.dart';
 
 class TransactionPage extends StatelessWidget {
@@ -19,11 +23,24 @@ class TransactionPage extends StatelessWidget {
           ),
           Spacing.sp26.height,
           Expanded(
-            child: _BodySection(),
+            child: BlocBuilder<TransactionBloc, TransactionState>(
+              builder: (context, state) {
+                return ListView.builder(
+                  padding: EdgeInsets.symmetric(horizontal: Spacing.defaultSize),
+                  itemBuilder: (BuildContext context, int index) {
+                    return _ItemSection(categoryTransaction: 'Tunai • TRX-100-10102030405', value: 'Rp 10.000', date: '12-12-2022',);
+                  },
+                  itemCount: state.transactions.length,
+
+                );
+              },
+            ),
           ),
         ],
       ),
     );
   }
 }
+
+
 

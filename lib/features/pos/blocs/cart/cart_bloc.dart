@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_taminum_mobile/core/data/enums/enum_discount_type.dart';
+import 'package:flutter_taminum_mobile/core/data/enums/discount_enum_type.dart';
 import 'package:flutter_taminum_mobile/features/features.dart';
 
 part 'cart_event.dart';
