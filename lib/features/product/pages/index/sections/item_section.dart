@@ -34,9 +34,20 @@ class _ItemSection extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  RegularText.semibold(product.title, style: TextStyle(fontSize: 16)),
-                  Spacing.sp4.height,
-                  RegularText.semibold(product.itemPrice.toIDR(), style: TextStyle(fontSize: 16)),
+                  RegularText.semibold(product.title),
+                  Spacing.sp8.height,
+                  RichText(
+                    text: TextSpan(
+                      text: product.regularPrice.toIDR(),
+                      style: context.theme.textTheme.titleMedium,
+                      children: [
+                        TextSpan(
+                          text: ' /${product.unit}',
+                          style: const TextStyle(fontWeight: FontWeight.normal),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ],

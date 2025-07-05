@@ -36,7 +36,7 @@ class _CartSection extends StatelessWidget {
                     style: TextStyle(color: context.theme.scaffoldBackgroundColor),
                   ),
                   RegularText.semibold(
-                    price.toIDR(),
+                    'Rp ${price.toIDR()}',
                     style: TextStyle(fontSize: Spacing.sp12, color: context.theme.scaffoldBackgroundColor),
                   ),
                 ],

@@ -38,11 +38,11 @@ class _ItemSection extends StatelessWidget {
                 Spacing.sp8.height,
                 RichText(
                   text: TextSpan(
-                    text: product.itemPrice.toIDR(),
+                    text: 'Rp ${product.regularPrice.toIDR()}',
                     style: context.theme.textTheme.titleMedium,
                     children: [
                       TextSpan(
-                        text: ' / pcs',
+                        text: ' /${product.unit}',
                         style: const TextStyle(fontWeight: FontWeight.normal),
                       ),
                     ],

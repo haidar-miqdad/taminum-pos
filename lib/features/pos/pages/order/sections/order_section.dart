@@ -59,7 +59,7 @@ class _OrderSectionState extends State<_OrderSection> {
                           Spacing.sp8.height,
                           RichText(
                             text: TextSpan(
-                              text: items.products.itemPrice.toIDR(),
+                              text: 'Rp ${items.products.regularPrice.toIDR()}',
                               style: context.theme.textTheme.titleMedium,
                               children: [
                                 TextSpan(

@@ -5,7 +5,6 @@ import 'package:flutter_taminum_mobile/core/core.dart';
 import '../../../features.dart';
 
 part 'sections/filter_section.dart';
-
 part 'sections/body_section.dart';
 
 class TransactionPage extends StatelessWidget {

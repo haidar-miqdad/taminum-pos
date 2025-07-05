@@ -5,15 +5,25 @@ class CartState extends Equatable {
   final DiscountType? type;
   final num disc;
 
-  const CartState({this.cart = const [], this.disc = 0, this.type});
+  const CartState({this.cart = const [], this.disc = 0, this.type, });
 
   factory CartState.initial() {
     return const CartState();
   }
 
-  CartState copyWith({List<CartModel>? cart, DiscountType? type, num? disc}) {
-    return CartState(cart: cart ?? this.cart, type: type ?? this.type, disc: disc ?? this.disc);
+  CartState copyWith({
+    List<CartModel>? cart,
+    DiscountType? type,
+    num? disc,
+    bool? isDiscPercentage,
+  }) {
+    return CartState(
+      cart: cart ?? this.cart,
+      type: type ?? this.type,
+      disc: disc ?? this.disc,
+    );
   }
+
 
   CartModel? findItem(int id) {
     try {
@@ -35,20 +45,22 @@ class CartState extends Equatable {
     int price = 0;
 
     for (var element in cart) {
-      price += element.qty * element.products.itemPrice;
+      price += element.qty * element.products.regularPrice;
     }
     return price;
   }
 
-  num get discount{
+
+  num get discount {
     if(type == DiscountType.percentage){
       return getEstimate * disc / 100;
-    }else{
+    } else {
       return getEstimate - disc;
     }
   }
 
+
   @override
   // TODO: implement props
-  List<Object?> get props => [cart, type, disc];
+  List<Object?> get props => [cart, type, disc,];
 }
