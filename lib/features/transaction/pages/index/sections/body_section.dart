@@ -1,26 +1,14 @@
 part of '../page.dart';
 
 
-class _ItemSection extends StatefulWidget {
+class _ItemSection extends StatelessWidget {
 
+  const _ItemSection(
+      this.transaction,
+  );
 
-  final String categoryTransaction;
-  final String value;
-  final String date;
+  final TransactionModel transaction;
 
-  const _ItemSection({
-    super.key,
-    required this.categoryTransaction,
-    required this.value,
-    required this.date,
-  });
-
-
-  @override
-  State<_ItemSection> createState() => _ItemSectionState();
-}
-
-class _ItemSectionState extends State<_ItemSection> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -41,15 +29,15 @@ class _ItemSectionState extends State<_ItemSection> {
                       ),
                       borderRadius: BorderRadius.circular(Spacing.sp8)
                   ),
-                  child: RegularText.semibold('Done', style: TextStyle(color: context.theme.primaryColor),),
+                  child: RegularText.semibold(transaction.type.valueName, style: TextStyle(color: context.theme.primaryColor),),
                 ),
-                RegularText.semibold(widget.date, style: TextStyle(color: MainColors.black[200], fontSize: Spacing.sp12),)
+                RegularText.semibold(transaction.createdAt.dateFormatted, style: TextStyle(color: MainColors.black[200], fontSize: Spacing.sp12),)
               ],
             ),
             Spacing.defaultSize.height,
-            RegularText.semibold(widget.categoryTransaction, style: TextStyle(fontSize: Spacing.defaultSize),),
+            RegularText.semibold('${transaction.paymentType.valueName} • ${transaction.referenceId}', style: TextStyle(fontSize: Spacing.defaultSize),),
             Spacing.sp8.height,
-            RegularText.semibold(widget.value, style: TextStyle(color: context.theme.primaryColor),),
+            RegularText.semibold('Rp ${(transaction.amount - transaction.discount).toIDR()}', style: TextStyle(color: context.theme.primaryColor),),
             Divider(thickness: 0.1, color: MainColors.black[200],),
           ],
 

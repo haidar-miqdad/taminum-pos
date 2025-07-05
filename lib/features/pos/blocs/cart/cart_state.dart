@@ -5,7 +5,7 @@ class CartState extends Equatable {
   final DiscountType? type;
   final num disc;
 
-  const CartState({this.cart = const [], this.disc = 0, this.type, });
+  const CartState({this.cart = const [], this.disc = 0, this.type,});
 
   factory CartState.initial() {
     return const CartState();
@@ -52,11 +52,27 @@ class CartState extends Equatable {
 
 
   num get discount {
-    if(type == DiscountType.percentage){
+    if (type == DiscountType.percentage) {
       return getEstimate * disc / 100;
-    } else {
-      return getEstimate - disc;
+    } else if(type == DiscountType.nominal) {
+      return disc;
     }
+    return 0;
+  }
+
+  TransactionModel get transaction {
+
+    final now = DateTime.now();
+    return TransactionModel(
+      referenceId: 'TRX-${now.year}${now.month}${now.day}${now.hour}:${now.minute}${now.millisecond}',
+      type: TypeEnum.draft,
+      amount: getEstimate,
+      paymentType: PaymentTypeEnum.cash,
+      createdAt: now,
+      items: cart.map((e) => e.toTransaction).toList(),
+      discount: discount,
+      payAmount: getEstimate - discount,
+    );
   }
 
 

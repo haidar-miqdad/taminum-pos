@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_taminum_mobile/core/data/enums/discount_enum_type.dart';
 
 import '../../../../core/core.dart';
 import '../../../features.dart';
 
 part 'sections/order_section.dart';
+
 part 'sections/detail_section.dart';
+
 part 'sections/action_section.dart';
+
 part 'sections/discount_section.dart';
 
 class POSOrderPage extends StatelessWidget {
@@ -18,23 +20,36 @@ class POSOrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<CartBloc, CartState>(
-      listener: (context, state) {
-        if(state.cart.isEmpty){
-          Navigator.pop(context);
-        }
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<CartBloc, CartState>(
+          listener: (context, state) {
+            if (state.cart.isEmpty) {
+              Navigator.pop(context);
+            }
+          },
+        ),
+        BlocListener<TransactionBloc, TransactionState>(
+          listener: (context, state) {
+            if (state.status == Status.apply) {
+              // context.read<TransactionBloc>().add(GetTransactionEvent());
+              context.read<BottomNavBloc>().add(TapBottomNavEvent(1));
+              Navigator.pushNamedAndRemoveUntil(context, MainPage.routeName, (route) => false);
+            }
+          },
+        ),
+      ],
       child: Scaffold(
-        appBar: AppBar(title: Text('Daftar Pesanan'),),
+        appBar: AppBar(title: Text('Daftar Pesanan')),
         body: Padding(
           padding: const EdgeInsets.all(Spacing.defaultSize),
           child: ListView(
             children: [
               _OrderSection(),
-              AppDivider(thickness: 8, space: Spacing.sp24,),
+              AppDivider(thickness: 8, space: Spacing.sp24),
               _DetailSection(),
               Spacing.sp24.height,
-              _ActionSection()
+              _ActionSection(),
             ],
           ),
         ),
@@ -42,4 +57,3 @@ class POSOrderPage extends StatelessWidget {
     );
   }
 }
-

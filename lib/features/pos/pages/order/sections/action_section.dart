@@ -1,10 +1,7 @@
-
 part of '../page.dart';
 
 class _ActionSection extends StatelessWidget {
-  const _ActionSection({
-    super.key,
-  });
+  const _ActionSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +16,11 @@ class _ActionSection extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Icon(Icons.check_circle_outline, color: context.theme.primaryColor,),
+              Icon(Icons.check_circle_outline, color: context.theme.primaryColor),
               Spacing.sp12.width,
-              Expanded(child: RegularText('Tagihan akhir bisa dilihat pada halaman pembayaran setelah memilih metode pembayaran', style: TextStyle(fontSize: Spacing.sp10),)),
+              Expanded(
+                child: RegularText('Tagihan akhir bisa dilihat pada halaman pembayaran setelah memilih metode pembayaran', style: TextStyle(fontSize: Spacing.sp10)),
+              ),
             ],
           ),
         ),
@@ -32,17 +31,30 @@ class _ActionSection extends StatelessWidget {
           children: [
             Row(
               children: [
-                Expanded(child: OutlinedButton(onPressed: (){}, child: Text('Simpan Pesanan'))),
+                Expanded(
+                  child: BlocBuilder<CartBloc, CartState>(
+                    builder: (context, state) {
+                      return OutlinedButton(
+                        onPressed: () {
+                          context.read<TransactionBloc>().add(CreateTransactionEvent(state.transaction));
+                        },
+                        child: Text('Simpan Pesanan'),
+
+                      );
+                    },
+                  ),
+                ),
                 Spacing.defaultSize.width,
-                Expanded(child: OutlinedButton(onPressed: (){}, child: Text('Hapus'))),
+                Expanded(
+                  child: OutlinedButton(onPressed: () {}, child: Text('Hapus')),
+                ),
               ],
             ),
             Spacing.sp8.height,
-            ElevatedButton(onPressed: (){}, child: Text('Pilih Pembayaran')),
+            ElevatedButton(onPressed: () {}, child: Text('Pilih Pembayaran')),
           ],
-        )
+        ),
       ],
     );
   }
 }
-

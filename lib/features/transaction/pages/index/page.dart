@@ -24,10 +24,14 @@ class TransactionPage extends StatelessWidget {
           Expanded(
             child: BlocBuilder<TransactionBloc, TransactionState>(
               builder: (context, state) {
+                if(state.transactions.isEmpty){
+                  return EmptyTemplate();
+                }
                 return ListView.builder(
                   padding: EdgeInsets.symmetric(horizontal: Spacing.defaultSize),
                   itemBuilder: (BuildContext context, int index) {
-                    return _ItemSection(categoryTransaction: 'Tunai • TRX-100-10102030405', value: 'Rp 10.000', date: '12-12-2022',);
+                    final items = state.transactions[index];
+                    return _ItemSection(items);
                   },
                   itemCount: state.transactions.length,
 

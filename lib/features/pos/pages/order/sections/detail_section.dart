@@ -17,7 +17,7 @@ class _DetailSection extends StatelessWidget {
             _buildItem(title: 'Pajak', value: 'Rp 0'),
             _buildItem(title: 'Diskon', value: state.type == DiscountType.percentage ? '${state.disc.toString()}%' : 'Rp ${state.disc.toIDR()}'),
             AppDivider(),
-            _buildItem(title: 'Estimasi Tagihan', value: 'Rp ${state.discount.toIDR()}', isBold: true),
+            _buildItem(title: 'Estimasi Tagihan', value: 'Rp ${(state.getEstimate - state.discount).toIDR()}', isBold: true),
           ],
         );
       },

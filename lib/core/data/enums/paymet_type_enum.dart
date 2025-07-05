@@ -1,2 +1,0 @@
-
-enum PaymentTypeEnum {cash, qris}

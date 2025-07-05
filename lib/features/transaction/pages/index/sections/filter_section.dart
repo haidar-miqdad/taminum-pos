@@ -12,6 +12,16 @@ class _FilterSectionState extends State<_FilterSection> {
   TypeEnum? selected;
 
   @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
+  void getData(){
+    context.read<TransactionBloc>().add(GetTransactionEvent(selected));
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Row(
         children:[_buildContainer(context)] + TypeEnum.values
@@ -19,6 +29,7 @@ class _FilterSectionState extends State<_FilterSection> {
             .toList(),
     );
   }
+
 
   Widget _buildContainer(BuildContext context, { TypeEnum? label}) {
     final isActive = selected == label;
@@ -29,6 +40,7 @@ class _FilterSectionState extends State<_FilterSection> {
           setState(() {
             selected = label;
           });
+          getData();
         },
         borderRadius: BorderRadius.circular(8),
         child: Container(

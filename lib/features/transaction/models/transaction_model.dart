@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
-import 'package:flutter_taminum_mobile/core/data/enums/paymet_type_enum.dart';
+import 'package:flutter_taminum_mobile/core/data/enums/payment_type_enum.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'model.dart';
 

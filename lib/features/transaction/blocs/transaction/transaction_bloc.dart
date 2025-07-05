@@ -18,5 +18,15 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
          emit(state.copyWith(status: Status.failure, error: e.toString()));
        }
     });
+
+    on<CreateTransactionEvent>((event, emit) async {
+      try{
+        emit(state.copyWith(status: Status.loading));
+        await TransactionService.insert(event.transaction);
+        emit(state.copyWith(status: Status.apply));
+      }catch(e){
+        emit(state.copyWith(status: Status.failure, error: e.toString()));
+      }
+    });
   }
 }
