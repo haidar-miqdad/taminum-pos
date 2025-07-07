@@ -9,7 +9,7 @@ class AppDivider extends StatelessWidget {
   const AppDivider({
     super.key,
     this.thickness = 1,
-    this.space = Spacing.defaultSize,
+    this.space = Spacing.sp6,
   });
 
   final double? thickness;

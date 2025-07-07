@@ -9,14 +9,13 @@ import 'model.dart';
 part 'transaction_model.g.dart';
 
 @JsonSerializable()
-class TransactionModel extends Equatable{
-
+class TransactionModel extends Equatable {
   const TransactionModel({
     this.id = 0,
     required this.referenceId,
     required this.type,
     required this.amount,
-  this.items = const [],
+    this.items = const [],
     this.qrString = '',
     this.qrId = '',
     this.discount = 0,
@@ -39,7 +38,6 @@ class TransactionModel extends Equatable{
   @JsonKey(defaultValue: '')
   final String qrId;
 
-
   @JsonKey(defaultValue: 0)
   final num amount;
 
@@ -57,10 +55,34 @@ class TransactionModel extends Equatable{
   @JsonKey(defaultValue: [], includeToJson: false)
   final List<TransactionItemModel> items;
 
-  factory TransactionModel.fromJson(Map<String, dynamic> json) =>
-      _$TransactionModelFromJson(json);
+  factory TransactionModel.fromJson(Map<String, dynamic> json) => _$TransactionModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$TransactionModelToJson(this);
+
+  TransactionModel copyWith(Map<String, dynamic> json) {
+    return TransactionModel(
+      discount: discount,
+        id: id,
+        items: items + [TransactionItemModel.fromJson(json)],
+        payAmount: payAmount,
+        qrId: qrId,
+        qrString: qrString,
+        referenceId: referenceId,
+        type: type,
+        amount: amount,
+        paymentType: paymentType,
+        createdAt: createdAt,
+    );
+  }
+
+
+  num get total {
+    return amount - discount;
+  }
+
+  num get returnAmount {
+    return payAmount - amount - discount;
+  }
 
 
   @override

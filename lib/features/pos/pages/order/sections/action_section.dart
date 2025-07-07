@@ -36,7 +36,7 @@ class _ActionSection extends StatelessWidget {
                     builder: (context, state) {
                       return OutlinedButton(
                         onPressed: () {
-                          context.read<TransactionBloc>().add(CreateTransactionEvent(state.transaction));
+                          context.read<TransactionBloc>().add(CreateTransactionEvent(state.transaction(TypeEnum.draft)));
                         },
                         child: Text('Simpan Pesanan'),
 
@@ -51,7 +51,9 @@ class _ActionSection extends StatelessWidget {
               ],
             ),
             Spacing.sp8.height,
-            ElevatedButton(onPressed: () {}, child: Text('Pilih Pembayaran')),
+            ElevatedButton(onPressed: () {
+              Navigator.pushNamed(context, PaymentPage.routeName);
+            }, child: Text('Pilih Pembayaran')),
           ],
         ),
       ],

@@ -22,8 +22,8 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     on<CreateTransactionEvent>((event, emit) async {
       try{
         emit(state.copyWith(status: Status.loading));
-        await TransactionService.insert(event.transaction);
-        emit(state.copyWith(status: Status.apply));
+        final item = await TransactionService.insert(event.transaction);
+        emit(state.copyWith(status: event.type == TypeEnum.paid ? Status.success : Status.apply, item: item));
       }catch(e){
         emit(state.copyWith(status: Status.failure, error: e.toString()));
       }

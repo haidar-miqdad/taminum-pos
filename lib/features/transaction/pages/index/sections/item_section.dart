@@ -38,7 +38,7 @@ class _ItemSection extends StatelessWidget {
             RegularText.semibold('${transaction.paymentType.valueName} • ${transaction.referenceId}', style: TextStyle(fontSize: Spacing.defaultSize),),
             Spacing.sp8.height,
             RegularText.semibold('Rp ${(transaction.amount - transaction.discount).toIDR()}', style: TextStyle(color: context.theme.primaryColor),),
-            Divider(thickness: 0.1, color: MainColors.black[200],),
+            AppDivider(),
           ],
 
         ),

@@ -20,6 +20,12 @@ Route<dynamic> routes(settings) {
       return MaterialPageRoute(builder: (context) => ProductInputPage(product: settings.arguments as ProductModel?));
     case POSOrderPage.routeName:
       return MaterialPageRoute(builder: (context) => POSOrderPage());
+      case PaymentPage.routeName:
+      return MaterialPageRoute(builder: (context) => PaymentPage());
+      case CashPage.routeName:
+      return MaterialPageRoute(builder: (context) => CashPage());
+      case SuccessTransactionPage.routeName:
+      return MaterialPageRoute(builder: (context) => SuccessTransactionPage(referenceId: settings.arguments as String,));
 
     default:
       return MaterialPageRoute(

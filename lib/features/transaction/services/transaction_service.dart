@@ -18,7 +18,19 @@ class TransactionService {
         ["%${type?.name ?? ''}%"],
       );
 
-      return result.map(TransactionModel.fromJson).toList();
+      List<TransactionModel> transactions = [];
+
+      for(var element in result){
+        final index = transactions.indexWhere((e) => e.referenceId == element['referenceId']);
+
+        if(index < 0){
+          transactions.add(TransactionModel.fromJson(element));
+        }else{
+          transactions[index] = transactions[index].copyWith(element);
+        }
+      }
+
+      return transactions;
     } catch (e) {
       throw ErrorDescription(e.toString());
     }
