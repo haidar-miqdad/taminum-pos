@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 import 'package:flutter_taminum_mobile/features/features.dart';
+import 'package:lottie/lottie.dart';
 
 part 'sections/status_section.dart';
 

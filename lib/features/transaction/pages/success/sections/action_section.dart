@@ -33,6 +33,7 @@ class _ActionSection extends StatelessWidget {
             },
             child: const Text('Transaksi Baru'),
           ),
+          Spacing.defaultSize.height,
         ],
       ),
     );

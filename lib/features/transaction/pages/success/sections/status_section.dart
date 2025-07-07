@@ -13,7 +13,7 @@ class _StatusSection extends StatelessWidget {
         builder: (context, state) {
           return Column(
             children: [
-              Image.asset(MainAssets.success, width: 80, height: 80,),
+              Lottie.asset(MainAssets.successLottie, width: 150, height: 150,),
               Spacing.sp24.height,
               RegularText.semibold('Transaksi Berhasil'),
               Spacing.sp8.height,
