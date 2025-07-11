@@ -5,7 +5,7 @@ class SQLiteDatabase {
 
   static Future<Database> get database async {
     var databasePath = await getDatabasesPath();
-    String path = '$databasePath/taminum.db';
+    String path = '$databasePath/taminum4.db';
 
     final db = await openDatabase(path, version: 1, onCreate: onCreate);
 

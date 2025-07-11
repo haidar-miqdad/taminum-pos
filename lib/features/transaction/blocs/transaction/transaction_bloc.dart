@@ -48,7 +48,11 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     on<CheckQrTransactionEvent>((event, emit) async {
       try{
         emit(state.copyWith(status: Status.loading));
-        final service = await XenditService.checkQr(state.item!.qrId);
+        final service = await XenditService.checkQr(state.item?.qrId ?? '');
+        final item = state.item?.copyQr(typeX: service);
+        if(service == TypeEnum.paid){
+          await TransactionService.update(item!);
+        }
         emit(state.copyWith(status: Status.success, item: state.item!.copyQr(typeX: service)));
       }catch(e){
         emit(state.copyWith(status: Status.failure, error: e.toString()));

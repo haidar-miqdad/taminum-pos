@@ -25,7 +25,11 @@ class QrPage extends StatelessWidget {
       child: BlocListener<TransactionBloc, TransactionState>(
         listener: (context, state) {
           if (state.status == Status.success && state.item?.type == TypeEnum.paid) {
-            Navigator.pushNamedAndRemoveUntil(context, SuccessTransactionPage.routeName, (route) => false, arguments: state.item?.referenceId);
+            Navigator.pushNamedAndRemoveUntil(
+                context,
+                SuccessTransactionPage.routeName, (route) => false,
+                arguments: state.item?.referenceId,
+            );
           }
         },
         child: Scaffold(

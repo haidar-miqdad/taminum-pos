@@ -79,7 +79,12 @@ class TransactionService {
   static Future<TransactionModel> update(TransactionModel transaction) async {
     try {
       final db = await SQLiteDatabase.database;
-      await db.update('transactions', transaction.toJson(), where: 'transactionId = ?', whereArgs: [transaction.id]);
+      await db.update(
+          'transactions',
+          transaction.toJson(),
+          where: 'referenceId = ?',
+          whereArgs: [transaction.referenceId],
+      );
 
       return transaction;
     } catch (e) {
