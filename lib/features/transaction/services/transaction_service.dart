@@ -8,24 +8,33 @@ class TransactionService {
   static Future<List<TransactionModel>> all(TypeEnum? type) async {
     try {
       final db = await SQLiteDatabase.database;
-      final result = await db.rawQuery(
-        '''
-     SELECT * FROM transactions
-     INNER JOIN items ON transactions.id = items.transactionId
-     WHERE transactions.type LIKE ?
-     ORDER BY transactions.createdAt DESC
-      ''',
-        ["%${type?.name ?? ''}%"],
-      );
+
+      List<Map<String, Object?>>result = [];
+      if (type != null) {
+         result = await db.rawQuery(
+          '''
+         SELECT * FROM transactions
+         INNER JOIN items ON transactions.id = items.transactionId
+         WHERE transactions.type = ?
+         ORDER BY transactions.createdAt DESC
+      ''', [type.name],
+        );
+      } else {
+         result = await db.rawQuery('''
+         SELECT * FROM transactions
+         INNER JOIN items ON transactions.id = items.transactionId
+         ORDER BY transactions.createdAt DESC
+      ''');
+      }
 
       List<TransactionModel> transactions = [];
 
-      for(var element in result){
+      for (var element in result) {
         final index = transactions.indexWhere((e) => e.referenceId == element['referenceId']);
 
-        if(index < 0){
+        if (index < 0) {
           transactions.add(TransactionModel.fromJson(element));
-        }else{
+        } else {
           transactions[index] = transactions[index].copyWith(element);
         }
       }
@@ -70,12 +79,7 @@ class TransactionService {
   static Future<TransactionModel> update(TransactionModel transaction) async {
     try {
       final db = await SQLiteDatabase.database;
-      await db.update(
-          'transactions',
-          transaction.toJson(),
-          where: 'transactionId = ?',
-          whereArgs: [transaction.id],
-      );
+      await db.update('transactions', transaction.toJson(), where: 'transactionId = ?', whereArgs: [transaction.id]);
 
       return transaction;
     } catch (e) {

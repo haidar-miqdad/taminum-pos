@@ -64,13 +64,13 @@ class CartState extends Equatable {
     return (num.tryParse(nominal)?? 0) >= (getEstimate - discount);
   }
 
-  TransactionModel transaction(TypeEnum type, {num? payAmount}) {
+  TransactionModel transaction(TypeEnum type, {num? payAmount, PaymentTypeEnum? paymentType}) {
     final now = DateTime.now();
     return TransactionModel(
       referenceId: 'TRX-${now.year}${now.month}${now.day}${now.hour}${now.millisecond}',
       type: type,
       amount: getEstimate,
-      paymentType: PaymentTypeEnum.cash,
+      paymentType: paymentType ?? PaymentTypeEnum.cash,
       createdAt: now,
       items: cart.map((e) => e.toTransaction).toList(),
       discount: discount,

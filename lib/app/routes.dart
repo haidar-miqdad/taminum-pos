@@ -26,6 +26,8 @@ Route<dynamic> routes(settings) {
       return MaterialPageRoute(builder: (context) => CashPage());
       case SuccessTransactionPage.routeName:
       return MaterialPageRoute(builder: (context) => SuccessTransactionPage(referenceId: settings.arguments as String,));
+    case QrPage.routeName:
+      return MaterialPageRoute(builder: (context) => QrPage());
 
     default:
       return MaterialPageRoute(

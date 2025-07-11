@@ -75,6 +75,22 @@ class TransactionModel extends Equatable {
     );
   }
 
+  TransactionModel copyQr({String? qrIdX, String? qrStringX, TypeEnum? typeX}) {
+    return TransactionModel(
+      discount: discount,
+      id: id,
+      items: items,
+      payAmount: payAmount,
+      qrId: qrIdX ?? qrId,
+      qrString: qrStringX ?? qrString,
+      referenceId: referenceId,
+      type: typeX ?? type,
+      amount: amount,
+      paymentType: paymentType,
+      createdAt: createdAt,
+    );
+  }
+
 
   num get total {
     return amount - discount;
