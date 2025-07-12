@@ -32,7 +32,7 @@ class PaymentPage extends StatelessWidget {
               child: Row(
                 children: [
                   _buildTile(context, 'Cash', AppIcons.money, () {
-                    Navigator.pushNamed(context, CashPage.routeName);
+                    Navigator.pushNamed(context, CashPage.routeName, arguments: referenceId);
                   }),
                   BlocBuilder<CartBloc, CartState>(
                     builder: (context, state) {

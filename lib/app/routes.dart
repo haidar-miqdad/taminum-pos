@@ -23,7 +23,7 @@ Route<dynamic> routes(settings) {
       case PaymentPage.routeName:
       return MaterialPageRoute(builder: (context) => PaymentPage(referenceId: settings.arguments as String,));
       case CashPage.routeName:
-      return MaterialPageRoute(builder: (context) => CashPage());
+      return MaterialPageRoute(builder: (context) => CashPage(referenceId: settings.arguments as String,));
       case SuccessTransactionPage.routeName:
       return MaterialPageRoute(builder: (context) => SuccessTransactionPage(referenceId: settings.arguments as String,));
     case DetailTransactionPage.routeName:

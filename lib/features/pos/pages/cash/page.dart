@@ -9,7 +9,9 @@ part 'sections/bill_section.dart';
 part 'sections/confirm_section.dart';
 
 class CashPage extends StatefulWidget {
-  const CashPage({super.key});
+  const CashPage({super.key, this.referenceId});
+
+  final String? referenceId;
 
   static const routeName = 'pos/cash';
 
@@ -62,8 +64,7 @@ class _CashPageState extends State<CashPage> {
     showModalBottomSheet(
         isScrollControlled: true,
         context: context,
-        builder: (context) => _ConfirmSection(nominal: num.tryParse(controller.text) ?? 0,),
-
+        builder: (context) => _ConfirmSection(nominal: num.tryParse(controller.text) ?? 0, referenceId: widget.referenceId,),
     );
   }
 }

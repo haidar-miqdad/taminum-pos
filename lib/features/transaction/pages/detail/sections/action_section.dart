@@ -20,7 +20,6 @@ class _ActionSection extends StatelessWidget {
               },
                   child: Text('Bayar')), Spacing.defaultSize.height,
             ],
-            Spacing.defaultSize.height,
             OutlinedButton(onPressed: () {}, child: Text('Kirim Struk')),
             Spacing.defaultSize.height,
             ElevatedButton(onPressed: () {}, child: Text('Cetak Struk')),

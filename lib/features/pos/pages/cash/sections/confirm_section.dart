@@ -1,9 +1,11 @@
 part of '../page.dart';
 
 class _ConfirmSection extends StatelessWidget {
-  const _ConfirmSection({required this.nominal});
+  const _ConfirmSection({required this.nominal, this.referenceId});
 
   final num nominal;
+
+  final String? referenceId;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class _ConfirmSection extends StatelessWidget {
                 SafeArea(
                   child: ElevatedButton(
                     onPressed: () {
-                      context.read<TransactionBloc>().add(CreateTransactionEvent(state.transaction(TypeEnum.paid, payAmount: nominal)));
+                      context.read<TransactionBloc>().add(CreateTransactionEvent(state.transaction(TypeEnum.paid, payAmount: nominal), referenceId: referenceId));
 
                     },
                     child: RegularText.semibold('Konfirmasi', style: TextStyle(color: MainColors.white)),

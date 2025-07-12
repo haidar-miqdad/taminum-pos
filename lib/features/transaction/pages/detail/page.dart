@@ -49,7 +49,7 @@ class _DetailTransactionPageState extends State<DetailTransactionPage> {
               ],
             );
           }else{
-            return Container();
+            return Center(child: CircularProgressIndicator());
           }
         },
       ),

@@ -9,7 +9,6 @@ class TransactionEvent extends Equatable {
 }
 
 class GetTransactionEvent extends TransactionEvent {
-
   final TypeEnum? type;
   const GetTransactionEvent(this.type);
 
@@ -47,11 +46,13 @@ class CreateTransactionEvent extends TransactionEvent {
 
   final TransactionModel transaction;
   final TypeEnum? type;
-  const CreateTransactionEvent( this.transaction, {this.type});
+  final String? referenceId;
+
+  const CreateTransactionEvent( this.transaction, {this.type, this.referenceId});
 
   @override
   // TODO: implement props
-  List<Object?> get props => [transaction, type];
+  List<Object?> get props => [transaction, type, referenceId];
 }
 
 
