@@ -34,7 +34,8 @@ class POSOrderPage extends StatelessWidget {
             if (state.status == Status.apply) {
               // context.read<TransactionBloc>().add(GetTransactionEvent());
               context.read<BottomNavBloc>().add(TapBottomNavEvent(1));
-              Navigator.pushNamedAndRemoveUntil(context, MainPage.routeName, (route) => false);
+              Navigator.pop(context, MainPage.routeName);
+              // Navigator.pushNamedAndRemoveUntil(context, MainPage.routeName, (route) => false);
             }
           },
         ),

@@ -20,12 +20,24 @@ class GetTransactionEvent extends TransactionEvent {
 
 class CreateQrTransactionEvent extends TransactionEvent {
   final TransactionModel transaction;
+  final String? referenceId;
 
-  const CreateQrTransactionEvent(this.transaction);
+  const CreateQrTransactionEvent(this.transaction, {this.referenceId});
 
   @override
   // TODO: implement props
   List<Object?> get props => [transaction];
+
+}
+
+class GetDetailTransactionEvent extends TransactionEvent {
+  final String referenceId;
+
+  const GetDetailTransactionEvent(this.referenceId);
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [referenceId];
 
 }
 

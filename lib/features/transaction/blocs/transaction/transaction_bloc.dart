@@ -31,15 +31,21 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     on<CreateQrTransactionEvent>((event, emit) async {
       try{
         emit(state.copyWith(status: Status.loading));
-        final service = await XenditService.createQr(
-          referenceId: event.transaction.referenceId,
-          amount: event.transaction.amount - event.transaction.discount,
-        );
+       if(event.referenceId != null){
+         emit(state.copyWith(status: Status.processed, item: event.transaction));
 
-        final item = await TransactionService.insert(
-          event.transaction.copyQr(qrIdX: service.$1, qrStringX: service.$2),
-        );
-        emit(state.copyWith(status: Status.processed, item: item));
+       }else{
+         final service = await XenditService.createQr(
+           referenceId: event.transaction.referenceId,
+           amount: event.transaction.amount - event.transaction.discount,
+         );
+
+         final item = await TransactionService.insert(
+           event.transaction.copyQr(qrIdX: service.$1, qrStringX: service.$2),
+         );
+         emit(state.copyWith(status: Status.processed, item: item));
+       }
+
       }catch(e){
         emit(state.copyWith(status: Status.failure, error: e.toString()));
       }
@@ -54,6 +60,16 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
           await TransactionService.update(item!);
         }
         emit(state.copyWith(status: Status.success, item: state.item!.copyQr(typeX: service)));
+      }catch(e){
+        emit(state.copyWith(status: Status.failure, error: e.toString()));
+      }
+    });
+
+    on<GetDetailTransactionEvent>((event, emit) async {
+      try{
+        emit(state.copyWith(status: Status.loading));
+        final item = await TransactionService.detail(event.referenceId);
+        emit(state.copyWith(status: Status.success, item: item ));
       }catch(e){
         emit(state.copyWith(status: Status.failure, error: e.toString()));
       }

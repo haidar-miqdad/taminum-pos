@@ -21,11 +21,13 @@ Route<dynamic> routes(settings) {
     case POSOrderPage.routeName:
       return MaterialPageRoute(builder: (context) => POSOrderPage());
       case PaymentPage.routeName:
-      return MaterialPageRoute(builder: (context) => PaymentPage());
+      return MaterialPageRoute(builder: (context) => PaymentPage(referenceId: settings.arguments as String,));
       case CashPage.routeName:
       return MaterialPageRoute(builder: (context) => CashPage());
       case SuccessTransactionPage.routeName:
       return MaterialPageRoute(builder: (context) => SuccessTransactionPage(referenceId: settings.arguments as String,));
+    case DetailTransactionPage.routeName:
+      return MaterialPageRoute(builder: (context) => DetailTransactionPage(referenceId: settings.arguments as String,));
     case QrPage.routeName:
       return MaterialPageRoute(builder: (context) => QrPage());
 

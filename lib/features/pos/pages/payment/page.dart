@@ -7,16 +7,18 @@ import '../../../features.dart';
 part 'sections/bill_section.dart';
 
 class PaymentPage extends StatelessWidget {
-  const PaymentPage({super.key});
+  const PaymentPage({super.key, required this.referenceId});
 
   static const routeName = 'pos/payment';
+
+  final String referenceId;
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<TransactionBloc, TransactionState>(
       listener: (context, state) {
-        if(state.status == Status.processed){
-          Navigator.pushNamedAndRemoveUntil(context, QrPage.routeName, (route)=> false);
+        if (state.status == Status.processed) {
+          Navigator.pushNamedAndRemoveUntil(context, QrPage.routeName, (route) => false);
         }
       },
       child: Scaffold(
@@ -35,7 +37,7 @@ class PaymentPage extends StatelessWidget {
                   BlocBuilder<CartBloc, CartState>(
                     builder: (context, state) {
                       return _buildTile(context, 'QRIS', AppIcons.qrCode, () {
-                        context.read<TransactionBloc>().add(CreateQrTransactionEvent(state.transaction(TypeEnum.unpaid, paymentType: PaymentTypeEnum.qris)));
+                        context.read<TransactionBloc>().add(CreateQrTransactionEvent(state.transaction(TypeEnum.unpaid, paymentType: PaymentTypeEnum.qris), referenceId: referenceId));
                       });
                     },
                   ),

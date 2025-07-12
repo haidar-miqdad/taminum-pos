@@ -12,7 +12,9 @@ class _ItemSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, DetailTransactionPage.routeName, arguments: transaction.referenceId);
+      },
       child: Padding(
         padding: const EdgeInsets.only(bottom: Spacing.sp12),
         child: Column(
