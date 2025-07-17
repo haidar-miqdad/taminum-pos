@@ -11,7 +11,7 @@ class PaymentPage extends StatelessWidget {
 
   static const routeName = 'pos/payment';
 
-  final String referenceId;
+  final String? referenceId;
 
   @override
   Widget build(BuildContext context) {

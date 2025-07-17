@@ -49,11 +49,11 @@ class POSOrderPage extends StatelessWidget {
               _OrderSection(),
               AppDivider(thickness: 8, space: Spacing.sp24),
               _DetailSection(),
-              Spacing.sp24.height,
-              _ActionSection(),
+              Spacing.defaultSize.height,
             ],
           ),
         ),
+        bottomNavigationBar: _ActionSection(),
       ),
     );
   }

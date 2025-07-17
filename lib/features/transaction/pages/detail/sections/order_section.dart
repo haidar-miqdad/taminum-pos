@@ -3,8 +3,10 @@ part of '../page.dart';
 
 class _OrderSection extends StatelessWidget {
   const _OrderSection({
-    super.key,
+    super.key, required this.item
   });
+
+  final TransactionModel item;
 
   @override
   Widget build(BuildContext context) {
@@ -20,35 +22,36 @@ class _OrderSection extends StatelessWidget {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
+                final items = item.items[index];
                 return Row(
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        RegularText.semibold('Organic Potato'),
+                        RegularText.semibold(items.title),
                         Spacing.sp2.height,
-                        RegularText('Rp 18.900'),
+                        RegularText('Rp ${items.regularPrice.toIDR()}'),
                       ],
                     ),
                     const Spacer(),
-                    RegularText.semibold('2x'),
+                    RegularText.semibold('${items.qty} x'),
                   ],
                 );
               },
               separatorBuilder: (BuildContext context, int index) {
                 return Spacing.defaultSize.height;
               },
-              itemCount: 2,
+              itemCount: item.items.length,
             ),
             AppDivider(),
-            _buildTile('Jumlah pesanan', '2'),
-            _buildTile('Subtotal', 'Rp 49.000'),
+            _buildTile('Jumlah pesanan', '${item.items.length}'),
+            _buildTile('Subtotal', item.amount.toIDR()),
             _buildTile('Pajak', 'Rp 0'),
-            _buildTile('Diskon', '- Rp 4.200', color: Colors.green),
-            _buildTile('Total', 'Rp 44.800'),
+            _buildTile('Diskon', '- ${item.discount.toIDR()}', color: Colors.green),
+            _buildTile('Total', 'Rp ${item.total.toIDR()}'),
             AppDivider(),
-            _buildTile('Dibayar', 'Rp 44.800', isBold: true),
-            _buildTile('Kembalian', 'Rp 0', isBold: true, color: Colors.red),
+            _buildTile('Dibayar', 'Rp ${item.total.toIDR()}', isBold: true),
+            _buildTile('Kembalian', 'Rp ${item.returnAmount.toIDR()}', isBold: true, color: Colors.red),
           ],
         ),
       ),

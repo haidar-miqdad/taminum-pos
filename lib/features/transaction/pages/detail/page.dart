@@ -42,7 +42,7 @@ class _DetailTransactionPageState extends State<DetailTransactionPage> {
                 Spacing.sp24.height,
                 _HeaderSection(item: item),
                 Spacing.sp42.height,
-                _OrderSection(),
+                _OrderSection(item: item),
                 Spacing.sp24.height,
                 _ActionSection(item: item,),
                 Spacing.sp24.height,

@@ -79,8 +79,8 @@ class _InfoSectionState extends State<_InfoSection> {
                   borderRadius: BorderRadius.circular(Spacing.sp8),
                   child: Image.memory(
                     ImageHelper.convertBase64ToUint8List(state.image!),
-                    width: 60,
-                    height: 60,
+                    width: 75,
+                    height: 75,
                     fit: BoxFit.cover,
                   ),
                 );

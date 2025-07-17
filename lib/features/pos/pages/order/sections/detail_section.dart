@@ -15,7 +15,7 @@ class _DetailSection extends StatelessWidget {
             _buildItem(title: 'Jumlah Pesanan', value: state.cart.length.toString()),
             _buildItem(title: 'Subtotal', value: 'Rp ${state.getEstimate.toIDR()}'),
             _buildItem(title: 'Pajak', value: 'Rp 0'),
-            _buildItem(title: 'Diskon', value: state.type == DiscountType.percentage ? '${state.disc.toString()}%' : 'Rp ${state.disc.toIDR()}'),
+            _buildItem(title: 'Diskon', value: state.type == DiscountType.percentage ? '${state.disc.toString()}%' : '- Rp ${state.disc.toIDR()}', color: Colors.green),
             AppDivider(),
             _buildItem(title: 'Estimasi Tagihan', value: 'Rp ${(state.getEstimate - state.discount).toIDR()}', isBold: true),
           ],
@@ -24,14 +24,14 @@ class _DetailSection extends StatelessWidget {
     );
   }
 
-  Widget _buildItem({required String title, required String value, bool isBold = false}) {
+  Widget _buildItem({required String title, required String value, bool isBold = false, Color? color}) {
     return Padding(
       padding: const EdgeInsets.all(Spacing.sp8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           RegularText(title, style: TextStyle(fontWeight: isBold ? FontWeight.bold : null)),
-          RegularText.semibold(value),
+          RegularText.semibold(value, style: TextStyle(color: color),),
         ],
       ),
     );
