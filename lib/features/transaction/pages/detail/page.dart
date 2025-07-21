@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
+import 'package:flutter_taminum_mobile/core/widgets/share_receipt.dart';
 import 'package:flutter_taminum_mobile/features/features.dart';
+import 'package:screenshot/screenshot.dart';
 
 part 'sections/header_section.dart';
 
@@ -21,7 +23,6 @@ class DetailTransactionPage extends StatefulWidget {
 }
 
 class _DetailTransactionPageState extends State<DetailTransactionPage> {
-
   @override
   void initState() {
     context.read<TransactionBloc>().add(GetDetailTransactionEvent(widget.referenceId));
@@ -31,10 +32,10 @@ class _DetailTransactionPageState extends State<DetailTransactionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Detail Transaksi'),),
+      appBar: AppBar(title: Text('Detail Transaksi')),
       body: BlocBuilder<TransactionBloc, TransactionState>(
         builder: (context, state) {
-          if(state.item != null){
+          if (state.item != null) {
             final item = state.item!;
             return ListView(
               padding: EdgeInsets.all(Spacing.defaultSize),
@@ -44,17 +45,16 @@ class _DetailTransactionPageState extends State<DetailTransactionPage> {
                 Spacing.sp42.height,
                 _OrderSection(item: item),
                 Spacing.sp24.height,
-                _ActionSection(item: item,),
+                _ActionSection(item: item),
                 Spacing.sp24.height,
               ],
             );
-          }else{
+          } else {
             return Center(child: CircularProgressIndicator());
           }
         },
       ),
     );
   }
+
 }
-
-
