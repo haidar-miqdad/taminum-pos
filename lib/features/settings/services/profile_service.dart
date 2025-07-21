@@ -23,7 +23,7 @@ class ProfileService{
 
   }
 
-  static Future<UserModel?> getUser() async{
+  static Future<UserModel?> get() async{
     try{
       final prefs = await SharedPreferences.getInstance();
 

@@ -11,7 +11,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<GetProfileEvent>((event, emit) async {
       try {
         emit(state.copyWith(status: Status.loading));
-        final service = await ProfileService.getUser();
+        final service = await ProfileService.get();
         emit(state.copyWith(status: Status.apply, user: service, image: service?.imageUrl));
       } catch (e) {
         emit(state.copyWith(status: Status.failure, error: e.toString()));
