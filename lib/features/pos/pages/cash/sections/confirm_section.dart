@@ -43,7 +43,7 @@ class _ConfirmSection extends StatelessWidget {
                 SafeArea(
                   child: ElevatedButton(
                     onPressed: () {
-                      context.read<TransactionBloc>().add(CreateTransactionEvent(state.transaction(TypeEnum.paid, payAmount: nominal), referenceId: referenceId));
+                      context.read<TransactionBloc>().add(CreateTransactionEvent(state.transaction(TypeEnum.paid, payAmount: nominal), referenceId: referenceId, type: TypeEnum.paid));
 
                     },
                     child: RegularText.semibold('Konfirmasi', style: TextStyle(color: MainColors.white)),
