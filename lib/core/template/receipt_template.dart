@@ -20,7 +20,7 @@ class ReceiptTemplate {
     bytes += generator.reset();
 
     bytes += generator.text(
-      user?.name ?? 'Kasir SUPER Group',
+      user?.name ?? 'Cashier name group',
       styles: const PosStyles(
         bold: true,
         align: PosAlign.center,
@@ -28,7 +28,7 @@ class ReceiptTemplate {
       ),
     );
     bytes += generator.text(
-      printer?.desc ?? 'Instagram : @kasirsuper.id',
+      printer?.desc ?? 'Instagram : @haidarmqdd',
       styles: const PosStyles(align: PosAlign.center),
     );
 
@@ -40,7 +40,7 @@ class ReceiptTemplate {
     ));
     bytes += generator.row(posColumn(
       'Order ID',
-      transaction?.referenceId ?? 'referenceId',
+      transaction?.referenceId ?? 'reference Id',
     ));
 
     bytes += generator.hr();

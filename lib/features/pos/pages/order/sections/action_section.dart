@@ -39,6 +39,7 @@ class _ActionSection extends StatelessWidget {
                       builder: (context, state) {
                         return OutlinedButton(
                           onPressed: () {
+                            context.read<BottomNavBloc>().add(TapBottomNavEvent(1));
                             context.read<TransactionBloc>().add(CreateTransactionEvent(state.transaction(TypeEnum.draft)));
                           },
                           child: Text('Simpan Pesanan'),

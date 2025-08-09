@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 import 'package:flutter_taminum_mobile/features/features.dart';
 
-import '../../blocs/blocs.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});

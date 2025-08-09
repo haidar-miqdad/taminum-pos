@@ -33,11 +33,34 @@ class _ItemSection extends StatelessWidget {
                   ),
                   child: RegularText.semibold(transaction.type.valueName, style: TextStyle(color: context.theme.primaryColor),),
                 ),
-                RegularText.semibold(transaction.createdAt.dateFormatted, style: TextStyle(color: MainColors.black[200], fontSize: Spacing.sp12),)
+                Row(
+                  children: [
+                    const Icon(Icons.access_time, size: 14, color: Colors.grey),
+                    const SizedBox(width: 4),
+                    RegularText.semibold(
+                      transaction.createdAt.dateFormatted,
+                      style: TextStyle(
+                        color: MainColors.black[200],
+                        fontSize: Spacing.sp12,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
             Spacing.defaultSize.height,
-            RegularText.semibold('${transaction.paymentType.valueName} • ${transaction.referenceId}', style: TextStyle(fontSize: Spacing.defaultSize),),
+            Row(
+              children: [
+                const Icon(Icons.receipt_long, size: 16, color: Colors.grey),
+                const SizedBox(width: 6),
+                Flexible(
+                  child: RegularText.semibold(
+                    '${transaction.paymentType.valueName} • ${transaction.referenceId}',
+                    style: TextStyle(fontSize: Spacing.defaultSize),
+                  ),
+                ),
+              ],
+            ),
             Spacing.sp8.height,
             RegularText.semibold('Rp ${(transaction.amount - transaction.discount).toIDR()}', style: TextStyle(color: context.theme.primaryColor),),
             AppDivider(),
@@ -48,3 +71,4 @@ class _ItemSection extends StatelessWidget {
     );
   }
 }
+

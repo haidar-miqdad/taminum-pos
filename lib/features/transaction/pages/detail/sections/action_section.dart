@@ -12,35 +12,44 @@ class _ActionSection extends StatefulWidget {
 class _ActionSectionState extends State<_ActionSection> {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: EdgeInsets.all(Spacing.defaultSize),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            if (widget.item.type != TypeEnum.paid) ...[
-              OutlinedButton(
-                onPressed: () {
-                  context.read<CartBloc>().add(InitialCartEvent(transaction: widget.item));
-                  Navigator.of(context).pushNamed(PaymentPage.routeName, arguments: widget.item.referenceId);
-                },
-                child: Text('Bayar'),
-              ),
-              Spacing.defaultSize.height,
-            ],
-            OutlinedButton(
-              onPressed: () {
-                share(widget.item);
-              },
-              child: Text('Kirim Struk'),
+    return BlocBuilder<TransactionBloc, TransactionState>(
+      builder: (context, state) {
+        return Card(
+          child: Padding(
+            padding: EdgeInsets.all(Spacing.defaultSize),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                if (widget.item.type != TypeEnum.paid) ...[
+                  OutlinedButton(
+                    onPressed: () {
+                      context.read<CartBloc>().add(InitialCartEvent(transaction: widget.item));
+                      Navigator.of(context).pushNamed(PaymentPage.routeName, arguments: widget.item.referenceId);
+                    },
+                    child: Text('Bayar'),
+                  ),
+                  Spacing.defaultSize.height,
+                ],
+                OutlinedButton(
+                  onPressed: () {
+                    share(widget.item);
+                  },
+                  child: Text('Kirim Struk'),
+                ),
+                Spacing.defaultSize.height,
+                ElevatedButton(onPressed: () {
+                  if (state.item != null) {
+                    context.read<PrinterBloc>().add(TransactionPrinterEvent(state.item!));
+                  }
+                }, child: Text('Cetak Struk')),
+              ],
             ),
-            Spacing.defaultSize.height,
-            ElevatedButton(onPressed: () {}, child: Text('Cetak Struk')),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
+
   void share(TransactionModel transaction) {
     ScreenshotController().captureFromWidget(ShareReceipt(data: transaction),
       context: context,

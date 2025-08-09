@@ -21,7 +21,11 @@ class _ActionSectionState extends State<_ActionSection> {
               Row(
                 children: [
                   Expanded(
-                    child: OutlinedButton(onPressed: () {}, child: Text('Cetak Struk')),
+                    child: OutlinedButton(onPressed: () {
+                      if(state.item != null){
+                        context.read<PrinterBloc>().add(TransactionPrinterEvent(state.item!));
+                      }
+                    }, child: Text('Cetak Struk')),
                   ),
                   Spacing.defaultSize.width,
                   Expanded(

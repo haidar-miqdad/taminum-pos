@@ -28,6 +28,7 @@ class _ItemSection extends StatelessWidget {
               fit: BoxFit.cover,
             ),
 
+
           ),
           Spacing.defaultSize.width,
           Expanded(

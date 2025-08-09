@@ -23,27 +23,30 @@ class _ShareReceiptState extends State<ShareReceipt> {
       decoration: BoxDecoration(
         color: context.theme.scaffoldBackgroundColor,
       ),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(Spacing.defaultSize),
-            child: Column(
-              children: [
-                Image.asset(MainAssets.success2, width: 100),
-                Spacing.sp24.height,
-                const SubtitleText('Transaksi Berhasil',
-                    textAlign: TextAlign.center),
-                Spacing.sp4.height,
-                RegularText(
-                  widget.data.createdAt.dateFormatted,
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          ),
-            const Divider(),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
             Padding(
               padding: const EdgeInsets.all(Spacing.defaultSize),
+              child: Column(
+                children: [
+                  Image.asset(MainAssets.success2, width: 100),
+                  Spacing.sp24.height,
+                  const SubtitleText('Transaksi Berhasil',
+                      textAlign: TextAlign.center),
+                  Spacing.sp4.height,
+                  RegularText(
+                    widget.data.createdAt.toString(),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+            AppDivider(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: Spacing.defaultSize),
               child: Column(
                 children: [
                   Row(
@@ -76,116 +79,44 @@ class _ShareReceiptState extends State<ShareReceipt> {
                 ],
               ),
             ),
-            const Divider(),
-            Padding(
-              padding: const EdgeInsets.all(Spacing.defaultSize),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RegularText.semibold('Pesanan'),
-                  Spacing.defaultSize.height,
-                  const Divider(thickness: 1, height: 1),
-                  Spacing.defaultSize.height,
-                  ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      final item = widget.data.items[index];
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          RegularText.semibold(item.title),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              RegularText(
-                                item.regularPrice.toIDR(),
-                                style: const TextStyle(fontSize: Spacing.sp12),
-                              ),
-                              RegularText.semibold(
-                                '${item.qty}x',
-                                style: const TextStyle(fontSize: Spacing.sp12),
-                              ),
-                            ],
-                          ),
-                        ],
-                      );
-                    },
-                    separatorBuilder: (context, index) => Spacing.defaultSize.height,
-                    itemCount: widget.data.items.length,
-                  ),
-                  Spacing.defaultSize.height,
-                  const Divider(),
-                  Spacing.defaultSize.height,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      RegularText.semibold(
-                        'Subtotal',
-                        style: const TextStyle(fontSize: Spacing.sp12),
-                      ),
-                      RegularText.semibold(
-                        widget.data.amount.toIDR(),
-                        style: const TextStyle(fontSize: Spacing.sp12),
-                      )
-                    ],
-                  )
-                ],
-              ),
+            AppDivider(),
+            ListView.separated(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (BuildContext context, int index) {
+                final items = widget.data.items[index];
+                return Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        RegularText.semibold(items.title),
+                        Spacing.sp2.height,
+                        RegularText('Rp ${items.regularPrice.toIDR()}'),
+                      ],
+                    ),
+                    const Spacer(),
+                    RegularText.semibold('${items.qty} x'),
+                  ],
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return Spacing.defaultSize.height;
+              },
+              itemCount: widget.data.items.length,
             ),
-            const Divider(),
-            Padding(
-              padding: const EdgeInsets.all(Spacing.defaultSize),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RegularText.semibold('Detail Transaksi'),
-                  Spacing.defaultSize.height,
-                  const Divider(thickness: 1, height: 1),
-                  Spacing.sp12.height,
-                  _buildTile('Jumlah pesanan', '${widget.data.items.length}'),
-                  _buildTile('Subtotal', widget.data.amount.toIDR()),
-                  _buildTile('Pajak', 'Rp 0'),
-                  _buildTile(
-                    'Diskon',
-                    '- ${widget.data.discount.toIDR()}',
-                    color: context.theme.primaryColor,
-                  ),
-                  Spacing.sp12.height,
-                  Spacing.sp12.height,
-                  _buildTile('Total Tagihan',
-                      (widget.data.amount - widget.data.discount).toIDR(),
-                      isBold: true),
-                  _buildTile('Total Pembayaran', widget.data.payAmount.toIDR(),
-                      isBold: true),
-                  Spacing.sp12.height,
-                  const Divider(),
-                  Spacing.defaultSize.height,
-                  Row(
-                    children: [
-                      RegularText.semibold(
-                        'Total Kembali',
-                        style: TextStyle(fontSize: Spacing.sp12, color: redColor),
-                      ),
-                      Spacing.sp8.width,
-                      Expanded(
-                        child: RegularText.semibold(
-                          (widget.data.payAmount -
-                              (widget.data.amount - widget.data.discount))
-                              .toIDR(),
-                          textAlign: TextAlign.end,
-                          style:
-                          TextStyle(fontSize: Spacing.sp12, color: redColor),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Spacing.defaultSize.height,
+            AppDivider(),
+            _buildTile('Jumlah pesanan', '${ widget.data.items.length}'),
+            _buildTile('Subtotal', widget.data.amount.toIDR()),
+            _buildTile('Pajak', 'Rp 0'),
+            _buildTile('Diskon', '- ${widget.data.discount.toIDR()}', color: Colors.green),
+            _buildTile('Total', 'Rp ${widget.data.total.toIDR()}'),
+            AppDivider(),
+            _buildTile('Dibayar', 'Rp ${widget.data.total.toIDR()}', isBold: true),
+            _buildTile('Kembalian', 'Rp ${widget.data.returnAmount.toIDR()}', isBold: true, color: redColor),
           ],
         ),
+      ),
 
     );
   }
