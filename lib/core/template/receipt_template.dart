@@ -3,6 +3,7 @@
 import 'package:flutter_esc_pos_utils/flutter_esc_pos_utils.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 
+import '../../app/config.dart';
 import '../../features/features.dart';
 
 class ReceiptTemplate {
@@ -20,7 +21,7 @@ class ReceiptTemplate {
     bytes += generator.reset();
 
     bytes += generator.text(
-      user?.name ?? 'Cashier name group',
+      user?.name ?? 'Taminum eyy',
       styles: const PosStyles(
         bold: true,
         align: PosAlign.center,
@@ -128,7 +129,7 @@ class ReceiptTemplate {
       styles: const PosStyles(align: PosAlign.center),
     );
     bytes += generator.text(
-      'Powered by hedare',
+      'Powered by ${ConfigApp.appName}',
       styles: const PosStyles(align: PosAlign.center),
     );
 

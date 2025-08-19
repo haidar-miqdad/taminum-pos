@@ -25,7 +25,10 @@ class LightTheme{
     onError: errorColor,
   );
 
-  AppBarTheme get appBarTheme => AppBarTheme(centerTitle: false, surfaceTintColor: scaffoldColor);
+  AppBarTheme get appBarTheme => AppBarTheme(
+    centerTitle: false,
+     surfaceTintColor: scaffoldColor,
+     );
 
   CardThemeData get cardTheme => CardThemeData(
     elevation: 0,

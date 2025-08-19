@@ -25,7 +25,7 @@ class _ProfileSection extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    RegularText.semibold(state.user?.name == null || state.user!.name.isEmpty ? 'Your Business Name' : state.user!.name, style: TextStyle(fontSize: 16)),
+                    RegularText.semibold(state.user?.name == null || state.user!.name.isEmpty ? ConfigApp.appName : state.user!.name, style: TextStyle(fontSize: 16)),
                     Spacing.sp4.height,
                     RegularText(state.user?.email == null || state.user!.email.isEmpty ? 'Your Email wakkkk' : state.user!.email, style: TextStyle(color: MainColors.black[600])),
                     Spacing.sp4.height,

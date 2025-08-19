@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_taminum_mobile/app/config.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 
 class XenditService {
@@ -10,7 +11,7 @@ class XenditService {
   static Dio get dio{
     return Dio()..options = BaseOptions(
       headers: {
-        'Authorization': 'Basic ${base64Encode(utf8.encode('xnd_development_tFbBuLmaYn0ycGqovQI8jWGBBHTJyuSBiewzbWfc1PmotMSFiJKeTjrvEcgXJVe'))}',
+        'Authorization': 'Basic ${base64Encode(utf8.encode('${ConfigApp.xenditKey}:'))}',
         'Content-Type': 'application/json',
         'api-version': '2022-07-31',
       },

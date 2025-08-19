@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_taminum_mobile/app/config.dart';
 import 'package:flutter_taminum_mobile/app/routes.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
 
       ],
       child: MaterialApp(
-        title: 'Taminum App',
+        title: ConfigApp.appName,
         theme: LightTheme(MainColors.primary).theme,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: routes,
