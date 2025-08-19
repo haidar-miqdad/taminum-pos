@@ -10,4 +10,9 @@ class ConfigApp {
   static String email = ConfigData.getValue('email');
 
   static String phone = ConfigData.getValue('phone');
+
+  static String playStoreUrl = ConfigData.getValue('playStoreUrl');
+
+
+
 }

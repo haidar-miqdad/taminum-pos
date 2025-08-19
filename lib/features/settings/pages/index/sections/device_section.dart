@@ -14,7 +14,7 @@ class _DeviceSection extends StatelessWidget {
           Spacing.defaultSize.height,
           ItemMenuSettings(
             'Printer',
-            icon: Icons.local_printshop_outlined,
+            icon: MainIcons.printer,
             onTap: () {
               Navigator.pushNamed(context, PrinterPage.routeName);
             },

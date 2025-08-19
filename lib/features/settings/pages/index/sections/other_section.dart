@@ -14,11 +14,7 @@ class _OtherSection extends StatelessWidget {
           Spacing.defaultSize.height,
           ItemMenuSettings('Verify', icon: AppIcons.verified),
           Divider(color: MainColors.white[400], thickness: 1),
-          ItemMenuSettings(
-            'Beri Rating',
-            icon: AppIcons.star,
-            subTitle: 'v 1.0.0',
-          ),
+          ItemMenuSettings('Beri Rating', icon: MainIcons.star, subTitle: 'v 1.0.0'),
         ],
       ),
     );

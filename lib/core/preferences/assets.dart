@@ -14,5 +14,6 @@ class MainAssets {
   static const jokowi = '${path}jokowi.jpeg';
 
   static const successLottie = '${lottiePath}success.json';
+  static const update = '${lottiePath}update.json';
   static const noData = '${lottiePath}walking no data.json';
 }

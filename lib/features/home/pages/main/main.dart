@@ -10,13 +10,7 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pages = const [
-      HomePage(),
-      TransactionPage(),
-      POSPage(),
-      ProductPage(),
-      SettingsPage(),
-    ];
+    final pages = const [HomePage(), TransactionPage(), POSPage(), ProductPage(), SettingsPage()];
     return BlocBuilder<BottomNavBloc, int>(
       builder: (context, index) {
         return Scaffold(
@@ -27,23 +21,11 @@ class MainPage extends StatelessWidget {
               context.read<BottomNavBloc>().add(TapBottomNavEvent(value));
             },
             items: [
-              BottomNavigationBarItem(
-                icon: Icon(AppIcons.storefront),
-                label: 'Beranda',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(AppIcons.receipt),
-                label: 'Transaksi',
-              ),
+              BottomNavigationBarItem(icon: Icon(MainIcons.home), label: 'Beranda'),
+              BottomNavigationBarItem(icon: Icon(MainIcons.receipt2), label: 'Transaksi'),
               BottomNavigationBarItem(icon: Icon(AppIcons.pos), label: 'POS'),
-              BottomNavigationBarItem(
-                icon: Icon(AppIcons.product),
-                label: 'Produk',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(AppIcons.settings),
-                label: 'Lainnya',
-              ),
+              BottomNavigationBarItem(icon: Icon(MainIcons.product3), label: 'Produk'),
+              BottomNavigationBarItem(icon: Icon(MainIcons.settings), label: 'Lainnya'),
             ],
           ),
         );

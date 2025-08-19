@@ -70,7 +70,7 @@ class _ProfileSection extends StatelessWidget {
                   Navigator.pushNamed(context, ProfilePage.routeName);
                 },
                 icon: Icon(
-                  AppIcons.edit,
+                  MainIcons.edit,
                   color: MainColors.primary,
                   size: Spacing.sp26,
                 ),

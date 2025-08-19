@@ -15,43 +15,26 @@ class _CartSection extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.all(Spacing.defaultSize),
         padding: const EdgeInsets.all(Spacing.sp12),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Spacing.sp8),
-          color: context.theme.primaryColor,
-        ),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(Spacing.sp8), color: context.theme.primaryColor),
         child: Row(
           children: [
-            Icon(
-              AppIcons.shoppingCart,
-              color: context.theme.scaffoldBackgroundColor,
-            ),
+            Icon(AppIcons.shoppingCart, color: context.theme.scaffoldBackgroundColor),
             Spacing.defaultSize.width,
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  RegularText.semibold(
-                    '$qtyItems items',
-                    style: TextStyle(
-                      color: context.theme.scaffoldBackgroundColor,
-                    ),
-                  ),
+                  RegularText.semibold('$qtyItems items', style: TextStyle(color: context.theme.scaffoldBackgroundColor)),
                   RegularText.semibold(
                     'Rp ${price.toIDR()}',
-                    style: TextStyle(
-                      fontSize: Spacing.sp12,
-                      color: context.theme.scaffoldBackgroundColor,
-                    ),
+                    style: TextStyle(fontSize: Spacing.sp12, color: context.theme.scaffoldBackgroundColor),
                   ),
                 ],
               ),
             ),
             Spacing.defaultSize.width,
-            Icon(
-              Icons.arrow_forward_rounded,
-              color: context.theme.scaffoldBackgroundColor,
-            ),
+            Icon(Icons.arrow_forward_rounded, color: context.theme.scaffoldBackgroundColor),
           ],
         ),
       ),

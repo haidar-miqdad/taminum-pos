@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_taminum_mobile/core/data/data.dart';
 
 import '../features/features.dart';
 
@@ -6,6 +7,11 @@ Route<dynamic> routes(settings) {
   switch (settings.name) {
     case MainPage.routeName:
       return MaterialPageRoute(builder: (context) => const MainPage());
+    case UpdatePage.routeName:
+      return MaterialPageRoute(
+        builder: (context) =>
+            UpdatePage(version: settings.arguments as VersionType),
+      );
     case ProfilePage.routeName:
       return MaterialPageRoute(builder: (context) => const ProfilePage());
     case XenditPage.routeName:

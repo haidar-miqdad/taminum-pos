@@ -5,3 +5,4 @@ export 'receipt/page.dart';
 export 'show_receipt/page.dart';
 export 'printer/page.dart';
 export 'xendit/page.dart';
+export 'update/page.dart';

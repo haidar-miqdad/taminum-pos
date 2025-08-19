@@ -11,11 +11,7 @@ class _AccountSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SubtitleText('Akun'),
-          ItemMenuSettings(
-            'Informasi Usaha',
-            icon: AppIcons.receipt,
-            onTap: () {},
-          ),
+          ItemMenuSettings('Informasi Usaha', icon: MainIcons.receipt, onTap: () {}),
           Divider(color: MainColors.white[400], thickness: 1),
           ItemMenuSettings(
             'API Key Xendit',

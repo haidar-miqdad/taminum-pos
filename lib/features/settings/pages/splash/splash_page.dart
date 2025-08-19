@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
+import 'package:flutter_taminum_mobile/core/data/data.dart';
 import 'package:flutter_taminum_mobile/features/features.dart';
+
 import '../../../../core/core.dart';
 
 class SplashPage extends StatefulWidget {
@@ -12,14 +15,35 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        MainPage.routeName,
-        (route) => false,
-      );
-    });
+    checkUpdate();
     super.initState();
+  }
+
+  Future<void> checkUpdate() async {
+    final version = await ConfigData.checkUpdateConfigData();
+
+    if (version == VersionType.upToDate) {
+      mainNavigate();
+    } else {
+      updateNavigate(version);
+    }
+  }
+
+  void mainNavigate() {
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      MainPage.routeName,
+      (route) => false,
+    );
+  }
+
+  void updateNavigate(VersionType version) {
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      UpdatePage.routeName,
+      (route) => false,
+      arguments: version,
+    );
   }
 
   @override

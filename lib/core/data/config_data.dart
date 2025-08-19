@@ -1,5 +1,7 @@
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
+
 import 'package:package_info_plus/package_info_plus.dart';
 
 class ConfigData {
@@ -17,6 +19,7 @@ class ConfigData {
         'phone': 'Phone Number',
         'minVersion': 1,
         'maxVersion': 1,
+        'playStoreUrl': 'https://play.google.com/store/games?hl=id&pli=1',
       });
       await remoteConfig.setConfigSettings(
         RemoteConfigSettings(
@@ -34,15 +37,28 @@ class ConfigData {
     return remoteConfig.getValue(key).asString();
   }
 
-  // static Future<VersionType> checkVersion() async {
-  //   try {
-  //     int minVersion = remoteConfig.getInt('minVersion');
-  //     int maxVersion = remoteConfig.getInt('maxVersion');
-  //
-  //     final packageInfo = await PackageInfo.fromPlatform();
-  //     final currentVersion = int.parse(packageInfo.buildNumber);
-  //   } catch (e) {
-  //     throw Exception(e.toString());
-  //   }
-  // }
+  static Future<VersionType> checkUpdateConfigData() async {
+    try {
+      final maxVersion = remoteConfig.getInt('maxVersion');
+      final minVersion = remoteConfig.getInt('minVersion');
+
+      final packageInfo = await PackageInfo.fromPlatform();
+
+      final currentVersion = int.parse(packageInfo.buildNumber);
+
+      debugPrint(
+        'CURRENT VERSION: $currentVersion, MIN: $minVersion, MAX: $maxVersion',
+      );
+
+      if (currentVersion < minVersion) {
+        return VersionType.expired;
+      } else if (currentVersion < maxVersion) {
+        return VersionType.update;
+      } else {
+        return VersionType.upToDate;
+      }
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
 }

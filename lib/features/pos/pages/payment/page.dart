@@ -18,11 +18,7 @@ class PaymentPage extends StatelessWidget {
     return BlocListener<TransactionBloc, TransactionState>(
       listener: (context, state) {
         if (state.status == Status.processed) {
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            QrPage.routeName,
-            (route) => false,
-          );
+          Navigator.pushNamedAndRemoveUntil(context, QrPage.routeName, (route) => false);
         }
       },
       child: Scaffold(
@@ -36,24 +32,12 @@ class PaymentPage extends StatelessWidget {
               child: Row(
                 children: [
                   _buildTile(context, 'Cash', AppIcons.money, () {
-                    Navigator.pushNamed(
-                      context,
-                      CashPage.routeName,
-                      arguments: referenceId,
-                    );
+                    Navigator.pushNamed(context, CashPage.routeName, arguments: referenceId);
                   }),
                   BlocBuilder<CartBloc, CartState>(
                     builder: (context, state) {
                       return _buildTile(context, 'QRIS', AppIcons.qrCode, () {
-                        context.read<TransactionBloc>().add(
-                          CreateQrTransactionEvent(
-                            state.transaction(
-                              TypeEnum.unpaid,
-                              paymentType: PaymentTypeEnum.qris,
-                            ),
-                            referenceId: referenceId,
-                          ),
-                        );
+                        context.read<TransactionBloc>().add(CreateQrTransactionEvent(state.transaction(TypeEnum.unpaid, paymentType: PaymentTypeEnum.qris), referenceId: referenceId));
                       });
                     },
                   ),
@@ -66,12 +50,7 @@ class PaymentPage extends StatelessWidget {
     );
   }
 
-  Expanded _buildTile(
-    BuildContext context,
-    String title,
-    IconData icon,
-    Function() onTap,
-  ) {
+  Expanded _buildTile(BuildContext context, String title, IconData icon, Function() onTap) {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: Spacing.defaultSize),
@@ -89,10 +68,7 @@ class PaymentPage extends StatelessWidget {
               children: [
                 Icon(icon, size: Spacing.sp40),
                 Spacing.sp10.height,
-                RegularText.semibold(
-                  title,
-                  style: TextStyle(fontSize: Spacing.sp12),
-                ),
+                RegularText.semibold(title, style: TextStyle(fontSize: Spacing.sp12)),
               ],
             ),
           ),
