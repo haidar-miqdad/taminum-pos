@@ -16,7 +16,6 @@ class PrinterPage extends StatefulWidget {
 }
 
 class _PrinterPageState extends State<PrinterPage> {
-
   @override
   void initState() {
     context.read<PrinterBloc>().add(GetPrinterEvent());
@@ -26,12 +25,12 @@ class _PrinterPageState extends State<PrinterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Cari Printer'),),
+      appBar: AppBar(title: Text('Cari Printer')),
       body: Padding(
         padding: const EdgeInsets.all(Spacing.defaultSize),
         child: BlocBuilder<PrinterBloc, PrinterState>(
           builder: (context, state) {
-            if(state.status == Status.success && state.printers.isEmpty){
+            if (state.status == Status.success && state.printers.isEmpty) {
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +46,7 @@ class _PrinterPageState extends State<PrinterPage> {
                       'Pastikan bluetooth dan printer\nthermal Anda aktif.',
                       textAlign: TextAlign.center,
                       style: TextStyle(color: MainColors.black[400]),
-                    )
+                    ),
                   ],
                 ),
               );
@@ -59,25 +58,26 @@ class _PrinterPageState extends State<PrinterPage> {
                   onTap: () {},
                   title: item.name,
                   port: item.macAdress,
-
                 );
               },
-              separatorBuilder: (BuildContext context, int index) => Spacing.sp24.height,
+              separatorBuilder: (BuildContext context, int index) =>
+                  Spacing.sp24.height,
               itemCount: state.printers.length,
             );
           },
         ),
       ),
-      bottomNavigationBar:
-      SafeArea(
+      bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(Spacing.defaultSize),
-          child: ElevatedButton(onPressed: () {
-            context.read<PrinterBloc>().add(OpenSettingPrinterEvent());
-          }, child: Text('Tambah Printer')),
+          child: ElevatedButton(
+            onPressed: () {
+              context.read<PrinterBloc>().add(OpenSettingPrinterEvent());
+            },
+            child: Text('Tambah Printer'),
+          ),
         ),
       ),
     );
   }
 }
-

@@ -1,13 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 
 class LabelInput extends StatelessWidget {
-  const LabelInput({
-    super.key,
-    required this.label,
-    this.required = false,
-  });
+  const LabelInput({super.key, required this.label, this.required = false});
 
   final String? label;
   final bool required;
@@ -24,14 +19,9 @@ class LabelInput extends StatelessWidget {
           if (required)
             TextSpan(
               text: ' Harus diisi*',
-              style: TextStyle(
-                fontSize: Spacing.sp10,
-                color: MainColors.red,
-              ),
+              style: TextStyle(fontSize: Spacing.sp10, color: MainColors.red),
             ),
-
         ],
-
       ),
     );
   }

@@ -8,30 +8,26 @@ class PrinterState extends Equatable {
   });
 
   final List<BluetoothInfo> printers;
-  final String? error ;
+  final String? error;
   final Status? status;
 
-  factory PrinterState.initial(){
+  factory PrinterState.initial() {
     return const PrinterState();
   }
 
   PrinterState copyWith({
-     List<BluetoothInfo>? printers,
-     String? error,
-     Status? status,
-}){
+    List<BluetoothInfo>? printers,
+    String? error,
+    Status? status,
+  }) {
     return PrinterState(
       printers: printers ?? this.printers,
       error: error,
       status: status ?? this.status,
     );
-}
+  }
 
   @override
   // TODO: implement props
   List<Object?> get props => [printers, status, error];
-
-
-
 }
-

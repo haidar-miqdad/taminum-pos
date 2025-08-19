@@ -7,15 +7,15 @@ class ReceiptState extends Equatable {
   final Status status;
   final String? error;
 
-  factory ReceiptState.initial(){
+  factory ReceiptState.initial() {
     return ReceiptState();
   }
 
   ReceiptState copyWith({
-     ReceiptModel? receipt,
-     Status? status,
-     String? error,
-}){
+    ReceiptModel? receipt,
+    Status? status,
+    String? error,
+  }) {
     return ReceiptState(
       receipt: receipt ?? this.receipt,
       status: status ?? this.status,
@@ -26,7 +26,4 @@ class ReceiptState extends Equatable {
   @override
   // TODO: implement props
   List<Object?> get props => [receipt, status, error];
-
 }
-
-

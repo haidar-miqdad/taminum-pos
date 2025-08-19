@@ -1,9 +1,7 @@
 part of '../page.dart';
 
 class _TypeSection extends StatelessWidget {
-  const _TypeSection({
-    super.key,
-  });
+  const _TypeSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +19,11 @@ class _TypeSection extends StatelessWidget {
 
   Row _buildTile(String title, String value) {
     return Row(
-          children: [
-            RegularText(title, style: TextStyle(fontSize: 12),),
-            Spacer(),
-            RegularText.semibold(value, style: TextStyle(fontSize: 12),)
-          ],
-        );
+      children: [
+        RegularText(title, style: TextStyle(fontSize: 12)),
+        Spacer(),
+        RegularText.semibold(value, style: TextStyle(fontSize: 12)),
+      ],
+    );
   }
 }
-
-

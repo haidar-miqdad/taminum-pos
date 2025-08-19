@@ -21,10 +21,11 @@ class FormProductState extends Equatable {
     this.priceRegular,
     this.unit,
     this.priceItem,
-    this.stock, this.sku
+    this.stock,
+    this.sku,
   });
 
-  factory FormProductState.initial(){
+  factory FormProductState.initial() {
     return FormProductState();
   }
 
@@ -36,17 +37,20 @@ class FormProductState extends Equatable {
     return (priceRegular ?? 0) - (priceItem ?? 0);
   }
 
-
   bool get isValid {
-    return name != null && name!.isNotEmpty &&
-        desc != null && desc!.isNotEmpty &&
-         priceRegular != null && (priceRegular ?? 0) > 0 &&
-    unit != null && unit!.isNotEmpty;
+    return name != null &&
+        name!.isNotEmpty &&
+        desc != null &&
+        desc!.isNotEmpty &&
+        priceRegular != null &&
+        (priceRegular ?? 0) > 0 &&
+        unit != null &&
+        unit!.isNotEmpty;
   }
 
   // Getter ini adalah jembatan antara data di BLoC (state form) dan
   // data model yang dibutuhkan untuk simpan ke backend/database.
-  ProductModel product({int? id, DateTime? createdAt}){
+  ProductModel product({int? id, DateTime? createdAt}) {
     return ProductModel(
       id: id ?? 0,
       title: name ?? '',
@@ -89,5 +93,15 @@ class FormProductState extends Equatable {
 
   @override
   // TODO: implement props
-  List<Object?> get props => [desc, name, image, priceRegular, unit, priceItem, stock, status, error];
+  List<Object?> get props => [
+    desc,
+    name,
+    image,
+    priceRegular,
+    unit,
+    priceItem,
+    stock,
+    status,
+    error,
+  ];
 }

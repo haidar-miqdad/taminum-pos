@@ -7,9 +7,9 @@ class ReceiptEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetReceiptEvent extends ReceiptEvent{}
+class GetReceiptEvent extends ReceiptEvent {}
 
-class SubmitReceiptEvent extends ReceiptEvent{
+class SubmitReceiptEvent extends ReceiptEvent {
   final String message;
   final String desc;
 

@@ -5,7 +5,7 @@ class CartState extends Equatable {
   final DiscountType? type;
   final num disc;
 
-  const CartState({this.cart = const [], this.disc = 0, this.type,});
+  const CartState({this.cart = const [], this.disc = 0, this.type});
 
   factory CartState.initial() {
     return const CartState();
@@ -23,7 +23,6 @@ class CartState extends Equatable {
       disc: disc ?? this.disc,
     );
   }
-
 
   CartModel? findItem(int id) {
     try {
@@ -50,24 +49,28 @@ class CartState extends Equatable {
     return price;
   }
 
-
   num get discount {
     if (type == DiscountType.percentage) {
       return getEstimate * disc / 100;
-    } else if(type == DiscountType.nominal) {
+    } else if (type == DiscountType.nominal) {
       return disc;
     }
     return 0;
   }
 
-  bool isCash(String nominal){
-    return (num.tryParse(nominal)?? 0) >= (getEstimate - discount);
+  bool isCash(String nominal) {
+    return (num.tryParse(nominal) ?? 0) >= (getEstimate - discount);
   }
 
-  TransactionModel transaction(TypeEnum type, {num? payAmount, PaymentTypeEnum? paymentType}) {
+  TransactionModel transaction(
+    TypeEnum type, {
+    num? payAmount,
+    PaymentTypeEnum? paymentType,
+  }) {
     final now = DateTime.now();
     return TransactionModel(
-      referenceId: 'TRX-${now.year}${now.month}${now.day}${now.hour}${now.millisecond}',
+      referenceId:
+          'TRX-${now.year}${now.month}${now.day}${now.hour}${now.millisecond}',
       type: type,
       amount: getEstimate,
       paymentType: paymentType ?? PaymentTypeEnum.cash,
@@ -78,8 +81,7 @@ class CartState extends Equatable {
     );
   }
 
-
   @override
   // TODO: implement props
-  List<Object?> get props => [cart, type, disc,];
+  List<Object?> get props => [cart, type, disc];
 }

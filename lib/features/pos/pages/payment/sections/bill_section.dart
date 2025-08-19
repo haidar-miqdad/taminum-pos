@@ -16,7 +16,10 @@ class _BillSection extends StatelessWidget {
               Spacing.sp10.height,
               HeadlineText(
                 (state.getEstimate - state.discount).toIDR(),
-                style: TextStyle(fontSize: Spacing.sp30, color: context.theme.primaryColor),
+                style: TextStyle(
+                  fontSize: Spacing.sp30,
+                  color: context.theme.primaryColor,
+                ),
               ),
             ],
           );

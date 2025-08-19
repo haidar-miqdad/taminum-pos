@@ -8,18 +8,13 @@ class _OrderSection extends StatefulWidget {
 }
 
 class _OrderSectionState extends State<_OrderSection> {
-
   void _showDiscount(BuildContext context, num disc, DiscountType? type) {
     showModalBottomSheet(
       context: context,
-      builder: (context) => _DiscountSection(
-        type: type,
-        disc: disc,
-      ),
+      builder: (context) => _DiscountSection(type: type, disc: disc),
       isScrollControlled: true,
     );
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +31,10 @@ class _OrderSectionState extends State<_OrderSection> {
                   onTap: () {
                     _showDiscount(context, state.disc, state.type);
                   },
-                  child: RegularText.semibold('+ Diskon Semua', style: TextStyle(color: Colors.green)),
+                  child: RegularText.semibold(
+                    '+ Diskon Semua',
+                    style: TextStyle(color: Colors.green),
+                  ),
                 ),
               ],
             ),
@@ -62,27 +60,32 @@ class _OrderSectionState extends State<_OrderSection> {
                               children: [
                                 TextSpan(
                                   text: ' /pcs',
-                                  style: const TextStyle(fontWeight: FontWeight.normal),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                  ),
                                 ),
                               ],
                             ),
                           ),
                           Spacing.sp12.height,
-                          CartProductButton(count: items.qty, onNoted: () {}, products: items.products),
+                          CartProductButton(
+                            count: items.qty,
+                            onNoted: () {},
+                            products: items.products,
+                          ),
                         ],
                       ),
                     ),
                   ],
                 );
               },
-              separatorBuilder: (BuildContext context, int index) => Spacing.defaultSize.height,
+              separatorBuilder: (BuildContext context, int index) =>
+                  Spacing.defaultSize.height,
               itemCount: state.cart.length,
-            )
+            ),
           ],
         );
       },
     );
   }
 }
-
-

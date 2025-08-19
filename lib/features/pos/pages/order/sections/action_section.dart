@@ -19,10 +19,16 @@ class _ActionSection extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Icon(Icons.check_circle_outline, color: context.theme.primaryColor),
+                Icon(
+                  Icons.check_circle_outline,
+                  color: context.theme.primaryColor,
+                ),
                 Spacing.sp12.width,
                 Expanded(
-                  child: RegularText('Tagihan akhir bisa dilihat pada halaman pembayaran setelah memilih metode pembayaran', style: TextStyle(fontSize: Spacing.sp10)),
+                  child: RegularText(
+                    'Tagihan akhir bisa dilihat pada halaman pembayaran setelah memilih metode pembayaran',
+                    style: TextStyle(fontSize: Spacing.sp10),
+                  ),
                 ),
               ],
             ),
@@ -39,25 +45,36 @@ class _ActionSection extends StatelessWidget {
                       builder: (context, state) {
                         return OutlinedButton(
                           onPressed: () {
-                            context.read<BottomNavBloc>().add(TapBottomNavEvent(1));
-                            context.read<TransactionBloc>().add(CreateTransactionEvent(state.transaction(TypeEnum.draft)));
+                            context.read<BottomNavBloc>().add(
+                              TapBottomNavEvent(1),
+                            );
+                            context.read<TransactionBloc>().add(
+                              CreateTransactionEvent(
+                                state.transaction(TypeEnum.draft),
+                              ),
+                            );
                           },
                           child: Text('Simpan Pesanan'),
-
                         );
                       },
                     ),
                   ),
                   Spacing.defaultSize.width,
                   Expanded(
-                    child: OutlinedButton(onPressed: () {}, child: Text('Hapus')),
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      child: Text('Hapus'),
+                    ),
                   ),
                 ],
               ),
               Spacing.sp8.height,
-              ElevatedButton(onPressed: () {
-                Navigator.pushNamed(context, PaymentPage.routeName);
-              }, child: Text('Pilih Pembayaran')),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, PaymentPage.routeName);
+                },
+                child: Text('Pilih Pembayaran'),
+              ),
             ],
           ),
           Spacing.defaultSize.height,

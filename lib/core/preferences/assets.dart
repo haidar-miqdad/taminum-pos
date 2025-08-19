@@ -1,8 +1,8 @@
-class MainAssets{
+class MainAssets {
   MainAssets._();
 
   static const path = 'assets/images/';
-  static const pathLottie = 'assets/lottie/';
+  static const lottiePath = 'assets/lottie/';
 
   static const logo = '${path}logo.png';
   static const logo2 = '${path}logo2.png';
@@ -11,6 +11,8 @@ class MainAssets{
   static const print = '${path}print.png';
   static const success = '${path}success.png';
   static const success2 = '${path}success2.png';
+  static const jokowi = '${path}jokowi.jpeg';
 
-  static const successLottie = '${pathLottie}success.json';
+  static const successLottie = '${lottiePath}success.json';
+  static const noData = '${lottiePath}walking no data.json';
 }

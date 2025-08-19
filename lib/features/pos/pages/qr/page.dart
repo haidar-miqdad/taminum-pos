@@ -19,24 +19,36 @@ class QrPage extends StatelessWidget {
       onPopInvokedWithResult: (bool didPop, Object? data) {
         if (didPop) {
           // context.read<BottomNavBloc>().add(TapBottomNavEvent(1));
-          Navigator.pushNamedAndRemoveUntil(context, MainPage.routeName, (route) => false);
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            MainPage.routeName,
+            (route) => false,
+          );
         }
       },
       child: BlocListener<TransactionBloc, TransactionState>(
         listener: (context, state) {
-          if (state.status == Status.success && state.item?.type == TypeEnum.paid) {
+          if (state.status == Status.success &&
+              state.item?.type == TypeEnum.paid) {
             Navigator.pushNamedAndRemoveUntil(
-                context,
-                SuccessTransactionPage.routeName, (route) => false,
-                arguments: state.item?.referenceId,
+              context,
+              SuccessTransactionPage.routeName,
+              (route) => false,
+              arguments: state.item?.referenceId,
             );
           }
         },
         child: Scaffold(
           appBar: AppBar(title: Text('Kode Pembayaran')),
-          body: ListView(padding: EdgeInsets.all(Spacing.defaultSize), children: [_QrSection()]),
+          body: ListView(
+            padding: EdgeInsets.all(Spacing.defaultSize),
+            children: [_QrSection()],
+          ),
           bottomNavigationBar: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Spacing.defaultSize, vertical: Spacing.sp30),
+            padding: const EdgeInsets.symmetric(
+              horizontal: Spacing.defaultSize,
+              vertical: Spacing.sp30,
+            ),
             child: ElevatedButton(
               onPressed: () {
                 context.read<TransactionBloc>().add(CheckQrTransactionEvent());

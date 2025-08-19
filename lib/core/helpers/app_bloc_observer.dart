@@ -1,9 +1,7 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 
-class AppBlocObserver extends BlocObserver{
-
+class AppBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
@@ -11,5 +9,4 @@ class AppBlocObserver extends BlocObserver{
       print('${bloc.runtimeType} $change');
     }
   }
-
 }

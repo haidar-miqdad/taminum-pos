@@ -12,7 +12,13 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       try {
         emit(state.copyWith(status: Status.loading));
         final service = await ProfileService.get();
-        emit(state.copyWith(status: Status.apply, user: service, image: service?.imageUrl));
+        emit(
+          state.copyWith(
+            status: Status.apply,
+            user: service,
+            image: service?.imageUrl,
+          ),
+        );
       } catch (e) {
         emit(state.copyWith(status: Status.failure, error: e.toString()));
       }
@@ -20,7 +26,14 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<SubmitProfileEvent>((event, emit) async {
       try {
         emit(state.copyWith(status: Status.loading));
-        final service = await ProfileService.insert(UserModel(name: event.name, email: event.email, phoneNumber: event.phoneNumber, imageUrl: state.image ?? ''));
+        final service = await ProfileService.insert(
+          UserModel(
+            name: event.name,
+            email: event.email,
+            phoneNumber: event.phoneNumber,
+            imageUrl: state.image ?? '',
+          ),
+        );
         emit(state.copyWith(status: Status.success, user: service));
       } catch (e) {
         emit(state.copyWith(status: Status.failure, error: e.toString()));

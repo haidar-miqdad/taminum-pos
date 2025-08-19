@@ -54,23 +54,24 @@ class TransactionModel extends Equatable {
   @JsonKey(defaultValue: [], includeToJson: false)
   final List<TransactionItemModel> items;
 
-  factory TransactionModel.fromJson(Map<String, dynamic> json) => _$TransactionModelFromJson(json);
+  factory TransactionModel.fromJson(Map<String, dynamic> json) =>
+      _$TransactionModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$TransactionModelToJson(this);
 
   TransactionModel copyWith(Map<String, dynamic> json) {
     return TransactionModel(
       discount: discount,
-        id: id,
-        items: items + [TransactionItemModel.fromJson(json)],
-        payAmount: payAmount,
-        qrId: qrId,
-        qrString: qrString,
-        referenceId: referenceId,
-        type: type,
-        amount: amount,
-        paymentType: paymentType,
-        createdAt: createdAt,
+      id: id,
+      items: items + [TransactionItemModel.fromJson(json)],
+      payAmount: payAmount,
+      qrId: qrId,
+      qrString: qrString,
+      referenceId: referenceId,
+      type: type,
+      amount: amount,
+      paymentType: paymentType,
+      createdAt: createdAt,
     );
   }
 
@@ -90,7 +91,6 @@ class TransactionModel extends Equatable {
     );
   }
 
-
   num get total {
     return amount - discount;
   }
@@ -99,8 +99,19 @@ class TransactionModel extends Equatable {
     return payAmount - amount - discount;
   }
 
-
   @override
   // TODO: implement props
-  List<Object?> get props => [id, referenceId, type, qrString, qrId, discount, payAmount, paymentType, createdAt, items, amount];
+  List<Object?> get props => [
+    id,
+    referenceId,
+    type,
+    qrString,
+    qrId,
+    discount,
+    payAmount,
+    paymentType,
+    createdAt,
+    items,
+    amount,
+  ];
 }

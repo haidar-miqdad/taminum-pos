@@ -12,7 +12,7 @@ class _ConfirmSection extends StatelessWidget {
     return ContentSheet(
       child: BlocListener<TransactionBloc, TransactionState>(
         listener: (context, state) {
-          if(state.status == Status.success){
+          if (state.status == Status.success) {
             Navigator.pushNamedAndRemoveUntil(
               context,
               SuccessTransactionPage.routeName,
@@ -28,25 +28,48 @@ class _ConfirmSection extends StatelessWidget {
               children: [
                 RegularText.semibold('Selesaikan Pembayaran'),
                 Spacing.defaultSize.height,
-                RegularText('Anda akan menyelesaikan pembayaran dengan \nnilai transaksi sebesar Rp. ${(state.getEstimate - state.discount).toIDR()}', style: TextStyle(fontSize: Spacing.sp12)),
+                RegularText(
+                  'Anda akan menyelesaikan pembayaran dengan \nnilai transaksi sebesar Rp. ${(state.getEstimate - state.discount).toIDR()}',
+                  style: TextStyle(fontSize: Spacing.sp12),
+                ),
                 AppDivider(space: Spacing.defaultSize),
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [RegularText.semibold('Uang diterima'), RegularText.semibold('Rp ${nominal.toIDR()}')]),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    RegularText.semibold('Uang diterima'),
+                    RegularText.semibold('Rp ${nominal.toIDR()}'),
+                  ],
+                ),
                 Spacing.sp12.height,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    RegularText.semibold('Kembalian', style: TextStyle(color: Colors.red)),
-                    RegularText.semibold('Rp ${(nominal - (state.getEstimate - state.discount)).toIDR()}', style: TextStyle(color: Colors.red)),
+                    RegularText.semibold(
+                      'Kembalian',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                    RegularText.semibold(
+                      'Rp ${(nominal - (state.getEstimate - state.discount)).toIDR()}',
+                      style: TextStyle(color: Colors.red),
+                    ),
                   ],
                 ),
                 Spacing.sp20.height,
                 SafeArea(
                   child: ElevatedButton(
                     onPressed: () {
-                      context.read<TransactionBloc>().add(CreateTransactionEvent(state.transaction(TypeEnum.paid, payAmount: nominal), referenceId: referenceId, type: TypeEnum.paid));
-
+                      context.read<TransactionBloc>().add(
+                        CreateTransactionEvent(
+                          state.transaction(TypeEnum.paid, payAmount: nominal),
+                          referenceId: referenceId,
+                          type: TypeEnum.paid,
+                        ),
+                      );
                     },
-                    child: RegularText.semibold('Konfirmasi', style: TextStyle(color: MainColors.white)),
+                    child: RegularText.semibold(
+                      'Konfirmasi',
+                      style: TextStyle(color: MainColors.white),
+                    ),
                   ),
                 ),
               ],

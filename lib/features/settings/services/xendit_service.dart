@@ -1,35 +1,33 @@
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class XenditServiceSet{
-
+class XenditServiceSet {
   XenditServiceSet._();
 
-  static Future<String> insert( String key ) async {
-    try{
+  static Future<String> insert(String key) async {
+    try {
       final prefs = await SharedPreferences.getInstance();
 
       await prefs.setString('xendit', key);
 
       return key;
-    }catch(e){
+    } catch (e) {
       throw ErrorDescription(e.toString());
     }
   }
 
   static Future<String?> get() async {
-    try{
+    try {
       final prefs = await SharedPreferences.getInstance();
 
       final data = prefs.getString('xendit');
 
-      if(data != null){
+      if (data != null) {
         return data;
       }
 
       return null;
-    }catch(e){
+    } catch (e) {
       throw ErrorDescription(e.toString());
     }
   }

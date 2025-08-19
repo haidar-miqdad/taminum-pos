@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MainColors{
+class MainColors {
   MainColors._();
 
   static const primary = MaterialColor(0xff2BBBC1, {
@@ -44,5 +44,4 @@ class MainColors{
     500: Color(0xff666666),
     600: Color(0xff4D4D4D),
   });
-
 }

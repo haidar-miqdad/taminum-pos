@@ -11,7 +11,16 @@ class FormProductBloc extends Bloc<FormProductEvent, FormProductState> {
   FormProductBloc() : super(FormProductState.initial()) {
     on<ChangeFormProductEvent>((event, emit) {
       emit(
-        state.copyWith(status: Status.initial, desc: event.desc, name: event.name, priceItem: event.priceItem, priceRegular: event.priceRegular, sku: event.sku, stock: event.stock, unit: event.unit),
+        state.copyWith(
+          status: Status.initial,
+          desc: event.desc,
+          name: event.name,
+          priceItem: event.priceItem,
+          priceRegular: event.priceRegular,
+          sku: event.sku,
+          stock: event.stock,
+          unit: event.unit,
+        ),
       );
     });
 
@@ -25,8 +34,5 @@ class FormProductBloc extends Bloc<FormProductEvent, FormProductState> {
       emit(FormProductState.initial());
       emit(state.copyWith(image: event.image));
     });
-
-
-
   }
 }

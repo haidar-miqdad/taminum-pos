@@ -17,24 +17,41 @@ Route<dynamic> routes(settings) {
     case PrinterPage.routeName:
       return MaterialPageRoute(builder: (context) => const PrinterPage());
     case ProductInputPage.routeName:
-      return MaterialPageRoute(builder: (context) => ProductInputPage(product: settings.arguments as ProductModel?));
+      return MaterialPageRoute(
+        builder: (context) =>
+            ProductInputPage(product: settings.arguments as ProductModel?),
+      );
     case POSOrderPage.routeName:
       return MaterialPageRoute(builder: (context) => POSOrderPage());
-      case PaymentPage.routeName:
-      return MaterialPageRoute(builder: (context) => PaymentPage(referenceId: settings.arguments as String?,));
-      case CashPage.routeName:
-      return MaterialPageRoute(builder: (context) => CashPage(referenceId: settings.arguments as String?,));
-      case SuccessTransactionPage.routeName:
-      return MaterialPageRoute(builder: (context) => SuccessTransactionPage(referenceId: settings.arguments as String,));
+    case PaymentPage.routeName:
+      return MaterialPageRoute(
+        builder: (context) =>
+            PaymentPage(referenceId: settings.arguments as String?),
+      );
+    case CashPage.routeName:
+      return MaterialPageRoute(
+        builder: (context) =>
+            CashPage(referenceId: settings.arguments as String?),
+      );
+    case SuccessTransactionPage.routeName:
+      return MaterialPageRoute(
+        builder: (context) =>
+            SuccessTransactionPage(referenceId: settings.arguments as String),
+      );
     case DetailTransactionPage.routeName:
-      return MaterialPageRoute(builder: (context) => DetailTransactionPage(referenceId: settings.arguments as String,));
+      return MaterialPageRoute(
+        builder: (context) =>
+            DetailTransactionPage(referenceId: settings.arguments as String),
+      );
     case QrPage.routeName:
       return MaterialPageRoute(builder: (context) => QrPage());
 
     default:
       return MaterialPageRoute(
         builder: (context) {
-          return Scaffold(body: Center(child: Text('Page not found: ${settings.name}')));
+          return Scaffold(
+            body: Center(child: Text('Page not found: ${settings.name}')),
+          );
         },
       );
   }

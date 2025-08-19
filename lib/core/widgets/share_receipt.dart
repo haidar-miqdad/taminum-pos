@@ -3,7 +3,6 @@ import 'package:flutter_taminum_mobile/core/core.dart';
 
 import '../../features/features.dart';
 
-
 class ShareReceipt extends StatefulWidget {
   const ShareReceipt({super.key, required this.data});
 
@@ -20,9 +19,7 @@ class _ShareReceiptState extends State<ShareReceipt> {
     return Container(
       width: 370,
       height: 800 + (widget.data.items.length * 50),
-      decoration: BoxDecoration(
-        color: context.theme.scaffoldBackgroundColor,
-      ),
+      decoration: BoxDecoration(color: context.theme.scaffoldBackgroundColor),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18.0),
         child: Column(
@@ -34,8 +31,10 @@ class _ShareReceiptState extends State<ShareReceipt> {
                 children: [
                   Image.asset(MainAssets.success2, width: 100),
                   Spacing.sp24.height,
-                  const SubtitleText('Transaksi Berhasil',
-                      textAlign: TextAlign.center),
+                  const SubtitleText(
+                    'Transaksi Berhasil',
+                    textAlign: TextAlign.center,
+                  ),
                   Spacing.sp4.height,
                   RegularText(
                     widget.data.createdAt.toString(),
@@ -46,7 +45,9 @@ class _ShareReceiptState extends State<ShareReceipt> {
             ),
             AppDivider(),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: Spacing.defaultSize),
+              padding: const EdgeInsets.symmetric(
+                vertical: Spacing.defaultSize,
+              ),
               child: Column(
                 children: [
                   Row(
@@ -106,27 +107,39 @@ class _ShareReceiptState extends State<ShareReceipt> {
               itemCount: widget.data.items.length,
             ),
             AppDivider(),
-            _buildTile('Jumlah pesanan', '${ widget.data.items.length}'),
+            _buildTile('Jumlah pesanan', '${widget.data.items.length}'),
             _buildTile('Subtotal', widget.data.amount.toIDR()),
             _buildTile('Pajak', 'Rp 0'),
-            _buildTile('Diskon', '- ${widget.data.discount.toIDR()}', color: Colors.green),
+            _buildTile(
+              'Diskon',
+              '- ${widget.data.discount.toIDR()}',
+              color: Colors.green,
+            ),
             _buildTile('Total', 'Rp ${widget.data.total.toIDR()}'),
             AppDivider(),
-            _buildTile('Dibayar', 'Rp ${widget.data.total.toIDR()}', isBold: true),
-            _buildTile('Kembalian', 'Rp ${widget.data.returnAmount.toIDR()}', isBold: true, color: redColor),
+            _buildTile(
+              'Dibayar',
+              'Rp ${widget.data.total.toIDR()}',
+              isBold: true,
+            ),
+            _buildTile(
+              'Kembalian',
+              'Rp ${widget.data.returnAmount.toIDR()}',
+              isBold: true,
+              color: redColor,
+            ),
           ],
         ),
       ),
-
     );
   }
 
   Widget _buildTile(
-      String title,
-      String value, {
-        Color? color,
-        bool isBold = false,
-      }) {
+    String title,
+    String value, {
+    Color? color,
+    bool isBold = false,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: Spacing.sp4),
       child: Row(
@@ -137,10 +150,7 @@ class _ShareReceiptState extends State<ShareReceipt> {
               style: const TextStyle(fontSize: Spacing.sp12),
             )
           else
-            RegularText(
-              title,
-              style: const TextStyle(fontSize: Spacing.sp12),
-            ),
+            RegularText(title, style: const TextStyle(fontSize: Spacing.sp12)),
           Spacing.sp8.width,
           Expanded(
             child: RegularText.semibold(

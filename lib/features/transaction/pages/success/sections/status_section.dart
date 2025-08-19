@@ -1,9 +1,7 @@
 part of '../page.dart';
 
 class _StatusSection extends StatelessWidget {
-  const _StatusSection({
-    super.key,
-  });
+  const _StatusSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +11,7 @@ class _StatusSection extends StatelessWidget {
         builder: (context, state) {
           return Column(
             children: [
-              Lottie.asset(MainAssets.successLottie, width: 120, height: 120,),
+              Lottie.asset(MainAssets.successLottie, width: 120, height: 120),
               Spacing.sp24.height,
               RegularText.semibold('Transaksi Berhasil'),
               Spacing.sp8.height,

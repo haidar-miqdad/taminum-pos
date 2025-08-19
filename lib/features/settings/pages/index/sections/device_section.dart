@@ -1,9 +1,7 @@
 part of '../page.dart';
 
 class _DeviceSection extends StatelessWidget {
-  const _DeviceSection({
-    super.key,
-  });
+  const _DeviceSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +12,21 @@ class _DeviceSection extends StatelessWidget {
         children: [
           SubtitleText('Perangkat Tambahan'),
           Spacing.defaultSize.height,
-          ItemMenuSettings('Printer', icon: Icons.local_printshop_outlined, onTap: (){
-            Navigator.pushNamed(context, PrinterPage.routeName);
-          },),
-          Divider(color: MainColors.white[400], thickness: 1,),
-          ItemMenuSettings('Atur Struk', icon: AppIcons.coupon, onTap: (){
-            Navigator.pushNamed(context, ReceiptPage.routeName);
-          },),
+          ItemMenuSettings(
+            'Printer',
+            icon: Icons.local_printshop_outlined,
+            onTap: () {
+              Navigator.pushNamed(context, PrinterPage.routeName);
+            },
+          ),
+          Divider(color: MainColors.white[400], thickness: 1),
+          ItemMenuSettings(
+            'Atur Struk',
+            icon: AppIcons.coupon,
+            onTap: () {
+              Navigator.pushNamed(context, ReceiptPage.routeName);
+            },
+          ),
         ],
       ),
     );

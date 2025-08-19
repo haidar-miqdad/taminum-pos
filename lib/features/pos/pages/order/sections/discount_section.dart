@@ -34,24 +34,40 @@ class _DiscountSectionState extends State<_DiscountSection> {
           _buildOption('Nominal', DiscountType.nominal),
           if (type == DiscountType.nominal) ...[
             Spacing.sp8.height,
-            RegularTextInput(controller: controller, hinText: 'Rp 0', label: 'Jumlah', keyboardType: TextInputType.number, inputFormatters: [FilteringTextInputFormatter.digitsOnly]),
+            RegularTextInput(
+              controller: controller,
+              hinText: 'Rp 0',
+              label: 'Jumlah',
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            ),
           ],
           AppDivider(thickness: 3),
           _buildOption('Persentase', DiscountType.percentage),
           if (type == DiscountType.percentage) ...[
             Spacing.sp8.height,
-            RegularTextInput(controller: controller, hinText: '0%', label: 'Jumlah', keyboardType: TextInputType.number, inputFormatters: [FilteringTextInputFormatter.digitsOnly]),
+            RegularTextInput(
+              controller: controller,
+              hinText: '0%',
+              label: 'Jumlah',
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            ),
           ],
           AppDivider(thickness: 3),
           SafeArea(
             child: ElevatedButton(
               onPressed: () {
-                context.read<CartBloc>().add(ApplyDiscountCartEvent(disc: num.tryParse(controller.text) ?? 0, type: type));
+                context.read<CartBloc>().add(
+                  ApplyDiscountCartEvent(
+                    disc: num.tryParse(controller.text) ?? 0,
+                    type: type,
+                  ),
+                );
                 Navigator.pop(context);
               },
 
               child: Text('Terapkan'),
-
             ),
           ),
         ],
@@ -77,16 +93,25 @@ class _DiscountSectionState extends State<_DiscountSection> {
                   width: 24,
                   height: 24,
                   padding: EdgeInsets.all(Spacing.sp4),
-                  decoration: BoxDecoration(shape: BoxShape.circle, color: MainColors.white[500]),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: MainColors.white[500],
+                  ),
                   child: Container(
-                    decoration: BoxDecoration(shape: BoxShape.circle, color: context.theme.primaryColor),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: context.theme.primaryColor,
+                    ),
                   ),
                 )
               : Container(
                   width: 24,
                   height: 24,
                   padding: EdgeInsets.all(Spacing.sp4),
-                  decoration: BoxDecoration(shape: BoxShape.circle, color: MainColors.white[500]),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: MainColors.white[500],
+                  ),
                 ),
         ],
       ),

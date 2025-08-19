@@ -13,7 +13,6 @@ class XenditPage extends StatefulWidget {
 }
 
 class _XenditPageState extends State<XenditPage> {
-
   // @override
   // void initState() {
   //   context.read<XenditBloc>().add(GetXenditEvent());
@@ -31,7 +30,7 @@ class _XenditPageState extends State<XenditPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('API Key Xendit'),),
+      appBar: AppBar(title: Text('API Key Xendit')),
       body: Padding(
         padding: const EdgeInsets.all(Spacing.defaultSize),
         child: Column(

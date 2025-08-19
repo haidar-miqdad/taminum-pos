@@ -1,19 +1,15 @@
-
 part of '../page.dart';
 
 class _StockSection extends StatefulWidget {
-  const _StockSection(this.product,);
+  const _StockSection(this.product);
 
   final ProductModel? product;
-
-
 
   @override
   State<_StockSection> createState() => _StockSectionState();
 }
 
 class _StockSectionState extends State<_StockSection> {
-
   TextEditingController skuController = TextEditingController();
   TextEditingController stockController = TextEditingController();
 
@@ -22,9 +18,12 @@ class _StockSectionState extends State<_StockSection> {
     skuController.text = widget.product?.sku ?? '';
     stockController.text = widget.product?.stock.toString() ?? '';
 
-    context.read<FormProductBloc>().add(ChangeFormProductEvent(stock: int.tryParse(stockController.text)));
-    context.read<FormProductBloc>().add(ChangeFormProductEvent(sku: skuController.text));
-
+    context.read<FormProductBloc>().add(
+      ChangeFormProductEvent(stock: int.tryParse(stockController.text)),
+    );
+    context.read<FormProductBloc>().add(
+      ChangeFormProductEvent(sku: skuController.text),
+    );
 
     super.initState();
   }
@@ -35,6 +34,7 @@ class _StockSectionState extends State<_StockSection> {
     stockController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -56,4 +56,3 @@ class _StockSectionState extends State<_StockSection> {
     );
   }
 }
-

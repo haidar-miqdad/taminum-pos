@@ -1,10 +1,8 @@
+enum TypeEnum { draft, paid, unpaid }
 
-
-enum TypeEnum {draft, paid, unpaid}
-
-extension TypeEnumExt on TypeEnum{
-  String get valueName{
-    switch(this){
+extension TypeEnumExt on TypeEnum {
+  String get valueName {
+    switch (this) {
       case TypeEnum.draft:
         return 'Draft';
       case TypeEnum.paid:

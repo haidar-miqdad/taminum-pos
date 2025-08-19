@@ -9,18 +9,19 @@ class TransactionService {
     try {
       final db = await SQLiteDatabase.database;
 
-      List<Map<String, Object?>>result = [];
+      List<Map<String, Object?>> result = [];
       if (type != null) {
-         result = await db.rawQuery(
+        result = await db.rawQuery(
           '''
          SELECT * FROM transactions
          INNER JOIN items ON transactions.id = items.transactionId
          WHERE transactions.type = ?
          ORDER BY transactions.createdAt DESC
-      ''', [type.name],
+      ''',
+          [type.name],
         );
       } else {
-         result = await db.rawQuery('''
+        result = await db.rawQuery('''
          SELECT * FROM transactions
          INNER JOIN items ON transactions.id = items.transactionId
          ORDER BY transactions.createdAt DESC
@@ -30,10 +31,14 @@ class TransactionService {
       List<TransactionModel> transactions = [];
 
       for (var element in result) {
-        final index = transactions.indexWhere((e) => e.referenceId == element['referenceId']);
+        final index = transactions.indexWhere(
+          (e) => e.referenceId == element['referenceId'],
+        );
 
         if (index < 0) {
-          transactions.add(TransactionModel.fromJson(element).copyWith(element));
+          transactions.add(
+            TransactionModel.fromJson(element).copyWith(element),
+          );
         } else {
           transactions[index] = transactions[index].copyWith(element);
         }
@@ -59,10 +64,14 @@ class TransactionService {
       List<TransactionModel> transactions = [];
 
       for (var element in result) {
-        final index = transactions.indexWhere((e) => e.referenceId == element['referenceId']);
+        final index = transactions.indexWhere(
+          (e) => e.referenceId == element['referenceId'],
+        );
 
         if (index < 0) {
-          transactions.add(TransactionModel.fromJson(element).copyWith(element));
+          transactions.add(
+            TransactionModel.fromJson(element).copyWith(element),
+          );
         } else {
           transactions[index] = transactions[index].copyWith(element);
         }
@@ -91,10 +100,10 @@ class TransactionService {
     try {
       final db = await SQLiteDatabase.database;
       await db.update(
-          'transactions',
-          transaction.toJson(),
-          where: 'referenceId = ?',
-          whereArgs: [transaction.referenceId],
+        'transactions',
+        transaction.toJson(),
+        where: 'referenceId = ?',
+        whereArgs: [transaction.referenceId],
       );
 
       return transaction;

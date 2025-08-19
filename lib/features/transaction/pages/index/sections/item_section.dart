@@ -1,11 +1,7 @@
 part of '../page.dart';
 
-
 class _ItemSection extends StatelessWidget {
-
-  const _ItemSection(
-      this.transaction,
-  );
+  const _ItemSection(this.transaction);
 
   final TransactionModel transaction;
 
@@ -13,7 +9,11 @@ class _ItemSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, DetailTransactionPage.routeName, arguments: transaction.referenceId);
+        Navigator.pushNamed(
+          context,
+          DetailTransactionPage.routeName,
+          arguments: transaction.referenceId,
+        );
       },
       child: Padding(
         padding: const EdgeInsets.only(bottom: Spacing.sp12),
@@ -24,14 +24,18 @@ class _ItemSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: Spacing.sp12, vertical: Spacing.sp4),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: context.theme.primaryColor,
-                      ),
-                      borderRadius: BorderRadius.circular(Spacing.sp8)
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Spacing.sp12,
+                    vertical: Spacing.sp4,
                   ),
-                  child: RegularText.semibold(transaction.type.valueName, style: TextStyle(color: context.theme.primaryColor),),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: context.theme.primaryColor),
+                    borderRadius: BorderRadius.circular(Spacing.sp8),
+                  ),
+                  child: RegularText.semibold(
+                    transaction.type.valueName,
+                    style: TextStyle(color: context.theme.primaryColor),
+                  ),
                 ),
                 Row(
                   children: [
@@ -62,13 +66,14 @@ class _ItemSection extends StatelessWidget {
               ],
             ),
             Spacing.sp8.height,
-            RegularText.semibold('Rp ${(transaction.amount - transaction.discount).toIDR()}', style: TextStyle(color: context.theme.primaryColor),),
+            RegularText.semibold(
+              'Rp ${(transaction.amount - transaction.discount).toIDR()}',
+              style: TextStyle(color: context.theme.primaryColor),
+            ),
             AppDivider(),
           ],
-
         ),
       ),
     );
   }
 }
-

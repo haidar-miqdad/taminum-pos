@@ -1,13 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 
 import '../core.dart';
 
 class ContentSheet extends StatelessWidget {
-  const ContentSheet({
-    super.key, required this.child,
-  });
+  const ContentSheet({super.key, required this.child});
 
   final Widget child;
 
@@ -36,7 +32,7 @@ class ContentSheet extends StatelessWidget {
               ],
             ),
             Spacing.defaultSize.height,
-            child
+            child,
           ],
         ),
       ),

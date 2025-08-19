@@ -21,17 +21,25 @@ class _ActionSectionState extends State<_ActionSection> {
               Row(
                 children: [
                   Expanded(
-                    child: OutlinedButton(onPressed: () {
-                      if(state.item != null){
-                        context.read<PrinterBloc>().add(TransactionPrinterEvent(state.item!));
-                      }
-                    }, child: Text('Cetak Struk')),
+                    child: OutlinedButton(
+                      onPressed: () {
+                        if (state.item != null) {
+                          context.read<PrinterBloc>().add(
+                            TransactionPrinterEvent(state.item!),
+                          );
+                        }
+                      },
+                      child: Text('Cetak Struk'),
+                    ),
                   ),
                   Spacing.defaultSize.width,
                   Expanded(
-                    child: OutlinedButton(onPressed: () {
-                     share( state.item!);
-                    }, child: Text('Kirim Struk')),
+                    child: OutlinedButton(
+                      onPressed: () {
+                        share(state.item!);
+                      },
+                      child: Text('Kirim Struk'),
+                    ),
                   ),
                 ],
               ),
@@ -41,7 +49,7 @@ class _ActionSectionState extends State<_ActionSection> {
                   Navigator.pushNamedAndRemoveUntil(
                     context,
                     MainPage.routeName,
-                        (route) => false,
+                    (route) => false,
                   );
                 },
                 child: const Text('Transaksi Baru'),
@@ -55,12 +63,14 @@ class _ActionSectionState extends State<_ActionSection> {
   }
 
   void share(TransactionModel transaction) {
-    ScreenshotController().captureFromWidget(ShareReceipt(data: transaction),
-      context: context,
-      targetSize: Size(370, 800 + (transaction.items.length * 50)),
-    )
+    ScreenshotController()
+        .captureFromWidget(
+          ShareReceipt(data: transaction),
+          context: context,
+          targetSize: Size(370, 800 + (transaction.items.length * 50)),
+        )
         .then((capturedImage) async {
-      await ShareHelper.shareImage(context, capturedImage, 'contoh');
-    });
+          await ShareHelper.shareImage(context, capturedImage, 'contoh');
+        });
   }
 }

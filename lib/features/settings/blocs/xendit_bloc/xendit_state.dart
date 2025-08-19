@@ -1,21 +1,21 @@
 part of 'xendit_bloc.dart';
 
 class XenditState extends Equatable {
-  const XenditState({this.error, this.status = Status.initial, this.key = 'default'});
+  const XenditState({
+    this.error,
+    this.status = Status.initial,
+    this.key = 'default',
+  });
 
   final String? error;
   final Status status;
   final String key;
 
-  factory XenditState.initial(){
+  factory XenditState.initial() {
     return XenditInitial();
   }
 
-  XenditState copyWith({
-    String? error,
-    Status? status,
-    String? key,
-  }){
+  XenditState copyWith({String? error, Status? status, String? key}) {
     return XenditState(
       error: error,
       status: status ?? this.status,

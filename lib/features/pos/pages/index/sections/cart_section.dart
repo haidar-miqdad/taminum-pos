@@ -1,10 +1,7 @@
-
 part of '../page.dart';
 
 class _CartSection extends StatelessWidget {
-  const _CartSection({
-    super.key, required this.qtyItems, required this.price,
-  });
+  const _CartSection({super.key, required this.qtyItems, required this.price});
 
   final int qtyItems;
   final num price;
@@ -13,8 +10,8 @@ class _CartSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-      Navigator.pushNamed(context, POSOrderPage.routeName);
-    },
+        Navigator.pushNamed(context, POSOrderPage.routeName);
+      },
       child: Container(
         margin: const EdgeInsets.all(Spacing.defaultSize),
         padding: const EdgeInsets.all(Spacing.sp12),
@@ -24,7 +21,10 @@ class _CartSection extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(AppIcons.shoppingCart, color: context.theme.scaffoldBackgroundColor),
+            Icon(
+              AppIcons.shoppingCart,
+              color: context.theme.scaffoldBackgroundColor,
+            ),
             Spacing.defaultSize.width,
             Expanded(
               child: Column(
@@ -33,21 +33,28 @@ class _CartSection extends StatelessWidget {
                 children: [
                   RegularText.semibold(
                     '$qtyItems items',
-                    style: TextStyle(color: context.theme.scaffoldBackgroundColor),
+                    style: TextStyle(
+                      color: context.theme.scaffoldBackgroundColor,
+                    ),
                   ),
                   RegularText.semibold(
                     'Rp ${price.toIDR()}',
-                    style: TextStyle(fontSize: Spacing.sp12, color: context.theme.scaffoldBackgroundColor),
+                    style: TextStyle(
+                      fontSize: Spacing.sp12,
+                      color: context.theme.scaffoldBackgroundColor,
+                    ),
                   ),
                 ],
               ),
             ),
             Spacing.defaultSize.width,
-            Icon(Icons.arrow_forward_rounded, color: context.theme.scaffoldBackgroundColor),
+            Icon(
+              Icons.arrow_forward_rounded,
+              color: context.theme.scaffoldBackgroundColor,
+            ),
           ],
         ),
       ),
     );
   }
 }
-

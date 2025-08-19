@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 
@@ -12,27 +11,23 @@ class ShowReceiptPage extends StatelessWidget {
   const ShowReceiptPage({super.key});
 
   static const routeName = 'settings/show-receipt';
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Tampilan Struk'),),
+      appBar: AppBar(title: Text('Tampilan Struk')),
       body: ListView(
         children: [
           _HeaderSection(),
-          Divider(color: MainColors.white, thickness: 8,),
+          Divider(color: MainColors.white, thickness: 8),
           _TypeSection(),
-          Divider(color: MainColors.white, thickness: 8,),
+          Divider(color: MainColors.white, thickness: 8),
           _OrderSection(),
-          Divider(color: MainColors.white, thickness: 8,),
+          Divider(color: MainColors.white, thickness: 8),
           _DetailSection(),
-          _FooterSection()
-          
+          _FooterSection(),
         ],
       ),
     );
   }
 }
-
-
-

@@ -8,24 +8,26 @@ part 'receipt_state.dart';
 
 class ReceiptBloc extends Bloc<ReceiptEvent, ReceiptState> {
   ReceiptBloc() : super(ReceiptState.initial()) {
-    on<GetReceiptEvent>((event, emit) async{
-      try{
+    on<GetReceiptEvent>((event, emit) async {
+      try {
         emit(ReceiptState(status: Status.loading));
-        
+
         final service = await ReceiptService.get();
         emit(ReceiptState(status: Status.apply, receipt: service));
-      }catch(e){
+      } catch (e) {
         emit(ReceiptState(status: Status.failure, error: e.toString()));
       }
     });
 
-    on<SubmitReceiptEvent>((event, emit) async{
-      try{
+    on<SubmitReceiptEvent>((event, emit) async {
+      try {
         emit(ReceiptState(status: Status.loading));
 
-        final service = await ReceiptService.insert(ReceiptModel(desc: event.desc, message: event.message));
+        final service = await ReceiptService.insert(
+          ReceiptModel(desc: event.desc, message: event.message),
+        );
         emit(ReceiptState(status: Status.success, receipt: service));
-      }catch(e){
+      } catch (e) {
         emit(ReceiptState(status: Status.failure, error: e.toString()));
       }
     });

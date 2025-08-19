@@ -9,12 +9,15 @@ class _TypePaymentSection extends StatelessWidget {
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(Spacing.defaultSize),
-          child: Column(children: [
-            _buildTile('Tipe Pembayaran', '${state.item?.paymentType.valueName}'),
-            Spacing.sp8.height,
-            _buildTile('Order ID', '${state.item?.referenceId}'),
-          ],
-
+          child: Column(
+            children: [
+              _buildTile(
+                'Tipe Pembayaran',
+                '${state.item?.paymentType.valueName}',
+              ),
+              Spacing.sp8.height,
+              _buildTile('Order ID', '${state.item?.referenceId}'),
+            ],
           ),
         );
       },
@@ -22,6 +25,9 @@ class _TypePaymentSection extends StatelessWidget {
   }
 
   Row _buildTile(String title, String value) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [RegularText(title), RegularText.semibold(value)]);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [RegularText(title), RegularText.semibold(value)],
+    );
   }
 }

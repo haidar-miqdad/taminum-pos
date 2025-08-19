@@ -33,8 +33,13 @@ class SettingsPage extends StatelessWidget {
             padding: const EdgeInsets.all(Spacing.defaultSize),
             child: OutlinedButton(
               onPressed: () {},
-              style: OutlinedButton.styleFrom(side: const BorderSide(width: 1, color: MainColors.red)),
-              child: RegularText.semibold('Keluar', style: TextStyle(color: MainColors.red)),
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(width: 1, color: MainColors.red),
+              ),
+              child: RegularText.semibold(
+                'Keluar',
+                style: TextStyle(color: MainColors.red),
+              ),
             ),
           ),
         ],

@@ -1,9 +1,7 @@
 part of '../page.dart';
 
 class _ItemSection extends StatelessWidget {
-  const _ItemSection({
-    super.key, required this.product,
-  });
+  const _ItemSection({super.key, required this.product});
 
   final ProductModel product;
 
@@ -15,20 +13,19 @@ class _ItemSection extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(Spacing.sp8),
-            child: product.imageUrl.isEmpty ? Image.network(
-              'https://lh6.googleusercontent.com/proxy/PvEQ4El5nLBPs2TQ-IfrlJd3AtD1ZF9lzs4JUILg4Ekhi_Q5OEFMM0Gu8KoT4VU0gfAbBmFk2w6Wb9m2X9I2OQICg_Gj4rNUQh-oO3lOxQYVIK-D-7ZMdtRGSqA',
-              width: 80,
-              height: 80,
-              fit: BoxFit.cover,
-            ) :
-            Image.memory(
-              ImageHelper.convertBase64ToUint8List(product.imageUrl),
-              width: 80,
-              height: 80,
-              fit: BoxFit.cover,
-            ),
-
-
+            child: product.imageUrl.isEmpty
+                ? Image.network(
+                    'https://lh6.googleusercontent.com/proxy/PvEQ4El5nLBPs2TQ-IfrlJd3AtD1ZF9lzs4JUILg4Ekhi_Q5OEFMM0Gu8KoT4VU0gfAbBmFk2w6Wb9m2X9I2OQICg_Gj4rNUQh-oO3lOxQYVIK-D-7ZMdtRGSqA',
+                    width: 80,
+                    height: 80,
+                    fit: BoxFit.cover,
+                  )
+                : Image.memory(
+                    ImageHelper.convertBase64ToUint8List(product.imageUrl),
+                    width: 80,
+                    height: 80,
+                    fit: BoxFit.cover,
+                  ),
           ),
           Spacing.defaultSize.width,
           Expanded(
@@ -65,4 +62,3 @@ class _ItemSection extends StatelessWidget {
     );
   }
 }
-

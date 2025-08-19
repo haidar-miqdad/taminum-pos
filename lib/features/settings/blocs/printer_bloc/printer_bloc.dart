@@ -13,7 +13,7 @@ part 'printer_state.dart';
 class PrinterBloc extends Bloc<PrinterEvent, PrinterState> {
   PrinterBloc() : super(PrinterState.initial()) {
     on<GetPrinterEvent>((event, emit) async {
-      try{
+      try {
         var status = await Permission.bluetoothConnect.status;
         if (status.isGranted) {
           var statusScan = await Permission.bluetoothScan.status;
@@ -35,7 +35,7 @@ class PrinterBloc extends Bloc<PrinterEvent, PrinterState> {
             add(GetPrinterEvent());
           }
         }
-      }catch(e){
+      } catch (e) {
         emit(state.copyWith(error: e.toString(), status: Status.failure));
       }
     });
@@ -46,7 +46,9 @@ class PrinterBloc extends Bloc<PrinterEvent, PrinterState> {
 
     on<TestPrinterEvent>((event, emit) async {
       try {
-        await PrintBluetoothThermal.connect(macPrinterAddress: event.macAddress);
+        await PrintBluetoothThermal.connect(
+          macPrinterAddress: event.macAddress,
+        );
 
         List<int> ticket = await ReceiptTemplate.ticket();
 
@@ -71,7 +73,5 @@ class PrinterBloc extends Bloc<PrinterEvent, PrinterState> {
         emit(state.copyWith(status: Status.failure, error: e.toString()));
       }
     });
-
-
   }
 }

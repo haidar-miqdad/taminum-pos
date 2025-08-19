@@ -27,8 +27,15 @@ class ChangeFormProductEvent extends FormProductEvent {
   final int? stock;
   final String? sku;
 
-
-  const ChangeFormProductEvent({this.name, this.desc, this.priceRegular, this.unit, this.priceItem, this.stock, this.sku,});
+  const ChangeFormProductEvent({
+    this.name,
+    this.desc,
+    this.priceRegular,
+    this.unit,
+    this.priceItem,
+    this.stock,
+    this.sku,
+  });
 
   @override
   List<Object?> get props => [

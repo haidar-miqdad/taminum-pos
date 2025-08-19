@@ -49,7 +49,9 @@ class _ProfilePageState extends State<ProfilePage> {
         }
 
         if (state.status == Status.failure) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error ?? 'Something went wrong')));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.error ?? 'Something went wrong')),
+          );
         }
       },
       child: Scaffold(
@@ -59,9 +61,20 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             _ImageSection(),
             Divider(color: MainColors.white[400], thickness: 1),
-            RegularTextInput(label: 'Nama Bisnis', hinText: 'Business Name', controller: nameController, required: true),
+            RegularTextInput(
+              label: 'Nama Bisnis',
+              hinText: 'Business Name',
+              controller: nameController,
+              required: true,
+            ),
             Spacing.sp24.height,
-            RegularTextInput(label: 'Email', hinText: 'example@gmail.com', controller: emailController, required: true, keyboardType: TextInputType.emailAddress),
+            RegularTextInput(
+              label: 'Email',
+              hinText: 'example@gmail.com',
+              controller: emailController,
+              required: true,
+              keyboardType: TextInputType.emailAddress,
+            ),
             Spacing.sp24.height,
             RegularTextInput(
               label: 'Phone Number',
@@ -79,9 +92,18 @@ class _ProfilePageState extends State<ProfilePage> {
             padding: const EdgeInsets.all(Spacing.defaultSize),
             child: ElevatedButton(
               onPressed: () {
-                context.read<ProfileBloc>().add(SubmitProfileEvent(name: nameController.text, email: emailController.text, phoneNumber: phoneNumberController.text));
+                context.read<ProfileBloc>().add(
+                  SubmitProfileEvent(
+                    name: nameController.text,
+                    email: emailController.text,
+                    phoneNumber: phoneNumberController.text,
+                  ),
+                );
               },
-              child: RegularText.semibold('Simpan', style: TextStyle(color: MainColors.white)),
+              child: RegularText.semibold(
+                'Simpan',
+                style: TextStyle(color: MainColors.white),
+              ),
             ),
           ),
         ),

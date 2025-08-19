@@ -60,13 +60,14 @@ class _CashPageState extends State<CashPage> {
     );
   }
 
-  void showConfirm(){
+  void showConfirm() {
     showModalBottomSheet(
-        isScrollControlled: true,
-        context: context,
-        builder: (context) => _ConfirmSection(nominal: num.tryParse(controller.text) ?? 0, referenceId: widget.referenceId,),
+      isScrollControlled: true,
+      context: context,
+      builder: (context) => _ConfirmSection(
+        nominal: num.tryParse(controller.text) ?? 0,
+        referenceId: widget.referenceId,
+      ),
     );
   }
 }
-
-

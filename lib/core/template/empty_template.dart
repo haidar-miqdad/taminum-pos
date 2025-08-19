@@ -1,6 +1,5 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../core.dart';
 
@@ -15,10 +14,7 @@ class EmptyTemplate extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              MainAssets.empty,
-              width: Spacing.width(context) / 2,
-            ),
+            Lottie.asset(MainAssets.noData, width: Spacing.width(context) / 3),
             Spacing.sp32.height,
             const SubtitleText(
               'There are no products here',
@@ -27,7 +23,7 @@ class EmptyTemplate extends StatelessWidget {
             Spacing.defaultSize.height,
             const RegularText(
               'You do not have a product in the shop. '
-                  'Please add products first to start selling.',
+              'Please add products first to start selling.',
               textAlign: TextAlign.center,
             ),
           ],

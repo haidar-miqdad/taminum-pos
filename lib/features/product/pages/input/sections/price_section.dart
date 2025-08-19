@@ -21,20 +21,29 @@ class _PriceSectionState extends State<_PriceSection> {
     unitController.text = widget.product?.unit ?? '';
 
     priceRegularController.addListener(() {
-      context.read<FormProductBloc>().add(ChangeFormProductEvent(priceRegular: int.tryParse(priceRegularController.text)));
+      context.read<FormProductBloc>().add(
+        ChangeFormProductEvent(
+          priceRegular: int.tryParse(priceRegularController.text),
+        ),
+      );
     });
 
     priceItemController.addListener(() {
-      context.read<FormProductBloc>().add(ChangeFormProductEvent(priceItem: int.tryParse(priceItemController.text)));
+      context.read<FormProductBloc>().add(
+        ChangeFormProductEvent(
+          priceItem: int.tryParse(priceItemController.text),
+        ),
+      );
     });
 
     unitController.addListener(() {
-      context.read<FormProductBloc>().add(ChangeFormProductEvent(unit: unitController.text));
+      context.read<FormProductBloc>().add(
+        ChangeFormProductEvent(unit: unitController.text),
+      );
     });
 
     super.initState();
   }
-
 
   @override
   void dispose() {
@@ -54,7 +63,7 @@ class _PriceSectionState extends State<_PriceSection> {
         Row(
           children: [
             Expanded(
-              child:  RegularTextInput(
+              child: RegularTextInput(
                 hinText: 'Rp 0',
                 label: 'Harga Regular',
                 required: true,
@@ -65,12 +74,16 @@ class _PriceSectionState extends State<_PriceSection> {
             ),
             Spacing.defaultSize.width,
             Expanded(
-              child: RegularTextInput(hinText: 'Pcs, kg, etc.', label: 'Unit', required: true, controller: unitController),
+              child: RegularTextInput(
+                hinText: 'Pcs, kg, etc.',
+                label: 'Unit',
+                required: true,
+                controller: unitController,
+              ),
             ),
           ],
         ),
         Spacing.sp24.height,
-
 
         RegularTextInput(
           hinText: 'Rp 0',
@@ -80,7 +93,6 @@ class _PriceSectionState extends State<_PriceSection> {
           keyboardType: TextInputType.number,
           controller: priceItemController,
         ),
-
 
         Spacing.sp24.height,
         BlocBuilder<FormProductBloc, FormProductState>(
@@ -99,9 +111,15 @@ class _PriceSectionState extends State<_PriceSection> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      RegularText.medium('Margin', style: const TextStyle(fontSize: Spacing.sp12)),
+                      RegularText.medium(
+                        'Margin',
+                        style: const TextStyle(fontSize: Spacing.sp12),
+                      ),
                       Spacing.sp8.height,
-                      RegularText('${state.margin} %', style: TextStyle(fontSize: Spacing.sp12)),
+                      RegularText(
+                        '${state.margin} %',
+                        style: TextStyle(fontSize: Spacing.sp12),
+                      ),
                     ],
                   ),
                 ),
@@ -110,13 +128,21 @@ class _PriceSectionState extends State<_PriceSection> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      RegularText.medium('Profit', style: const TextStyle(fontSize: Spacing.sp12)),
+                      RegularText.medium(
+                        'Profit',
+                        style: const TextStyle(fontSize: Spacing.sp12),
+                      ),
                       Spacing.sp8.height,
-                      RegularText.semibold(state.profit.toIDR(), style: TextStyle(fontSize: Spacing.sp12, color: profitColor)),
+                      RegularText.semibold(
+                        state.profit.toIDR(),
+                        style: TextStyle(
+                          fontSize: Spacing.sp12,
+                          color: profitColor,
+                        ),
+                      ),
                     ],
                   ),
                 ),
-
               ],
             );
           },

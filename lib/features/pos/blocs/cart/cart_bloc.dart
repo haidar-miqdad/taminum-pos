@@ -8,15 +8,15 @@ part 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(CartState.initial()) {
-
     on<InitialCartEvent>((event, emit) {
       emit(CartState.initial());
 
-      if(event.transaction != null){
-        final items = event.transaction!.items.map((e) => CartModel(products: e.toCart, qty: e.qty)).toList();
-         emit(state.copyWith(cart: items));
+      if (event.transaction != null) {
+        final items = event.transaction!.items
+            .map((e) => CartModel(products: e.toCart, qty: e.qty))
+            .toList();
+        emit(state.copyWith(cart: items));
       }
-
     });
 
     on<ApplyDiscountCartEvent>((event, emit) {
@@ -60,6 +60,5 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       }
       emit(state.copyWith(cart: items));
     });
-
   }
 }

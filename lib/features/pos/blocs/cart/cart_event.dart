@@ -11,7 +11,7 @@ class CartEvent extends Equatable {
 class InitialCartEvent extends CartEvent {
   final TransactionModel? transaction;
 
-  const InitialCartEvent({ this.transaction});
+  const InitialCartEvent({this.transaction});
 
   @override
   // TODO: implement props
@@ -30,7 +30,6 @@ class ApplyDiscountCartEvent extends CartEvent {
 }
 
 class IncrementCartEvent extends CartEvent {
-
   final ProductModel product;
 
   const IncrementCartEvent({required this.product});
@@ -41,7 +40,6 @@ class IncrementCartEvent extends CartEvent {
 }
 
 class DecrementCartEvent extends CartEvent {
-
   final ProductModel product;
 
   const DecrementCartEvent({required this.product});

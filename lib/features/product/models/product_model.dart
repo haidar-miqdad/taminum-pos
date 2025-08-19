@@ -4,8 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'product_model.g.dart';
 
 @JsonSerializable()
-class ProductModel extends Equatable{
-
+class ProductModel extends Equatable {
   @JsonKey(name: 'id', includeToJson: false)
   final int id;
   @JsonKey(name: 'title', defaultValue: '')
@@ -32,7 +31,7 @@ class ProductModel extends Equatable{
   final DateTime createdAt;
 
   const ProductModel({
-  required this.title,
+    required this.title,
     required this.description,
     required this.imageUrl,
     required this.regularPrice,
@@ -44,13 +43,26 @@ class ProductModel extends Equatable{
     this.id = 0,
     required this.createdAt,
     this.customerName = '',
-
   });
 
-  factory ProductModel.fromJson(Map<String, dynamic> json) => _$ProductModelFromJson(json);
+  factory ProductModel.fromJson(Map<String, dynamic> json) =>
+      _$ProductModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductModelToJson(this);
 
   @override
-  List<Object> get props => [ title, description, imageUrl, regularPrice, unit, itemPrice, stock, id, sku , createdAt, note, customerName];
+  List<Object> get props => [
+    title,
+    description,
+    imageUrl,
+    regularPrice,
+    unit,
+    itemPrice,
+    stock,
+    id,
+    sku,
+    createdAt,
+    note,
+    customerName,
+  ];
 }

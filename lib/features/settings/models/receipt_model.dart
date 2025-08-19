@@ -4,19 +4,16 @@ import 'package:json_annotation/json_annotation.dart';
 part 'receipt_model.g.dart';
 
 @JsonSerializable()
-class ReceiptModel extends Equatable{
-
+class ReceiptModel extends Equatable {
   @JsonKey(name: 'desc')
   final String desc;
   @JsonKey(name: 'message')
   final String message;
 
-  const ReceiptModel({
-    required this.desc,
-    required this.message,
-  });
+  const ReceiptModel({required this.desc, required this.message});
 
-  factory ReceiptModel.fromJson(Map<String, dynamic> json) => _$ReceiptModelFromJson(json);
+  factory ReceiptModel.fromJson(Map<String, dynamic> json) =>
+      _$ReceiptModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ReceiptModelToJson(this);
 

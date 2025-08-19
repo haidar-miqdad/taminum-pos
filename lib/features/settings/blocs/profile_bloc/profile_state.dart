@@ -13,7 +13,7 @@ class ProfileState extends Equatable {
   final String? error;
   final String? image;
 
-  factory ProfileState.initial(){
+  factory ProfileState.initial() {
     return const ProfileState();
   }
 
@@ -22,7 +22,7 @@ class ProfileState extends Equatable {
     Status? status,
     String? error,
     String? image,
-}){
+  }) {
     return ProfileState(
       error: error,
       status: status ?? this.status,

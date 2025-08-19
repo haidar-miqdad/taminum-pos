@@ -1,9 +1,7 @@
 part of '../page.dart';
 
 class _AccountSection extends StatelessWidget {
-  const _AccountSection({
-    super.key,
-  });
+  const _AccountSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,18 +11,21 @@ class _AccountSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SubtitleText('Akun'),
-          ItemMenuSettings('Informasi Usaha', icon: AppIcons.receipt, onTap: (){},),
-          Divider(color: MainColors.white[400], thickness: 1,),
+          ItemMenuSettings(
+            'Informasi Usaha',
+            icon: AppIcons.receipt,
+            onTap: () {},
+          ),
+          Divider(color: MainColors.white[400], thickness: 1),
           ItemMenuSettings(
             'API Key Xendit',
             icon: AppIcons.creditCard,
-            onTap: (){
+            onTap: () {
               Navigator.pushNamed(context, XenditPage.routeName);
-            }
+            },
           ),
         ],
       ),
     );
   }
 }
-

@@ -17,24 +17,29 @@ class TransactionPage extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: Spacing.defaultSize, right: Spacing.defaultSize, left: Spacing.defaultSize),
+            padding: const EdgeInsets.only(
+              top: Spacing.defaultSize,
+              right: Spacing.defaultSize,
+              left: Spacing.defaultSize,
+            ),
             child: _FilterSection(),
           ),
           Spacing.sp40.height,
           Expanded(
             child: BlocBuilder<TransactionBloc, TransactionState>(
               builder: (context, state) {
-                if(state.transactions.isEmpty){
+                if (state.transactions.isEmpty) {
                   return EmptyTemplate();
                 }
                 return ListView.builder(
-                  padding: EdgeInsets.symmetric(horizontal: Spacing.defaultSize),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Spacing.defaultSize,
+                  ),
                   itemBuilder: (BuildContext context, int index) {
                     final items = state.transactions[index];
                     return _ItemSection(items);
                   },
                   itemCount: state.transactions.length,
-
                 );
               },
             ),
@@ -44,6 +49,3 @@ class TransactionPage extends StatelessWidget {
     );
   }
 }
-
-
-

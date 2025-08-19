@@ -79,24 +79,39 @@ class TransactionItemModel extends Equatable {
 
   ProductModel get toCart {
     return ProductModel(
-        title: title,
-        description: description,
-        imageUrl: imageUrl,
-        regularPrice: regularPrice,
-        unit: unit,
-        itemPrice: itemPrice,
-        stock: stock,
+      title: title,
+      description: description,
+      imageUrl: imageUrl,
+      regularPrice: regularPrice,
+      unit: unit,
+      itemPrice: itemPrice,
+      stock: stock,
       sku: sku,
-        id: id,
-        createdAt: DateTime.now(),
+      id: id,
+      createdAt: DateTime.now(),
     );
   }
 
-  factory TransactionItemModel.fromJson(Map<String, dynamic> json) => _$TransactionItemModelFromJson(json);
+  factory TransactionItemModel.fromJson(Map<String, dynamic> json) =>
+      _$TransactionItemModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$TransactionItemModelToJson(this);
 
   @override
   // TODO: implement props
-  List<Object?> get props => [id, qty, note, title, description, imageUrl, regularPrice, itemPrice, stock, unit, sku, transactionId, customerName];
+  List<Object?> get props => [
+    id,
+    qty,
+    note,
+    title,
+    description,
+    imageUrl,
+    regularPrice,
+    itemPrice,
+    stock,
+    unit,
+    sku,
+    transactionId,
+    customerName,
+  ];
 }

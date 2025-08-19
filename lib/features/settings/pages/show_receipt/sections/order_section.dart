@@ -1,10 +1,7 @@
-
 part of '../page.dart';
 
 class _OrderSection extends StatelessWidget {
-  const _OrderSection({
-    super.key,
-  });
+  const _OrderSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +19,7 @@ class _OrderSection extends StatelessWidget {
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {
-              return  Row(
+              return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
@@ -30,12 +27,10 @@ class _OrderSection extends StatelessWidget {
                     children: [
                       RegularText.semibold('Coffee Latte'),
                       Spacing.sp4.height,
-                      RegularText('Rp 18.900', style: TextStyle(fontSize: 12),),
-
+                      RegularText('Rp 18.900', style: TextStyle(fontSize: 12)),
                     ],
                   ),
                   RegularText.semibold('2x'),
-
                 ],
               );
             },
@@ -43,7 +38,6 @@ class _OrderSection extends StatelessWidget {
               return Spacing.defaultSize.height;
             },
             itemCount: 2,
-
           ),
 
           Padding(
@@ -53,14 +47,13 @@ class _OrderSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              RegularText.semibold('Subtotal', style: TextStyle(fontSize: 12),),
+              RegularText.semibold('Subtotal', style: TextStyle(fontSize: 12)),
               Spacing.sp4.height,
-              RegularText.semibold('Rp 18.900', style: TextStyle(fontSize: 12),),
+              RegularText.semibold('Rp 18.900', style: TextStyle(fontSize: 12)),
             ],
-          )
+          ),
         ],
       ),
     );
   }
 }
-

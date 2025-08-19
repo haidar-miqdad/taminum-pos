@@ -25,18 +25,22 @@ class _ProductInputPageState extends State<ProductInputPage> {
   @override
   void initState() {
     final p = widget.product;
-    context.read<FormProductBloc>().add(InitialFormProductEvent(image: widget.product?.imageUrl));
+    context.read<FormProductBloc>().add(
+      InitialFormProductEvent(image: widget.product?.imageUrl),
+    );
 
     if (p != null) {
-      context.read<FormProductBloc>().add(ChangeFormProductEvent(
-        name: p.title,
-        desc: p.description,
-        priceRegular: p.regularPrice,
-        unit: p.unit,
-        priceItem: p.itemPrice,
-        stock: p.stock,
-        sku: p.sku,
-      ));
+      context.read<FormProductBloc>().add(
+        ChangeFormProductEvent(
+          name: p.title,
+          desc: p.description,
+          priceRegular: p.regularPrice,
+          unit: p.unit,
+          priceItem: p.itemPrice,
+          stock: p.stock,
+          sku: p.sku,
+        ),
+      );
     }
     super.initState();
   }
@@ -51,21 +55,25 @@ class _ProductInputPageState extends State<ProductInputPage> {
       },
       child: BlocListener<ProductBloc, ProductState>(
         listener: (context, state) {
-          if(state.status == Status.apply){
+          if (state.status == Status.apply) {
             Navigator.pop(context);
           }
         },
         child: Scaffold(
           body: Scaffold(
-            appBar: AppBar(title: Text(widget.product != null ? 'Edit Produk' : 'Tambah Produk')),
+            appBar: AppBar(
+              title: Text(
+                widget.product != null ? 'Edit Produk' : 'Tambah Produk',
+              ),
+            ),
             body: Padding(
               padding: EdgeInsets.all(Spacing.defaultSize),
               child: ListView(
                 children: [
                   _InfoSection(widget.product),
-                  AppDivider(space: Spacing.sp24,),
+                  AppDivider(space: Spacing.sp24),
                   _PriceSection(widget.product),
-                  AppDivider(space: Spacing.sp24, thickness: Spacing.sp8,),
+                  AppDivider(space: Spacing.sp24, thickness: Spacing.sp8),
                   _StockSection(widget.product),
                 ],
               ),
@@ -75,16 +83,31 @@ class _ProductInputPageState extends State<ProductInputPage> {
                 return SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.all(Spacing.defaultSize),
-                    child: ElevatedButton(onPressed: state.isValid ? () {
-                      if(widget.product != null){
-                        context.read<ProductBloc>().add(UpdateProductEvent(state.product(
-                          id: widget.product!.id,
-                          createdAt: widget.product!.createdAt,
-                        )));
-                      }else{
-                        context.read<ProductBloc>().add(CreateProductEvent(state.product()));
-                      }
-                    } : null, child: Text(state.isValid == false ? 'input produk detail!' : 'Simpan')),
+                    child: ElevatedButton(
+                      onPressed: state.isValid
+                          ? () {
+                              if (widget.product != null) {
+                                context.read<ProductBloc>().add(
+                                  UpdateProductEvent(
+                                    state.product(
+                                      id: widget.product!.id,
+                                      createdAt: widget.product!.createdAt,
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                context.read<ProductBloc>().add(
+                                  CreateProductEvent(state.product()),
+                                );
+                              }
+                            }
+                          : null,
+                      child: Text(
+                        state.isValid == false
+                            ? 'input produk detail!'
+                            : 'Simpan',
+                      ),
+                    ),
                   ),
                 );
               },

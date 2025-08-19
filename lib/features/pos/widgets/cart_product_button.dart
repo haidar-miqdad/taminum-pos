@@ -5,7 +5,12 @@ import 'package:flutter_taminum_mobile/features/features.dart';
 import '../../../core/core.dart';
 
 class CartProductButton extends StatelessWidget {
-  const CartProductButton({super.key, this.onNoted, this.products, this.count = 0,});
+  const CartProductButton({
+    super.key,
+    this.onNoted,
+    this.products,
+    this.count = 0,
+  });
 
   final ProductModel? products;
   final int count;
@@ -33,8 +38,9 @@ class CartProductButton extends StatelessWidget {
               _buildButton(
                 context,
                 onTap: () {
-                  context.read<CartBloc>().add(DecrementCartEvent(product: products!));
-
+                  context.read<CartBloc>().add(
+                    DecrementCartEvent(product: products!),
+                  );
                 },
               ),
               Spacing.sp12.width,
@@ -44,9 +50,9 @@ class CartProductButton extends StatelessWidget {
                 context,
                 isIncrement: true,
                 onTap: () {
-                  context.read<CartBloc>().add(IncrementCartEvent(product: products!));
-
-
+                  context.read<CartBloc>().add(
+                    IncrementCartEvent(product: products!),
+                  );
                 },
               ),
             ] else ...[
@@ -57,9 +63,9 @@ class CartProductButton extends StatelessWidget {
                   style: TextStyle(color: context.theme.primaryColor),
                 ),
                 onTap: () {
-                  context.read<CartBloc>().add(IncrementCartEvent(product: products!));
-
-
+                  context.read<CartBloc>().add(
+                    IncrementCartEvent(product: products!),
+                  );
                 },
               ),
             ],
@@ -69,18 +75,31 @@ class CartProductButton extends StatelessWidget {
     );
   }
 
-  InkWell _buildButton(BuildContext context, {required VoidCallback onTap, bool isIncrement = false, Widget? text}) {
+  InkWell _buildButton(
+    BuildContext context, {
+    required VoidCallback onTap,
+    bool isIncrement = false,
+    Widget? text,
+  }) {
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(Spacing.sp8),
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: count > 0 ? Spacing.sp4 : Spacing.sp6, horizontal: count > 0 ? Spacing.sp4 : Spacing.sp14),
+        padding: EdgeInsets.symmetric(
+          vertical: count > 0 ? Spacing.sp4 : Spacing.sp6,
+          horizontal: count > 0 ? Spacing.sp4 : Spacing.sp14,
+        ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Spacing.sp8),
           color: isIncrement ? context.theme.primaryColor : Colors.white,
           border: Border.all(color: context.theme.primaryColor),
         ),
-        child: text ?? Icon(isIncrement ? Icons.add : Icons.remove, color: isIncrement ? Colors.white : context.theme.primaryColor),
+        child:
+            text ??
+            Icon(
+              isIncrement ? Icons.add : Icons.remove,
+              color: isIncrement ? Colors.white : context.theme.primaryColor,
+            ),
       ),
     );
   }

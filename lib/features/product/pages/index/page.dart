@@ -17,7 +17,6 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
-
   TextEditingController searchController = TextEditingController();
 
   @override
@@ -42,14 +41,13 @@ class _ProductPageState extends State<ProductPage> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Produk')),
       body: BlocConsumer<ProductBloc, ProductState>(
         listener: (context, state) {
-          if(state.status == Status.deleted){
+          if (state.status == Status.deleted) {
             getData();
           }
         },
@@ -59,7 +57,10 @@ class _ProductPageState extends State<ProductPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(Spacing.defaultSize),
-                child: SearchInput(hintText: 'Search by product name or SKU', controller: searchController,),
+                child: SearchInput(
+                  hintText: 'Search by product name or SKU',
+                  controller: searchController,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(Spacing.defaultSize),
@@ -68,31 +69,34 @@ class _ProductPageState extends State<ProductPage> {
               Spacing.defaultSize.height,
               Expanded(
                 child: state.status == Status.success && state.products.isEmpty
-                    ? EmptyTemplate() :ListView.separated(
-                  shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int index) {
-                    final item = state.products[index];
-                    return _ItemSection(
-                      product: item,
-                      onDelete: (){
-                        context.read<ProductBloc>().add(DeleteProductEvent(item.id));
-                      },
-                      onEdit: () async {
-                        await Navigator.pushNamed(
-                            context,
-                            ProductInputPage.routeName,
-                            arguments: item,
-                        );
+                    ? EmptyTemplate()
+                    : ListView.separated(
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context, int index) {
+                          final item = state.products[index];
+                          return _ItemSection(
+                            product: item,
+                            onDelete: () {
+                              context.read<ProductBloc>().add(
+                                DeleteProductEvent(item.id),
+                              );
+                            },
+                            onEdit: () async {
+                              await Navigator.pushNamed(
+                                context,
+                                ProductInputPage.routeName,
+                                arguments: item,
+                              );
 
-                        getData();
-                      },
-                    );
-                  },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return Spacing.sp42.height;
-                  },
-                  itemCount: state.products.length,
-                ),
+                              getData();
+                            },
+                          );
+                        },
+                        separatorBuilder: (BuildContext context, int index) {
+                          return Spacing.sp42.height;
+                        },
+                        itemCount: state.products.length,
+                      ),
               ),
             ],
           );
@@ -109,7 +113,3 @@ class _ProductPageState extends State<ProductPage> {
     );
   }
 }
-
-
-
-

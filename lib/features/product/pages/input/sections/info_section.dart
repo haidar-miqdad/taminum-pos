@@ -1,7 +1,7 @@
 part of '../page.dart';
 
 class _InfoSection extends StatefulWidget {
-  const _InfoSection( this.product,);
+  const _InfoSection(this.product);
 
   final ProductModel? product;
 
@@ -10,21 +10,23 @@ class _InfoSection extends StatefulWidget {
 }
 
 class _InfoSectionState extends State<_InfoSection> {
-
   TextEditingController nameController = TextEditingController();
   TextEditingController descController = TextEditingController();
 
   @override
   void initState() {
-
     nameController.text = widget.product?.title ?? '';
     descController.text = widget.product?.description ?? '';
 
     nameController.addListener(() {
-      context.read<FormProductBloc>().add(ChangeFormProductEvent(name: nameController.text));
+      context.read<FormProductBloc>().add(
+        ChangeFormProductEvent(name: nameController.text),
+      );
     });
     descController.addListener(() {
-      context.read<FormProductBloc>().add(ChangeFormProductEvent(desc: descController.text));
+      context.read<FormProductBloc>().add(
+        ChangeFormProductEvent(desc: descController.text),
+      );
     });
 
     super.initState();
@@ -64,7 +66,10 @@ class _InfoSectionState extends State<_InfoSection> {
         Spacing.sp8.height,
         RegularText(
           'Maks. ukuran 3 MB',
-          style: TextStyle(fontSize: Spacing.sp12, color: MainColors.black[200]),
+          style: TextStyle(
+            fontSize: Spacing.sp12,
+            color: MainColors.black[200],
+          ),
         ),
         Spacing.sp8.height,
         InkWell(
@@ -74,7 +79,7 @@ class _InfoSectionState extends State<_InfoSection> {
           borderRadius: BorderRadius.circular(Spacing.sp8),
           child: BlocBuilder<FormProductBloc, FormProductState>(
             builder: (context, state) {
-              if(state.image != null && state.image!.isNotEmpty){
+              if (state.image != null && state.image!.isNotEmpty) {
                 return ClipRRect(
                   borderRadius: BorderRadius.circular(Spacing.sp8),
                   child: Image.memory(
@@ -91,11 +96,15 @@ class _InfoSectionState extends State<_InfoSection> {
                   border: Border.all(color: MainColors.white[400]!, width: 2),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Icon(AppIcons.addPhotoAlternate, color: MainColors.primary, size: Spacing.sp30),
+                child: Icon(
+                  AppIcons.addPhotoAlternate,
+                  color: MainColors.primary,
+                  size: Spacing.sp30,
+                ),
               );
             },
           ),
-        )
+        ),
       ],
     );
   }

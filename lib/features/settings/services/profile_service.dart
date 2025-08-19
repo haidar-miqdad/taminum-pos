@@ -1,41 +1,36 @@
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_taminum_mobile/features/features.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ProfileService{
+class ProfileService {
   ProfileService._();
 
-  static Future<UserModel> insert(UserModel user) async{
-
-    try{
+  static Future<UserModel> insert(UserModel user) async {
+    try {
       final prefs = await SharedPreferences.getInstance();
 
       await prefs.setString('profile', jsonEncode(user.toJson()));
 
       return user;
-
-    }catch(e){
+    } catch (e) {
       throw ErrorDescription(e.toString());
     }
-
   }
 
-  static Future<UserModel?> get() async{
-    try{
+  static Future<UserModel?> get() async {
+    try {
       final prefs = await SharedPreferences.getInstance();
 
       final data = prefs.getString('profile');
 
-      if(data != null ){
+      if (data != null) {
         return UserModel.fromJson(jsonDecode(data));
       }
 
       return null;
-
-    }catch(e){
+    } catch (e) {
       throw ErrorDescription(e.toString());
     }
   }

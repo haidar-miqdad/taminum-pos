@@ -1,9 +1,7 @@
 part of '../page.dart';
 
 class _OrderSection extends StatelessWidget {
-  const _OrderSection({
-    super.key,
-  });
+  const _OrderSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +19,11 @@ class _OrderSection extends StatelessWidget {
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (BuildContext context, int index) {
                   final items = state.item!.items[index];
-                  return _buildTile(items.title, 'Rp ${items.regularPrice.toIDR()}', '${items.qty}');
+                  return _buildTile(
+                    items.title,
+                    'Rp ${items.regularPrice.toIDR()}',
+                    '${items.qty}',
+                  );
                 },
                 separatorBuilder: (BuildContext context, int index) {
                   return Spacing.sp8.height;
@@ -44,7 +46,6 @@ class _OrderSection extends StatelessWidget {
     );
   }
 
-
   Widget _buildTile(String title, String price, String qty) {
     return Column(
       children: [
@@ -57,10 +58,9 @@ class _OrderSection extends StatelessWidget {
                 RegularText.semibold(title),
                 Spacing.sp8.height,
                 RegularText(price),
-
               ],
             ),
-            RegularText.semibold('$qty x')
+            RegularText.semibold('$qty x'),
           ],
         ),
       ],

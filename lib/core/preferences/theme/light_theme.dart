@@ -1,11 +1,9 @@
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 
-class LightTheme{
-
+class LightTheme {
   LightTheme(this.primaryColor);
 
   final Color primaryColor;
@@ -18,24 +16,21 @@ class LightTheme{
   final Color inputColor = MainColors.white[400]!;
   final String fontFamily = 'Poppins';
 
-
   ColorScheme get colorScheme => ColorScheme.light(
     primary: primaryColor,
     secondary: scaffoldColor,
     onError: errorColor,
   );
 
-  AppBarTheme get appBarTheme => AppBarTheme(
-    centerTitle: false,
-     surfaceTintColor: scaffoldColor,
-     );
+  AppBarTheme get appBarTheme =>
+      AppBarTheme(centerTitle: false, surfaceTintColor: scaffoldColor);
 
   CardThemeData get cardTheme => CardThemeData(
     elevation: 0,
     margin: EdgeInsets.zero,
     shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Spacing.sp8),
-        side: BorderSide(color: borderColor)
+      borderRadius: BorderRadius.circular(Spacing.sp8),
+      side: BorderSide(color: borderColor),
     ),
   );
 
@@ -90,18 +85,19 @@ class LightTheme{
     ),
   );
 
-  BottomNavigationBarThemeData get bottomNavigationBarTheme =>BottomNavigationBarThemeData(
-    type: BottomNavigationBarType.fixed,
-    selectedItemColor: primaryColor,
-    selectedLabelStyle: textTheme.labelMedium?.copyWith(
-        fontSize: Spacing.sp10,
-        color: primaryColor
-    ),
-    unselectedLabelStyle: textTheme.labelMedium?.copyWith(
-        fontSize: Spacing.sp10,
-        color: disabledColor
-    ),
-  );
+  BottomNavigationBarThemeData get bottomNavigationBarTheme =>
+      BottomNavigationBarThemeData(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: primaryColor,
+        selectedLabelStyle: textTheme.labelMedium?.copyWith(
+          fontSize: Spacing.sp10,
+          color: primaryColor,
+        ),
+        unselectedLabelStyle: textTheme.labelMedium?.copyWith(
+          fontSize: Spacing.sp10,
+          color: disabledColor,
+        ),
+      );
 
   ElevatedButtonThemeData get elevatedButtonTheme => ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
@@ -118,7 +114,7 @@ class LightTheme{
     style: OutlinedButton.styleFrom(
       textStyle: textTheme.titleMedium,
       foregroundColor: primaryColor,
-      side: BorderSide(color: primaryColor,),
+      side: BorderSide(color: primaryColor),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(Spacing.sp8),
       ),
@@ -131,14 +127,14 @@ class LightTheme{
     prefixIconColor: textDisabledColor,
     hintStyle: textTheme.labelMedium,
     contentPadding: EdgeInsets.symmetric(
-        horizontal: Spacing.defaultSize,
-        vertical: Spacing.sp12
+      horizontal: Spacing.defaultSize,
+      vertical: Spacing.sp12,
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(Spacing.sp8),
       borderSide: BorderSide.none,
     ),
-    disabledBorder:  OutlineInputBorder(
+    disabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(Spacing.sp8),
       borderSide: BorderSide.none,
     ),

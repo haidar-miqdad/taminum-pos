@@ -25,7 +25,9 @@ class DetailTransactionPage extends StatefulWidget {
 class _DetailTransactionPageState extends State<DetailTransactionPage> {
   @override
   void initState() {
-    context.read<TransactionBloc>().add(GetDetailTransactionEvent(widget.referenceId));
+    context.read<TransactionBloc>().add(
+      GetDetailTransactionEvent(widget.referenceId),
+    );
     super.initState();
   }
 
@@ -56,5 +58,4 @@ class _DetailTransactionPageState extends State<DetailTransactionPage> {
       ),
     );
   }
-
 }

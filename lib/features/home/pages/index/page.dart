@@ -16,20 +16,11 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _CardSection(
-                label: 'Total Penjualan',
-                value: 'Rp. 5.000.000',
-              ),
+              _CardSection(label: 'Total Penjualan', value: 'Rp. 5.000.000'),
               Spacing.defaultSize.height,
-              _CardSection(
-                label: 'Total Transaksi',
-                value: '300.000',
-              ),
+              _CardSection(label: 'Total Transaksi', value: '300.000'),
               Spacing.defaultSize.height,
-              _CardSection(
-                label: 'Total Produk',
-                value: '654',
-              ),
+              _CardSection(label: 'Total Produk', value: '654'),
               Spacing.defaultSize.height,
             ],
           ),
@@ -38,5 +29,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-

@@ -1,10 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 
 class HeadlineText extends StatelessWidget {
-  const HeadlineText(this.text, {
+  const HeadlineText(
+    this.text, {
     super.key,
     this.textAlign = TextAlign.center,
     this.style,
@@ -15,10 +14,10 @@ class HeadlineText extends StatelessWidget {
   final TextAlign? textAlign;
 
   factory HeadlineText.semibold(
-      String text,{
-      TextAlign? textAlign,
-      TextStyle? style,
-  }){
+    String text, {
+    TextAlign? textAlign,
+    TextStyle? style,
+  }) {
     return HeadlineText(
       text,
       textAlign: textAlign,
@@ -29,6 +28,6 @@ class HeadlineText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final baseStyle = context.theme.textTheme.headlineLarge;
-    return Text(text, style: baseStyle?.merge(style), textAlign: textAlign,);
+    return Text(text, style: baseStyle?.merge(style), textAlign: textAlign);
   }
 }

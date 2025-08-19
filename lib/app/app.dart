@@ -13,9 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => BottomNavBloc(),
-        ),
+        BlocProvider(create: (context) => BottomNavBloc()),
         BlocProvider(
           create: (context) => ProfileBloc()..add(GetProfileEvent()),
         ),
@@ -25,23 +23,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ReceiptBloc()..add(GetReceiptEvent()),
         ),
-        BlocProvider(
-          create: (context) => PrinterBloc(),
-        ),
-        BlocProvider(
-          create: (context) => FormProductBloc(),
-        ),
-        BlocProvider(
-          create: (context) => ProductBloc(),
-        ),
-        BlocProvider(
-          create: (context) => CartBloc(),
-        ),
+        BlocProvider(create: (context) => PrinterBloc()),
+        BlocProvider(create: (context) => FormProductBloc()),
+        BlocProvider(create: (context) => ProductBloc()),
+        BlocProvider(create: (context) => CartBloc()),
 
-        BlocProvider(
-          create: (context) => TransactionBloc(),
-        ),
-
+        BlocProvider(create: (context) => TransactionBloc()),
       ],
       child: MaterialApp(
         title: ConfigApp.appName,

@@ -4,8 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'user_model.g.dart';
 
 @JsonSerializable()
-class UserModel extends Equatable{
-
+class UserModel extends Equatable {
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'email')
@@ -22,7 +21,8 @@ class UserModel extends Equatable{
     required this.imageUrl,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
 

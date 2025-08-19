@@ -1,11 +1,23 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 
 class RegularTextInput extends StatelessWidget {
   const RegularTextInput({
-    super.key, required this.hinText, this.controller, this.enabled = true, this.inputFormatters, this.required = false ,this.maxLength, this.maxLines, this.minLines, this.prefixIcon, this.label, this.onChanged, this.suffixIcon, this.keyboardType,
+    super.key,
+    required this.hinText,
+    this.controller,
+    this.enabled = true,
+    this.inputFormatters,
+    this.required = false,
+    this.maxLength,
+    this.maxLines,
+    this.minLines,
+    this.prefixIcon,
+    this.label,
+    this.onChanged,
+    this.suffixIcon,
+    this.keyboardType,
   });
 
   final String hinText;

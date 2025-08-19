@@ -30,7 +30,11 @@ class SuccessTransactionPage extends StatelessWidget {
       onPopInvokedWithResult: (bool didPop, Object? result) {
         if (didPop) {
           context.read<BottomNavBloc>().add(TapBottomNavEvent(1));
-          Navigator.pushNamedAndRemoveUntil(context, MainPage.routeName, (route) => false);
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            MainPage.routeName,
+            (route) => false,
+          );
         }
       },
       child: Scaffold(
@@ -51,4 +55,3 @@ class SuccessTransactionPage extends StatelessWidget {
     );
   }
 }
-

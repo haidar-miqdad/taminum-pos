@@ -1,7 +1,7 @@
 part of '../page.dart';
 
 class _ActionSection extends StatefulWidget {
-  const _ActionSection({ required this.item});
+  const _ActionSection({required this.item});
 
   final TransactionModel item;
 
@@ -23,8 +23,13 @@ class _ActionSectionState extends State<_ActionSection> {
                 if (widget.item.type != TypeEnum.paid) ...[
                   OutlinedButton(
                     onPressed: () {
-                      context.read<CartBloc>().add(InitialCartEvent(transaction: widget.item));
-                      Navigator.of(context).pushNamed(PaymentPage.routeName, arguments: widget.item.referenceId);
+                      context.read<CartBloc>().add(
+                        InitialCartEvent(transaction: widget.item),
+                      );
+                      Navigator.of(context).pushNamed(
+                        PaymentPage.routeName,
+                        arguments: widget.item.referenceId,
+                      );
                     },
                     child: Text('Bayar'),
                   ),
@@ -37,11 +42,16 @@ class _ActionSectionState extends State<_ActionSection> {
                   child: Text('Kirim Struk'),
                 ),
                 Spacing.defaultSize.height,
-                ElevatedButton(onPressed: () {
-                  if (state.item != null) {
-                    context.read<PrinterBloc>().add(TransactionPrinterEvent(state.item!));
-                  }
-                }, child: Text('Cetak Struk')),
+                ElevatedButton(
+                  onPressed: () {
+                    if (state.item != null) {
+                      context.read<PrinterBloc>().add(
+                        TransactionPrinterEvent(state.item!),
+                      );
+                    }
+                  },
+                  child: Text('Cetak Struk'),
+                ),
               ],
             ),
           ),
@@ -51,12 +61,14 @@ class _ActionSectionState extends State<_ActionSection> {
   }
 
   void share(TransactionModel transaction) {
-    ScreenshotController().captureFromWidget(ShareReceipt(data: transaction),
-      context: context,
-      targetSize: Size(370, 800 + (transaction.items.length * 50)),
-    )
+    ScreenshotController()
+        .captureFromWidget(
+          ShareReceipt(data: transaction),
+          context: context,
+          targetSize: Size(370, 800 + (transaction.items.length * 50)),
+        )
         .then((capturedImage) async {
-      await ShareHelper.shareImage(context, capturedImage, 'contoh');
-    });
+          await ShareHelper.shareImage(context, capturedImage, 'contoh');
+        });
   }
 }

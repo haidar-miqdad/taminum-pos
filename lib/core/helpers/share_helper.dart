@@ -9,10 +9,10 @@ class ShareHelper {
   ShareHelper._();
 
   static Future<void> shareImage(
-      BuildContext context,
-      Uint8List image,
-      String referenceId,
-      ) async {
+    BuildContext context,
+    Uint8List image,
+    String referenceId,
+  ) async {
     final box = context.findRenderObject() as RenderBox?;
 
     final directory = await getApplicationDocumentsDirectory();

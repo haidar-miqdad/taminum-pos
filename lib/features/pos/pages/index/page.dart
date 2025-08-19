@@ -16,7 +16,6 @@ class POSPage extends StatefulWidget {
 }
 
 class _POSPageState extends State<POSPage> {
-
   TextEditingController searchController = TextEditingController();
 
   @override
@@ -46,47 +45,45 @@ class _POSPageState extends State<POSPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('POS'),),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(Spacing.defaultSize),
-              child: SearchInput(hintText: 'Search by product name or SKU', controller: searchController,),
+      appBar: AppBar(title: Text('POS')),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(Spacing.defaultSize),
+            child: SearchInput(
+              hintText: 'Search by product name or SKU',
+              controller: searchController,
             ),
-            Expanded(
-              child: BlocBuilder<ProductBloc, ProductState>(
-                builder: (context, state) {
-                  if(state.products.isEmpty && state.status == Status.success){
-                    return EmptyTemplate();
-                  }
-                  return ListView.separated(
-                    itemBuilder: (BuildContext context, int index) {
-                      final item = state.products[index];
-                      return _ItemSection(
-                        product: item,
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index) => Spacing.sp10.height,
-                    itemCount: state.products.length,
-                  );
-                },
-              ),
-            )
-          ],
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: BlocBuilder<CartBloc, CartState>(
-          builder: (context, state) {
-            if(state.cart.isEmpty){
-              return SizedBox();
-            }
-            return _CartSection(
-              qtyItems: state.getQty,
-              price: state.getEstimate,
-            );
-          },
-        )
+          ),
+          Expanded(
+            child: BlocBuilder<ProductBloc, ProductState>(
+              builder: (context, state) {
+                if (state.products.isEmpty && state.status == Status.success) {
+                  return EmptyTemplate();
+                }
+                return ListView.separated(
+                  itemBuilder: (BuildContext context, int index) {
+                    final item = state.products[index];
+                    return _ItemSection(product: item);
+                  },
+                  separatorBuilder: (BuildContext context, int index) =>
+                      Spacing.sp10.height,
+                  itemCount: state.products.length,
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: BlocBuilder<CartBloc, CartState>(
+        builder: (context, state) {
+          if (state.cart.isEmpty) {
+            return SizedBox();
+          }
+          return _CartSection(qtyItems: state.getQty, price: state.getEstimate);
+        },
+      ),
     );
   }
 }
-

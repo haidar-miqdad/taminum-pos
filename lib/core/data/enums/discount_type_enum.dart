@@ -1,2 +1,1 @@
-
-enum DiscountType{nominal, percentage}
+enum DiscountType { nominal, percentage }

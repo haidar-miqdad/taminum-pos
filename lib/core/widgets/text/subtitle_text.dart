@@ -1,10 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_taminum_mobile/core/core.dart';
 
 class SubtitleText extends StatelessWidget {
-  const SubtitleText(this.text, {
+  const SubtitleText(
+    this.text, {
     super.key,
     this.textAlign = TextAlign.center,
     this.style,
@@ -29,6 +28,6 @@ class SubtitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final baseStyle = context.theme.textTheme.titleLarge;
-    return Text(text, style: baseStyle?.merge(style), textAlign: textAlign,);
+    return Text(text, style: baseStyle?.merge(style), textAlign: textAlign);
   }
 }
