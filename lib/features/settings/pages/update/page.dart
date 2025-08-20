@@ -47,13 +47,7 @@ class UpdatePage extends StatelessWidget {
                   if (version == VersionType.update) ...[
                     Spacing.sp12.height,
                     OutlinedButton(
-                      onPressed: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          MainPage.routeName,
-                          (route) => false,
-                        );
-                      },
+                      onPressed: () => throw Exception(),
                       child: const Text('Update Later'),
                     ),
                   ],

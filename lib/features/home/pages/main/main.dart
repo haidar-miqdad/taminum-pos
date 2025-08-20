@@ -21,7 +21,7 @@ class MainPage extends StatelessWidget {
               context.read<BottomNavBloc>().add(TapBottomNavEvent(value));
             },
             items: [
-              BottomNavigationBarItem(icon: Icon(MainIcons.home), label: 'Beranda'),
+              BottomNavigationBarItem(icon: Icon(MainIcons.home,), label: 'Beranda'),
               BottomNavigationBarItem(icon: Icon(MainIcons.receipt2), label: 'Transaksi'),
               BottomNavigationBarItem(icon: Icon(AppIcons.pos), label: 'POS'),
               BottomNavigationBarItem(icon: Icon(MainIcons.product3), label: 'Produk'),

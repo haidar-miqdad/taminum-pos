@@ -39,7 +39,8 @@ class XenditService {
         response.data['id'] as String,
         response.data['qr_string'] as String,
       );
-    } catch (e) {
+    } catch (e, stack) {
+      CrashlyticsHelper.capture(e, stack);
       throw ErrorDescription(e.toString());
     }
   }
@@ -63,7 +64,8 @@ class XenditService {
       } else {
         return TypeEnum.unpaid;
       }
-    } catch (e) {
+    } catch (e, stack) {
+      CrashlyticsHelper.capture(e, stack);
       throw ErrorDescription(e.toString());
     }
   }

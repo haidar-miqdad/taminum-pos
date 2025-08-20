@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'taminum-app.firebasestorage.app',
     iosBundleId: 'com.example.flutterTaminumMobile',
   );
+
 }
